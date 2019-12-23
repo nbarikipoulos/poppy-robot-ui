@@ -11,7 +11,7 @@ A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot
 
 ### Build Project
 
-The build process is based on vueJS cli tooling that requires node.js (basic installation could be found [here](https://github.com/nbarikipoulos/poppy-robot-cli#installing-nodejs) if needed.)
+The build process is based on vueJS cli tooling that requires node.js (basic installation guide could be found [here](https://github.com/nbarikipoulos/poppy-robot-cli#installing-nodejs) if needed.)
 
 - Clone this repository anywhere on your computer:
 
