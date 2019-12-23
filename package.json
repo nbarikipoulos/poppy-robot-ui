@@ -1,7 +1,7 @@
 {
   "name": "poppy-robot-ui",
   "version": "0.0.1",
-  "description": "Quick'n'dirty responsive dashboard/control for Poppy/Poppy Ergo Jr Robot.",
+  "description": "Quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot.",
   "homepage": "https://github.com/nbarikipoulos/poppy-robot-ui#readme",
   "author": "Nicolas Barriquand <nicolas.barriquand@outlook.fr>",
   "license": "MIT",
