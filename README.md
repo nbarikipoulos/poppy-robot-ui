@@ -1,7 +1,8 @@
 # Poppy Robot UI
 
 [![JavaScript Style Guide][standard-image]][standard-url]
-
+[![Dependency Status][david-image]][david-url]
+[![devDependency Status][david-dev-image]][david-dev-url]
 
 A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
@@ -51,3 +52,8 @@ The poppy-robot-ui is MIT licensed. See [LICENSE](./LICENSE.md).
 
 [standard-url]: https://standardjs.com
 [standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+
+[david-image]: https://img.shields.io/david/nbarikipoulos/poppy-robot-ui.svg
+[david-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui
+[david-dev-image]: https://img.shields.io/david/dev/nbarikipoulos/poppy-robot-ui.svg
+[david-dev-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui?type=dev
