@@ -1,32 +1,21 @@
-<template>
-    <section>
-      <div class="box">
-        <div class="columns is-mobile">
-          <div class="column is-narrow">
-            <b-field>
-              <b-switch v-model="isAddressable">
-                Is Addressable
-              </b-switch>
-            </b-field>
-          </div>
-          <div class="column">
-            <b-field label="Speed" label-position="on-border">
-              <b-input v-model="speed"  placeholder="Set all motors speed"/>
-              <p class="control">
-                <b-button type="is-primary" @click="setSpeed">Set</b-button>
-              </p>
-            </b-field>
-          </div>
-        </div>
-      </div>
-      <div class="columns is-multiline">
-        <Motor
+<template lang="pug">
+  section
+    div(class="box")
+      div(class="columns is-mobile")
+        div(class="column is-narrow")
+          b-field
+            b-switch(v-model="isAddressable") Is Addressable
+        div(class="column")
+          b-field(label="Speed" label-position="on-border")
+            b-input(v-model="speed"  placeholder="Set all motors speed")
+            p(class="control")
+              b-button(type="is-primary" @click="setSpeed") Set
+      div(class="columns is-multiline")
+        Motor(
           v-for="desc in getMotorDescriptors()"
           :key="desc.name"
           v-bind:descriptor="desc"
-        />
-      </div>
-    </section>
+        )
 </template>
 
 <script>

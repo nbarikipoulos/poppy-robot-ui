@@ -1,37 +1,25 @@
-<template>
-  <div class="column is-half-tablet is-one-third-desktop">
-    <div class="box has-border-primary">
-      <div class="columns is-paddingless is-mobile is-multiline">
-        <div class="column is-narrow is-full-desktop">
-        <span
-          class="has-text-weight-bold is-size-5 has-text-primary"
-        >
-          {{descriptor.name}}:
-        </span>
-        </div>
-        <div class="column is-full-desktop">
-          <b-field expanded>
-          <b-slider
-            :min="lowerLimit"
-            :max="upperLimit"
-            v-model="position"
-            :step="10"
-            ticks
-            type="is-primary"
-            :disabled="!store.isAddressable()"
-          />
-          </b-field>
-        </div>
-        <div class="column is-narrow is-full-desktop">
-          <span class="tags has-addons">
-            <span class="tag is-primary">{{lowerLimit}}</span>
-            <span class="tag is-white">{{position}}</span>
-            <span class="tag is-primary">{{upperLimit}}</span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div(class="column is-half-tablet is-one-third-desktop")
+    div(class="box has-border-primary")
+      div(class="columns is-paddingless is-mobile is-multiline")
+        div(class="column is-narrow is-full-desktop")
+          span(class="has-text-weight-bold is-size-5 has-text-primary") {{descriptor.name}}:
+        div(class="column is-full-desktop")
+          b-field(expanded)
+            b-slider(
+              :min="lowerLimit"
+              :max="upperLimit"
+              v-model="position"
+              :step="10"
+              ticks
+              type="is-primary"
+              :disabled="!store.isAddressable()"
+            )
+        div(class="column is-narrow is-full-desktop")
+          span(class="tags has-addons")
+            span(class="tag is-primary") {{lowerLimit}}
+            span(class="tag is-white") {{position}}
+            span(class="tag is-primary") {{upperLimit}}
 </template>
 
 <script>

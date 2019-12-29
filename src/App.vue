@@ -1,15 +1,11 @@
-<template>
-  <div id="app">
-      <section v-if="store.isConnected()">
-        <Control/>
-      </section>
-      <section v-else>
-        <Connect/>
-        <div class="has-background-warning">
-          <p class="is-size-4 has-text-weight-bold has-text-centered">NOT CONNECTED</p>
-        </div>
-      </section>
-  </div>
+<template lang="pug">
+  div(id="app")
+    section(v-if="store.isConnected()")
+      Control
+    section(v-else)
+      Connect
+      div(class="has-background-warning")
+        p(class="is-size-4 has-text-weight-bold has-text-centered") NOT CONNECTED
 </template>
 
 <script>
