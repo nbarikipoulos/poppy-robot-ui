@@ -16,10 +16,10 @@
               :disabled="!store.isAddressable()"
             )
         div(class="column is-narrow is-full-desktop")
-          span(class="tags has-addons")
-            span(class="tag is-primary") {{lowerLimit}}
-            span(class="tag is-white") {{position}}
-            span(class="tag is-primary") {{upperLimit}}
+          b-taglist(attached)
+            b-tag(type="is-primary") {{lowerLimit}}
+            b-tag(type="is-white") {{position}}
+            b-tag(type="is-primary") {{upperLimit}}
 </template>
 
 <script>
