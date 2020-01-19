@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="column is-half-tablet is-one-third-desktop")
+  div(class="column is-half-tablet is-one-quarter-desktop")
     div(class="box has-border-primary")
       div(class="columns is-paddingless is-mobile is-multiline")
         div(class="column is-narrow is-full-desktop")
@@ -15,11 +15,13 @@
               type="is-primary"
               :disabled="!store.isAddressable()"
             )
-        div(class="column is-narrow is-full-desktop")
+        div(class="column is-narrow is-full-desktop is-hidden-desktop")
           b-taglist(attached)
             b-tag(type="is-primary") {{lowerLimit}}
             b-tag(type="is-white") {{position}}
             b-tag(type="is-primary") {{upperLimit}}
+        div(class="column is-hidden-touch")
+          p {{lowerLimit}} / {{position}} / {{upperLimit}}
 </template>
 
 <script>
