@@ -15,12 +15,18 @@ const store = {
     isAddressable: false
   },
   hostname: 'poppy.local',
+  httpPort: 8080,
+  snapPort: 6969,
   poppy: undefined,
 
   async init () {
     try {
       this.poppy = await P.createPoppy({
-        connect: { ip: this.hostname }
+        connect: {
+          ip: this.hostname,
+          httpPort: this.httpPort,
+          snapPort: this.snapPort
+        }
       })
       this.state.connected = true
     } catch (err) {
