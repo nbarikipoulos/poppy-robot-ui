@@ -1,11 +1,7 @@
 <template lang="pug">
   div(id="app")
-    section(v-if="store.isConnected()")
-      Control
-    section(v-else)
-      Connect
-      div(class="has-background-warning")
-        p(class="is-size-4 has-text-weight-bold has-text-centered") NOT CONNECTED
+    Control(v-if="store.isConnected()")
+    Connect(v-else)
 </template>
 
 <script>
