@@ -1,3 +1,5 @@
+'use strict'
+
 import EventBus from '@/lib/eventBus'
 
 const P = require('poppy-robot-core')
