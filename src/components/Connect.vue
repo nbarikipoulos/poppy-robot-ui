@@ -5,11 +5,11 @@
         div(class="column is-one-quarter")
           div(class="box")
             b-field(label="Hostname")
-              b-input(type="text" v-model="store.hostname")
+              b-input(type="text" v-model="connection.ip")
             b-field(label="Http port")
-              b-input(type="text" v-model="store.httpPort")
+              b-input(type="text" v-model="connection.httpPort")
             b-field(label="Snap Port")
-              b-input(type="text" v-model="store.snapPort")
+              b-input(type="text" v-model="connection.snapPort")
             b-button(type="is-primary" @click="connect" expanded) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
@@ -22,7 +22,7 @@ export default {
   name: 'Connect',
   data () {
     return {
-      store,
+      connection: store.connect,
       isConnecting: false
     }
   },

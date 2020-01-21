@@ -11,44 +11,37 @@ const queryPresentPosition = async () => {
 
 const store = {
   state: {
-    connected: false,
     isAddressable: false
   },
-  hostname: 'poppy.local',
-  httpPort: 8080,
-  snapPort: 6969,
+  connect: {
+    ip: 'poppy.local',
+    httpPort: 8080,
+    snapPort: 6969
+  },
   poppy: undefined,
 
   async init () {
     try {
       this.poppy = await P.createPoppy({
-        connect: {
-          ip: this.hostname,
-          httpPort: this.httpPort,
-          snapPort: this.snapPort
-        }
+        connect: this.connect
       })
-      this.state.connected = true
     } catch (err) {
-      this.state.connected = false
+      // Do nothing
     }
 
-    if (this.state.connected) {
+    if (this.isConnected()) {
       setInterval(queryPresentPosition, 200)
     }
   },
 
   getPoppy () { return this.poppy },
 
-  getHostname () { return this.hostname },
-  setHostname (value) { this.hostname = value },
-  isConnected () { return this.state.connected },
+  isConnected () { return this.poppy !== undefined },
   isAddressable () { return this.state.isAddressable },
   setAddressable (value) { this.state.isAddressable = value },
 
   async execute (command, motors, ...values) {
-    console.log('============= EXEC', command, motors, values)
-    if (this.state.connected) {
+    if (this.isConnected()) {
       const script = P.createScript(...motors)
       script[command](...values)
       await this.poppy.exec(script)
