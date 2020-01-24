@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Home from '@/components/Home.vue'
 import Connect from '@/components/Connect.vue'
+
 import Control from '@/components/Control.vue'
 
 import store from '@/lib/store'
@@ -21,7 +23,11 @@ const ifNotConnected = (to, from, next) => {
 const routes = [
   {
     path: '/',
-    component: Control,
+    component: Home,
+    children: [
+      { path: '', component: Control },
+      { path: 'control', component: Control }
+    ],
     beforeEnter: ifNotConnected
   },
   {
