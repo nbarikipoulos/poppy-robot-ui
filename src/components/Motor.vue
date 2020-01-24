@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 import EventBus from '@/lib/eventBus'
 import store from '@/lib/store'
 

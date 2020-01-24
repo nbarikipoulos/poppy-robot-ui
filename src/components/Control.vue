@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import Motor from '@/components/Motor.vue'
 
 import store from '@/lib/store'
