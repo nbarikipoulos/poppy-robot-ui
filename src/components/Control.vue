@@ -10,12 +10,12 @@
             b-input(v-model="speed"  placeholder="Set all motors speed")
             p(class="control")
               b-button(type="is-primary" @click="setSpeed") Set
-      div(class="columns is-multiline")
-        Motor(
-          v-for="desc in getMotorDescriptors()"
-          :key="desc.name"
-          v-bind:descriptor="desc"
-        )
+    div(class="columns is-multiline")
+      Motor(
+        v-for="desc in getMotorDescriptors()"
+        :key="desc.name"
+        v-bind:descriptor="desc"
+      )
 </template>
 
 <script>
