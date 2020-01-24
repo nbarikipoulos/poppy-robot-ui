@@ -1,32 +1,10 @@
 <template lang="pug">
   div(id="app")
-    Control(v-if="store.isConnected()")
-    Connect(v-else)
+    router-view
 </template>
 
 <script>
-
-import Connect from '@/components/Connect.vue'
-import Control from '@/components/Control.vue'
-
-import store from '@/lib/store'
-
-export default {
-  name: 'app',
-  components: {
-    Connect,
-    Control
-  },
-  data () {
-    return {
-      store
-    }
-  },
-  async created () {
-    // Uncomment to auto-connect
-    // await store.init()
-  }
-}
+export default { name: 'app' }
 </script>
 
 <style lang="scss">

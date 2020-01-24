@@ -26,9 +26,6 @@ export default {
       isConnecting: false
     }
   },
-  props: {
-
-  },
   methods: {
     async connect () {
       this.isConnecting = true
@@ -41,6 +38,8 @@ export default {
           message: 'Unable to connect.',
           type: 'is-danger'
         })
+      } else {
+        this.$router.push('/')
       }
     }
   }

@@ -22,7 +22,8 @@
     "buefy": "^0.8.8",
     "core-js": "^3.6.1",
     "poppy-robot-core": "^4.0.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.2",
