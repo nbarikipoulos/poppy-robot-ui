@@ -10,9 +10,6 @@ const queryPresentPosition = async () => {
 }
 
 const store = {
-  state: {
-    isAddressable: false
-  },
   connect: {
     ip: 'poppy.local',
     httpPort: 8080,
@@ -37,8 +34,6 @@ const store = {
   getPoppy () { return this.poppy },
 
   isConnected () { return this.poppy !== undefined },
-  isAddressable () { return this.state.isAddressable },
-  setAddressable (value) { this.state.isAddressable = value },
 
   async execute (command, motors, ...values) {
     if (this.isConnected()) {

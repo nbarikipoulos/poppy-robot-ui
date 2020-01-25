@@ -13,7 +13,7 @@
               :step="10"
               ticks
               type="is-primary"
-              :disabled="!store.isAddressable()"
+              :disabled="compliant"
             )
         div(class="column is-narrow is-full-desktop is-hidden-desktop")
           b-taglist(attached)
@@ -39,24 +39,17 @@ export default {
     }
   },
   props: {
-    descriptor: {}
+    descriptor: Object,
+    compliant: Boolean
   },
   watch: {
-    position: async function () {
-      if (this.store.isAddressable()) {
-        this.store.execute('position', [this.name], this.position)
+    position: async function (value) {
+      // Do not send a set position command
+      // when motor is not driven with slider
+      if (!this.compliant) {
+        this.store.execute('position', [this.name], value)
       }
     }
-  },
-  created () {
-    this.name = this.descriptor.name
-  },
-  mounted () {
-    EventBus.$on('DATA_POSITION', (data) => {
-      if (!this.store.isAddressable()) {
-        this.position = Math.round(data[this.name].present_position)
-      }
-    })
   },
   computed: {
     lowerLimit: function () {
@@ -74,6 +67,18 @@ export default {
 
       )
     }
+  },
+  created () {
+    this.name = this.descriptor.name
+  },
+  mounted () {
+    EventBus.$on('DATA_POSITION', (data) => {
+      // Do not update position from querying request
+      // when motor is driven by the slider
+      if (this.compliant) {
+        this.position = Math.round(data[this.name].present_position)
+      }
+    })
   }
 }
 </script>

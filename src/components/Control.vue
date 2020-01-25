@@ -4,7 +4,7 @@
       div(class="columns is-mobile")
         div(class="column is-narrow")
           b-field
-            b-switch(v-model="compliant") Is Addressable
+            b-switch(v-model="controlMotors") Control motors
         div(class="column")
           b-field(label="Speed" label-position="on-border")
             b-input(v-model="speed" placeholder="Set all motors speed")
@@ -14,7 +14,8 @@
       Motor(
         v-for="desc in getMotorDescriptors()"
         :key="desc.name"
-        v-bind:descriptor="desc"
+        :descriptor="desc"
+        :compliant="!controlMotors"
       )
 </template>
 
@@ -31,20 +32,16 @@ export default {
   data () {
     return {
       store,
-      compliant: true,
+      controlMotors: false,
       speed: null
     }
   },
-  props: {
-    descriptor: {}
-  },
   watch: {
-    compliant: async function () {
-      this.store.setAddressable(!this.compliant)
+    controlMotors: async function (value) {
       await this.store.execute(
         'compliant',
         ['all'],
-        this.compliant
+        !value
       )
     }
   },
