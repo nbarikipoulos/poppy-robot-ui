@@ -4,10 +4,10 @@
       div(class="columns is-mobile")
         div(class="column is-narrow")
           b-field
-            b-switch(v-model="isAddressable") Is Addressable
+            b-switch(v-model="compliant") Is Addressable
         div(class="column")
           b-field(label="Speed" label-position="on-border")
-            b-input(v-model="speed"  placeholder="Set all motors speed")
+            b-input(v-model="speed" placeholder="Set all motors speed")
             p(class="control")
               b-button(type="is-primary" @click="setSpeed") Set
     div(class="columns is-multiline")
@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       store,
-      isAddressable: false,
+      compliant: true,
       speed: null
     }
   },
@@ -39,12 +39,12 @@ export default {
     descriptor: {}
   },
   watch: {
-    isAddressable: async function () {
-      this.store.setAddressable(this.isAddressable)
+    compliant: async function () {
+      this.store.setAddressable(!this.compliant)
       await this.store.execute(
         'compliant',
         ['all'],
-        !this.isAddressable
+        this.compliant
       )
     }
   },
