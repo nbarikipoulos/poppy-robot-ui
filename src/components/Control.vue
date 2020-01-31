@@ -11,12 +11,11 @@
             p(class="control")
               b-button(type="is-primary" @click="setSpeed") Set
     div(class="columns is-multiline")
-      Motor(
+      div(
         v-for="desc in getMotorDescriptors()"
-        :key="desc.name"
-        :descriptor="desc"
-        :compliant="!controlMotors"
+        class="column is-half-tablet is-one-quarter-desktop"
       )
+        Motor(:descriptor="desc" :compliant="!controlMotors")
 </template>
 
 <script>
