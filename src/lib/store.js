@@ -1,13 +1,6 @@
 'use strict'
 
-import EventBus from '@/lib/eventBus'
-
 const P = require('poppy-robot-core')
-
-const queryPresentPosition = async () => {
-  const data = await store.poppy.query('all', ['present_position'])
-  EventBus.$emit('DATA_POSITION', data)
-}
 
 const store = {
   connect: {
@@ -16,12 +9,14 @@ const store = {
     snapPort: 6969
   },
   poppy: undefined,
+  mdata: {},
 
   async init () {
     try {
       this.poppy = await P.createPoppy({
         connect: this.connect
       })
+      this.mdata = this._initMotorStorage()
     } catch (err) {
       // Do nothing
     }
@@ -29,6 +24,17 @@ const store = {
     if (this.isConnected()) {
       setInterval(queryPresentPosition, 200)
     }
+  },
+
+  _initMotorStorage () {
+    const motors = this.getRobotDescriptor().motors
+    return motors.reduce((acc, motor) => {
+      acc[motor.name] = {
+        position: undefined,
+        data: []
+      }
+      return acc
+    }, {})
   },
 
   getPoppy () { return this.poppy },
@@ -45,6 +51,14 @@ const store = {
     }
   }
 
+}
+
+const queryPresentPosition = async _ => {
+  const reg = 'present_position'
+  const data = await store.poppy.query('all', [reg])
+  for (const m in data) {
+    store.mdata[m].position = data[m][reg]
+  }
 }
 
 export default store

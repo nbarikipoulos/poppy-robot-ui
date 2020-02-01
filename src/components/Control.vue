@@ -30,14 +30,13 @@ export default {
   },
   data () {
     return {
-      store,
       controlMotors: false,
       speed: null
     }
   },
   watch: {
     controlMotors: async function (value) {
-      await this.store.execute(
+      await store.execute(
         'compliant',
         ['all'],
         !value
@@ -46,11 +45,11 @@ export default {
   },
   methods: {
     getMotorDescriptors () {
-      return this.store.getRobotDescriptor().motors
+      return store.getRobotDescriptor().motors
     },
     async setSpeed () {
       if (this.speed) {
-        await this.store.execute(
+        await store.execute(
           'speed',
           ['all'],
           this.speed

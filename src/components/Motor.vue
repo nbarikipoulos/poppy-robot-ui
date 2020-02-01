@@ -2,13 +2,13 @@
   div(class="box has-border-primary")
     div(class="columns is-paddingless is-mobile is-multiline")
       div(class="column is-narrow is-full-desktop")
-        span(class="has-text-weight-bold is-size-5 has-text-primary") {{descriptor.name}}:
+        span(class="has-text-weight-bold is-size-5 has-text-primary") {{name}}:
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(
             :min="range['min']"
             :max="range['max']"
-            v-model="position"
+            v-model="slider"
             :step="10"
             ticks
             type="is-primary"
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import EventBus from '@/lib/eventBus'
 import store from '@/lib/store'
 
 export default {
@@ -32,9 +31,7 @@ export default {
   data () {
     return {
       step: 10,
-      store,
-      name,
-      position: NaN
+      slider: null
     }
   },
   props: {
@@ -42,38 +39,34 @@ export default {
     compliant: Boolean
   },
   watch: {
-    position: async function (value) {
+    slider: async function (value) {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
-        this.store.execute('position', [this.name], value)
+        store.execute('position', [this.name], value)
+      }
+    },
+    position: function (value) {
+      if (this.compliant) {
+        this.slider = value
       }
     }
   },
   computed: {
+    name: function () { return this.descriptor.name },
+    position: function () {
+      return Math.round(
+        store.mdata[this.name].position
+      )
+    },
     range: function () {
-      const values = [
+      const [min, max] = [
         this.descriptor.lower_limit,
         this.descriptor.upper_limit
       ].sort().map(Math.round)
 
-      return {
-        min: values[0],
-        max: values[1]
-      }
+      return { min, max }
     }
-  },
-  created () {
-    this.name = this.descriptor.name
-  },
-  mounted () {
-    EventBus.$on('DATA_POSITION', (data) => {
-      // Do not update position from querying request
-      // when motor is driven by the slider
-      if (this.compliant) {
-        this.position = Math.round(data[this.name].present_position)
-      }
-    })
   }
 }
 </script>
