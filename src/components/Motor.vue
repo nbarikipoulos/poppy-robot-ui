@@ -55,7 +55,7 @@ export default {
       const values = [
         this.descriptor.lower_limit,
         this.descriptor.upper_limit
-      ].sort().map(elt => Math.round(elt))
+      ].sort().map(Math.round)
 
       return {
         min: values[0],
