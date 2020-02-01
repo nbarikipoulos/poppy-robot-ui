@@ -19,10 +19,12 @@
     "serve-dist": "serve dist"
   },
   "dependencies": {
+    "apexcharts": "^3.15.3",
     "buefy": "^0.8.8",
     "core-js": "^3.6.1",
     "poppy-robot-core": "^4.0.0",
     "vue": "^2.6.10",
+    "vue-apexcharts": "^1.5.2",
     "vue-router": "^3.1.5"
   },
   "devDependencies": {
