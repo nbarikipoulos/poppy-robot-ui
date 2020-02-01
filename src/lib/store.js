@@ -33,6 +33,8 @@ const store = {
 
   getPoppy () { return this.poppy },
 
+  getRobotDescriptor () { return this.poppy.getDescriptor() },
+
   isConnected () { return this.poppy !== undefined },
 
   async execute (command, motors, ...values) {

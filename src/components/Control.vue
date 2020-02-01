@@ -46,9 +46,7 @@ export default {
   },
   methods: {
     getMotorDescriptors () {
-      return this.store.isConnected() // Useful?
-        ? this.store.getPoppy().getDescriptor().motors
-        : []
+      return this.store.getRobotDescriptor().motors
     },
     async setSpeed () {
       if (this.speed) {
