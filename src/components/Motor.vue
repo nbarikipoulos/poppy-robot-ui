@@ -6,8 +6,8 @@
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(
-            :min="lowerLimit"
-            :max="upperLimit"
+            :min="range['min']"
+            :max="range['max']"
             v-model="position"
             :step="10"
             ticks
@@ -16,11 +16,11 @@
           )
       div(class="column is-narrow is-full-desktop is-hidden-desktop")
         b-taglist(attached)
-          b-tag(type="is-primary") {{lowerLimit}}
-          b-tag(type="is-white") {{position}}
-          b-tag(type="is-primary") {{upperLimit}}
+          b-tag(type="is-primary") {{ range['min'] }}
+          b-tag(type="is-white") {{ position }}
+          b-tag(type="is-primary") {{ range['max'] }}
       div(class="column is-hidden-touch")
-        p {{lowerLimit}} / {{position}} / {{upperLimit}}
+        p {{ range['min'] }} / {{ position }} / {{ range['max'] }}
 </template>
 
 <script>
@@ -51,20 +51,16 @@ export default {
     }
   },
   computed: {
-    lowerLimit: function () {
-      return Math.round(
-        this.descriptor.lower_limit < this.descriptor.upper_limit
-          ? this.descriptor.lower_limit
-          : this.descriptor.upper_limit
-      )
-    },
-    upperLimit: function () {
-      return Math.round(
-        this.descriptor.lower_limit > this.descriptor.upper_limit
-          ? this.descriptor.lower_limit
-          : this.descriptor.upper_limit
+    range: function () {
+      const values = [
+        this.descriptor.lower_limit,
+        this.descriptor.upper_limit
+      ].sort().map(elt => Math.round(elt))
 
-      )
+      return {
+        min: values[0],
+        max: values[1]
+      }
     }
   },
   created () {
