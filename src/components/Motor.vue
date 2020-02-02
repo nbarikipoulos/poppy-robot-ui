@@ -20,11 +20,11 @@
           b-tag(type="is-white") {{ position }}
           b-tag(type="is-primary") {{ range['max'] }}
       div(class="column is-hidden-touch")
-        //- p {{ range['min'] }} / {{ position }} / {{ range['max'] }}
-        MotorChart(
-          :name="name"
-          :data="store.mdata[name].data"
-        )
+        p {{ range['min'] }} / {{ position }} / {{ range['max'] }}
+        //- MotorChart(
+        //-   :name="name"
+        //-   :data="store.mdata[name].data"
+        //- )
 </template>
 
 <script>
