@@ -23,7 +23,8 @@ export default {
     return {
       store,
       connection: store.connect,
-      isConnecting: false
+      isConnecting: false,
+      autoConnect: true
     }
   },
   methods: {
@@ -41,6 +42,11 @@ export default {
       } else {
         this.$router.push('/')
       }
+    }
+  },
+  mounted () {
+    if (this.autoConnect) {
+      this.connect()
     }
   }
 }
