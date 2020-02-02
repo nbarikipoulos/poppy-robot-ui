@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="box has-border-primary is-primary")
+  div(class="box has-border-primary has-background-primary")
     apexchart(
       type="line"
       :height="height"
