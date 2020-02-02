@@ -13,6 +13,7 @@
             ticks
             type="is-primary"
             :disabled="compliant"
+            size="is-large"
           )
       div(class="column is-narrow is-full-desktop is-hidden-desktop")
         b-taglist(attached)
