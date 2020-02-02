@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    div(class="columns is-multiline")
+    div(class="box columns is-multiline")
       div(
         v-for="desc in getMotorDescriptors()"
         class="column is-2"
@@ -8,7 +8,6 @@
         MotorChart(
           :name="desc.name"
           :data="store.mdata[desc.name].data"
-          :height="200"
         )
 </template>
 
