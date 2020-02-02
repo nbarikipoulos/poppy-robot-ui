@@ -15,7 +15,10 @@
         v-for="desc in getMotorDescriptors()"
         class="column is-half-tablet is-one-quarter-desktop"
       )
-        Motor(:descriptor="desc" :compliant="!controlMotors")
+        Motor(
+          :descriptor="desc"
+          :compliant="!controlMotors"
+        )
 </template>
 
 <script>
