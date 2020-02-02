@@ -57,7 +57,13 @@ const queryPresentPosition = async _ => {
   const reg = 'present_position'
   const data = await store.poppy.query('all', [reg])
   for (const m in data) {
-    store.mdata[m].position = data[m][reg]
+    const value = data[m][reg]
+    store.mdata[m].position = value
+    const points = store.mdata[m].data
+    if (points.length >= 50) {
+      points.shift()
+    }
+    points.push(value)
   }
 }
 
