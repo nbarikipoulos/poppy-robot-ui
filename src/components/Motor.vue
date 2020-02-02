@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="box has-border-primary")
-    div(class="columns is-paddingless is-mobile is-multiline")
+    div(class="columns is-paddingless is-mobile is-multiline is-vcentered")
       div(class="column is-narrow is-full-desktop")
         span(class="has-text-weight-bold is-size-5 has-text-primary") {{name}}:
       div(class="column is-full-desktop")
@@ -10,22 +10,11 @@
             :max="range['max']"
             v-model="slider"
             :step="10"
-            ticks
             type="is-primary"
             :disabled="compliant"
-            size="is-large"
+            size="is-medium"
           )
-      div(class="column is-narrow is-full-desktop is-hidden-desktop")
-        b-taglist(attached)
-          b-tag(type="is-primary") {{ range['min'] }}
-          b-tag(type="is-white") {{ position }}
-          b-tag(type="is-primary") {{ range['max'] }}
-      div(class="column is-hidden-touch")
-        p {{ range['min'] }} / {{ position }} / {{ range['max'] }}
-        //- MotorChart(
-        //-   :name="name"
-        //-   :data="store.mdata[name].data"
-        //- )
+            b-slider-tick(v-for="v in getTicks()" :value="v") {{ v }}
 </template>
 
 <script>
@@ -73,6 +62,9 @@ export default {
 
       return { min, max }
     }
+  },
+  methods: {
+    getTicks () { return [this.range.min, 0, this.range.max] }
   }
 }
 </script>
