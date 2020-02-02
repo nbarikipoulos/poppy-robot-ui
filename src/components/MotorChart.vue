@@ -2,7 +2,7 @@
   div(class="box has-border-primary is-primary")
     apexchart(
       type="line"
-      height="120"
+      :height="height"
       width="100%"
       :options="chart"
       :series="series"
@@ -47,7 +47,8 @@ export default {
   },
   props: {
     name: String,
-    data: Array
+    data: Array,
+    height: undefined
   },
   watch: {
     data: function (value) {
