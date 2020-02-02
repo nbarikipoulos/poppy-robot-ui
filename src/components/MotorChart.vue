@@ -54,7 +54,7 @@ export default {
     data: function (value) {
       this.series = [{
         name: 'mySerie',
-        data: value
+        data: value.map(Math.round)
       }]
     }
   }
