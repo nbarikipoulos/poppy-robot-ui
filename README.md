@@ -1,6 +1,7 @@
 # Poppy Robot UI
 
 [![JavaScript Style Guide][standard-image]][standard-url]
+![GitHub package.json version][version-img]
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
@@ -52,6 +53,8 @@ The poppy-robot-ui is MIT licensed. See [LICENSE](./LICENSE.md).
 
 [standard-url]: https://standardjs.com
 [standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+
+[version-img]: https://img.shields.io/github/package-json/v/nbarikipoulos/poppy-robot-ui
 
 [david-image]: https://img.shields.io/david/nbarikipoulos/poppy-robot-ui.svg
 [david-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui
