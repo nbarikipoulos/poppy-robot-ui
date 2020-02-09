@@ -47,6 +47,9 @@ export default {
       }
     }
   },
+  mounted () {
+    this.slider = this.position
+  },
   computed: {
     name: function () { return this.descriptor.name },
     position: function () {
