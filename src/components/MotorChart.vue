@@ -5,7 +5,14 @@ const options = {
   responsive: true,
   maintainAspectRatio: false,
   legend: { display: false },
-  tooltips: { enabled: false }
+  tooltips: { enabled: false },
+  scales: {
+    xAxes: [{ display: false }],
+    yAxes: [{
+      display: true,
+      ticks: { min: -125, max: 90 }
+    }]
+  }
 }
 
 export default {
