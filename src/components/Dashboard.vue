@@ -6,6 +6,7 @@
         class="column is-2"
       )
         MotorChart(
+          class="box has-background-primary"
           :name="desc.name"
           :data="store.mdata[desc.name].data"
         )
@@ -17,7 +18,6 @@ import store from '@/lib/store'
 
 export default {
   name: 'Dashboard',
-  components: {},
   data () {
     return {
       store
