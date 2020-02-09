@@ -21,19 +21,19 @@ export default {
   props: {
     name: String,
     data: Array,
-    height: undefined
+    nbPoint: { type: Number, default: 50 }
   },
   watch: {
     data: function (value) {
       this.$data._chart.data.datasets[0].data = value
-        .slice(-20)
+        .slice(-this.nbPoint)
         .map(Math.round)
       this.$data._chart.update()
     }
   },
   mounted () {
     this.renderChart({
-      labels: [...Array(20).keys()],
+      labels: [...Array(this.nbPoint).keys()],
       datasets: [{
         label: this.name,
         backgroundColor: '#f87979',
