@@ -65,6 +65,9 @@ export default {
   },
   methods: {
     getTicks () { return [this.range.min, 0, this.range.max] }
+  },
+  mounted () {
+    this.slider = this.position
   }
 }
 </script>

@@ -1,62 +1,46 @@
-<template lang="pug">
-  div(class="box has-border-primary has-background-primary")
-    apexchart(
-      type="line"
-      :height="height"
-      width="100%"
-      :options="chart"
-      :series="series"
-    )
-</template>
-
 <script>
-const chart = {
-  chart: {
-    sparkline: { enabled: true }
-  },
-  plotOptions: {
-    bar: { columnWidth: '90%' }
-  },
-  labels: [],
-  xaxis: {
-    show: false
-  },
-  yaxis: {
-    crosshairs: { width: 1 },
-    show: true
-  },
-  tooltip: {
-    fixed: { enabled: false },
-    x: { show: false },
-    y: { show: false },
-    marker: { show: false }
+import { Bar } from 'vue-chartjs'
+
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: { display: false },
+  tooltips: { enabled: false },
+  scales: {
+    xAxes: [{ display: false }],
+    yAxes: [{
+      display: true,
+      ticks: { min: -125, max: 90 }
+    }]
   }
 }
-const series = [{
-  name: 'mySerie',
-  data: []
-}]
 
 export default {
   name: 'MotorChart',
-  data () {
-    return {
-      chart,
-      series
-    }
-  },
+  extends: Bar,
   props: {
     name: String,
     data: Array,
-    height: undefined
+    nbPoint: { type: Number, default: 50 }
   },
   watch: {
     data: function (value) {
-      this.series = [{
-        name: 'mySerie',
-        data: value.map(Math.round)
-      }]
+      this.$data._chart.data.datasets[0].data = value
+        .slice(-this.nbPoint)
+        .map(Math.round)
+      this.$data._chart.update()
     }
+  },
+  mounted () {
+    this.renderChart({
+      labels: [...Array(this.nbPoint).keys()],
+      datasets: [{
+        label: this.name,
+        backgroundColor: '#f87979',
+        data: []
+      }]
+    },
+    options)
   }
 }
 </script>
