@@ -4,7 +4,8 @@ import { Bar } from 'vue-chartjs'
 const options = {
   responsive: true,
   maintainAspectRatio: false,
-  legend: { display: false }
+  legend: { display: false },
+  tooltips: { enabled: false }
 }
 
 export default {
