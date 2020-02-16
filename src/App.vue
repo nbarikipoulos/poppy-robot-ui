@@ -10,5 +10,4 @@ export default { name: 'app' }
 <style lang="scss">
   @import "@/assets/styles/my.scss";
   @import "~buefy/src/scss/buefy";
-
 </style>
