@@ -9,8 +9,6 @@ export default { name: 'app' }
 
 <style lang="scss">
   @import "@/assets/styles/my.scss";
-
-  @import "~bulma";
   @import "~buefy/src/scss/buefy";
 
 </style>
