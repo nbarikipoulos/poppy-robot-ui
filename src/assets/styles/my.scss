@@ -7,3 +7,23 @@ $input-border-color: $primary;
 $input-hover-color:  #a5c7f3;
 
 $column-gap: 5px;
+
+
+//
+// Add led colors
+//
+
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+@import "~bulma/sass/utilities/derived-variables";
+$addColors: (
+  "off": (black, findColorInvert(black)),
+  "red": (red, findColorInvert(red)),
+  "green": (green, findColorInvert(green)),
+  "blue": (blue, findColorInvert(blue)),
+  "yellow": (yellow, findColorInvert(yellow)),
+  "cyan": (cyan, findColorInvert(cyan)),
+  "white":(white, findColorInvert(white))
+);
+
+$colors: map-merge($colors, $addColors);
