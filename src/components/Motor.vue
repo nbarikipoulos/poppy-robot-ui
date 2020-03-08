@@ -14,7 +14,7 @@
             :disabled="compliant"
             size="is-medium"
           )
-            b-slider-tick(v-for="v in getTicks()" :value="v") {{ v }}
+            b-slider-tick(v-for="v in getTicks()" :key="v" :value="v") {{ v }}
 </template>
 
 <script>
@@ -24,7 +24,6 @@ export default {
   name: 'Motor',
   data () {
     return {
-      store,
       step: 10,
       slider: null
     }
@@ -51,7 +50,7 @@ export default {
     name: function () { return this.descriptor.name },
     position: function () {
       return Math.round(
-        store.mdata[this.name].position
+        store.mdata[this.name].present_position
       )
     },
     range: function () {
