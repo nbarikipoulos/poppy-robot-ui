@@ -21,7 +21,6 @@ export default {
   name: 'Connect',
   data () {
     return {
-      store,
       connection: store.connect,
       isConnecting: false,
       autoConnect: true
