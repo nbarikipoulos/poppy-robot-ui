@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    b-navbar(v-if="showNavBar" type="is-primary")
+    b-navbar(type="is-primary")
       template(slot="end")
         b-navbar-item(tag="router-link" to="/dashboard") Dashboard
         b-navbar-item(tag="router-link" to="/control") Control
@@ -9,11 +9,6 @@
 
 <script>
 export default {
-  name: 'Main',
-  data () {
-    return {
-      showNavBar: false
-    }
-  }
+  name: 'Main'
 }
 </script>
