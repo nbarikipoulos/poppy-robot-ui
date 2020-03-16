@@ -3,14 +3,17 @@ import { Bar } from 'vue-chartjs'
 
 const options = {
   responsive: true,
+  animation: {
+    duration: 1000
+  },
   maintainAspectRatio: false,
   legend: { display: false },
   tooltips: { enabled: false },
   scales: {
     xAxes: [{ display: false }],
     yAxes: [{
-      display: true,
-      ticks: { min: -125, max: 90 }
+      display: true //,
+      // ticks: { min: -125, max: 90 }
     }]
   }
 }
