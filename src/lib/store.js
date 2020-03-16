@@ -1,5 +1,7 @@
 'use strict'
 
+import * as pUtils from './utils'
+
 const P = require('poppy-robot-core')
 
 const store = {
@@ -22,17 +24,19 @@ const store = {
     }
 
     if (this.isConnected()) {
-      setInterval(queryPresentPosition, 200)
+      await queryPosition()
+      await queryRobot()
+      await queryTemp()
+      setInterval(_ => queryPosition(), 350)
+      setInterval(_ => queryRobot(), 500)
+      setInterval(_ => queryTemp(), 5000)
     }
   },
 
   _initMotorStorage () {
     const motors = this.getRobotDescriptor().motors
     return motors.reduce((acc, motor) => {
-      acc[motor.name] = {
-        position: undefined,
-        data: []
-      }
+      acc[motor.name] = {}
       return acc
     }, {})
   },
@@ -41,7 +45,13 @@ const store = {
 
   getRobotDescriptor () { return this.poppy.getDescriptor() },
 
+  getMotorIds () { return this.poppy.getMotorIds() },
+
   isConnected () { return this.poppy !== undefined },
+
+  update (motor, reg, value) {
+    this.mdata[motor][reg] = value
+  },
 
   async execute (command, motors, ...values) {
     if (this.isConnected()) {
@@ -49,21 +59,62 @@ const store = {
       script[command](...values)
       await this.poppy.exec(script)
     }
-  }
+  },
 
+  async query ({
+    motors = 'all',
+    registers = ['present_position']
+  } = {}) {
+    return pUtils.query(
+      this.poppy,
+      motors,
+      registers
+    )
+  }
 }
 
-const queryPresentPosition = async _ => {
-  const reg = 'present_position'
-  const data = await store.poppy.query('all', [reg])
+const queryTemp = async _ => {
+  const data = await store.poppy.query(
+    'all',
+    ['present_temperature']
+  )
   for (const m in data) {
-    const value = data[m][reg]
-    store.mdata[m].position = value
-    const points = store.mdata[m].data
-    if (points.length >= 50) {
-      points.shift()
+    const values = data[m]
+    for (const reg in values) {
+      store.update(m, reg, values[reg])
+      store.mdata[m][reg] = values[reg]
     }
-    points.push(value)
+  }
+}
+
+const queryPosition = async _ => {
+  const data = await store.poppy.query(
+    'all',
+    ['present_position']
+  )
+
+  for (const m in data) {
+    const values = data[m]
+    for (const reg in values) {
+      store.update(m, reg, values[reg])
+      store.mdata[m][reg] = values[reg]
+    }
+  }
+}
+
+const queryRobot = async _ => {
+  const data = await store.poppy.query(
+    'all',
+    ['moving_speed', 'led', 'compliant']
+  )
+
+  // Dispatch data to local storage
+  for (const m in data) {
+    const values = data[m]
+    for (const reg in values) {
+      store.update(m, reg, values[reg])
+      store.mdata[m][reg] = values[reg]
+    }
   }
 }
 
