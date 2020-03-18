@@ -27,9 +27,9 @@ const store = {
       await queryPosition()
       await queryRobot()
       await queryTemp()
-      setInterval(_ => queryPosition(), 350)
+      setInterval(_ => queryPosition(), 333)
       setInterval(_ => queryRobot(), 500)
-      setInterval(_ => queryTemp(), 5000)
+      setInterval(_ => queryTemp(), 10000)
     }
   },
 
