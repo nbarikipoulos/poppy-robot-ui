@@ -53,13 +53,11 @@ const icons = {
 
 export default {
   name: 'Registers',
-  data () {
-    return {
-      icons,
-      clazz: 'is-narrow has-text-centered',
-      mdata: store.mdata
-    }
-  },
+  data: _ => ({
+    icons,
+    clazz: 'is-narrow has-text-centered',
+    mdata: store.mdata
+  }),
   props: {
   },
   methods: {

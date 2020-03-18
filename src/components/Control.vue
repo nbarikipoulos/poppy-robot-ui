@@ -31,12 +31,10 @@ export default {
   components: {
     Motor
   },
-  data () {
-    return {
-      controlMotors: false,
-      speed: null
-    }
-  },
+  data: _ => ({
+    controlMotors: false,
+    speed: null
+  }),
   watch: {
     controlMotors: async function (value) {
       await store.execute(

@@ -19,13 +19,11 @@ import store from '@/lib/store'
 
 export default {
   name: 'Connect',
-  data () {
-    return {
-      connection: store.connect,
-      isConnecting: false,
-      autoConnect: true
-    }
-  },
+  data: _ => ({
+    connection: store.connect,
+    isConnecting: false,
+    autoConnect: true
+  }),
   methods: {
     async connect () {
       this.isConnecting = true

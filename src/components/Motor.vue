@@ -22,12 +22,10 @@ import store from '@/lib/store'
 
 export default {
   name: 'Motor',
-  data () {
-    return {
-      step: 10,
-      slider: null
-    }
-  },
+  data: _ => ({
+    step: 10,
+    slider: null
+  }),
   props: {
     descriptor: Object,
     compliant: Boolean
