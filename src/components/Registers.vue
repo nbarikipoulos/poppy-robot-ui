@@ -17,7 +17,7 @@
         th
           b-icon(pack="fas" icon="thermometer-half")
       tr(
-        v-for="motor in getMotorIds()"
+        v-for="motor in getAllMotorIds()"
         :class="clazz"
       )
         td
@@ -63,7 +63,7 @@ export default {
   props: {
   },
   methods: {
-    getMotorIds () { return store.getPoppy().getAllMotorIds() }
+    getAllMotorIds () { return store.getPoppy().getAllMotorIds() }
   }
 }
 </script>

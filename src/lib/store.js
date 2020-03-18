@@ -45,8 +45,6 @@ const store = {
 
   getRobotDescriptor () { return this.poppy.getDescriptor() },
 
-  getMotorIds () { return this.poppy.getMotorIds() },
-
   isConnected () { return this.poppy !== undefined },
 
   update (motor, reg, value) {
