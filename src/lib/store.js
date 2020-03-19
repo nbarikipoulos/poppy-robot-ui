@@ -19,18 +19,16 @@ const store = {
     )
 
     if (this.isConnected) {
+      // "Expose" the robot descriptor
       this.descriptor = this.pConnector.getPoppy().getDescriptor()
-      this.mdata = this._initMotorStorage()
+      // Initialize storage for each motors
+      this.mdata = this.descriptor.motors.reduce((acc, motor) => {
+        acc[motor.name] = {}
+        return acc
+      }, {})
+      // Launch periodic querying to the robot
       this.pConnector.launchQuerying(this.mdata)
     }
-  },
-
-  _initMotorStorage () {
-    const motors = this.descriptor.motors
-    return motors.reduce((acc, motor) => {
-      acc[motor.name] = {}
-      return acc
-    }, {})
   }
 }
 
