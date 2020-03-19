@@ -35,7 +35,7 @@ export default {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
-        store.execute('position', [this.name], value)
+        store.pConnector.execute('position', [this.name], value)
       }
     },
     position: function (value) {

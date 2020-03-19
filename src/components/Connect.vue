@@ -29,7 +29,7 @@ export default {
       this.isConnecting = true
       await store.init()
       this.isConnecting = false
-      if (!store.isConnected()) {
+      if (!store.isConnected) {
         this.$buefy.notification.open({
           duration: 5000,
           position: 'is-bottom',

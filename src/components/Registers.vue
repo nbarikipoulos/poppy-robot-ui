@@ -61,7 +61,7 @@ export default {
   props: {
   },
   methods: {
-    getAllMotorIds () { return store.getPoppy().getAllMotorIds() }
+    getAllMotorIds () { return store.pConnector.getPoppy().getAllMotorIds() }
   }
 }
 </script>

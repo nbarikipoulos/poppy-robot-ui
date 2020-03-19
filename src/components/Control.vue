@@ -37,7 +37,7 @@ export default {
   }),
   watch: {
     controlMotors: async function (value) {
-      await store.execute(
+      await store.pConnector.execute(
         'compliant',
         ['all'],
         !value
@@ -46,11 +46,11 @@ export default {
   },
   methods: {
     getMotorDescriptors () {
-      return store.getRobotDescriptor().motors
+      return store.descriptor.motors
     },
     async setSpeed () {
       if (this.speed) {
-        await store.execute(
+        await store.pConnector.execute(
           'speed',
           ['all'],
           this.speed
