@@ -7,8 +7,10 @@
 
 A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
-![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
 
+Control | Dashboard
+--- | ---
+![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)") | ![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)")
 ## Install
 
 ### Build Project
