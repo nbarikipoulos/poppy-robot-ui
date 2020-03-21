@@ -9,7 +9,7 @@ const options = {
   responsive: true,
   maintainAspectRatio: false,
   animation: {
-    duration: 600
+    duration: 100
   },
   legend: { display: false },
   scale: {
@@ -20,10 +20,10 @@ const options = {
 export default {
   name: 'AllPositionsChart',
   extends: PolarArea,
-  data: _ => ({ motorIds: [] }),
+  data: _ => ({ motorIds: [], mdata: store.mdata }),
   computed: {
     positions: function () {
-      return this.motorIds.map(id => store.mdata[id].present_position)
+      return this.motorIds.map(id => this.mdata[id].present_position)
     }
   },
   watch: {

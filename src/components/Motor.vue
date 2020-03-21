@@ -24,7 +24,8 @@ export default {
   name: 'Motor',
   data: _ => ({
     step: 10,
-    slider: null
+    slider: null,
+    mdata: store.mdata
   }),
   props: {
     descriptor: Object,
@@ -48,7 +49,7 @@ export default {
     name: function () { return this.descriptor.name },
     position: function () {
       return Math.round(
-        store.mdata[this.name].present_position
+        this.mdata[this.name].present_position
       )
     },
     range: function () {
