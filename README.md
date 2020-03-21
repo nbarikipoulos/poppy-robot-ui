@@ -7,7 +7,7 @@
 
 A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
-![motor control](./doc/control-mobile.png "Motor control ( rendering on mobile)")
+![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
 
 ## Install
 
@@ -49,7 +49,9 @@ npm run serve-dist
 
 ## License
 
-The poppy-robot-ui is MIT licensed. See [LICENSE](./LICENSE.md).
+The poppy-robot-ui is MIT licensed (details available [here](./LICENSE.md)) except for:
+  - The poppy logo which is under [CC BY-SA 4.0][cc-by-sa-url] (see [here][poppy-project-url]).
+
 
 [standard-url]: https://standardjs.com
 [standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
@@ -60,3 +62,6 @@ The poppy-robot-ui is MIT licensed. See [LICENSE](./LICENSE.md).
 [david-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui
 [david-dev-image]: https://img.shields.io/david/dev/nbarikipoulos/poppy-robot-ui.svg
 [david-dev-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui?type=dev
+
+[cc-by-sa-url]: https://creativecommons.org/licenses/by-sa/4.0/
+[poppy-project-url]: https://www.poppy-project.org
