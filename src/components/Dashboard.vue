@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    div(class="box columns is-multiline")
+    div(class="columns is-multiline")
       Registers(class="column is-6")
       AllPositionsChart(class="column is-6")
 </template>
