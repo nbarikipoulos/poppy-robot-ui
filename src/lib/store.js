@@ -27,7 +27,7 @@ const store = {
         return acc
       }, {})
       // Launch periodic querying to the robot
-      this.pConnector.launchQuerying(this.mdata)
+      await this.pConnector.launchQuerying(this.mdata)
     }
   }
 }
