@@ -8,6 +8,5 @@ export default { name: 'app' }
 </script>
 
 <style lang="scss">
-  @import "@/assets/styles/my.scss";
-  @import "~buefy/src/scss/buefy";
+  @import "@/assets/styles/main";
 </style>
