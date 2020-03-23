@@ -1,8 +1,9 @@
 <template lang="pug">
   section
-    div(class="columns is-multiline")
-      Registers(class="column is-6")
-      AllPositionsChart(class="column is-6")
+    div(class="tile is-ancestor")
+      div(class="tile is-parent")
+        Registers(class="tile is-child box is-8")
+        AllPositionsChart(class="tile is-child box is-4")
 </template>
 
 <script>
