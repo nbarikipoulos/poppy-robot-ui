@@ -4,7 +4,7 @@
       template(slot="end")
         b-navbar-item(tag="router-link" to="/dashboard") Dashboard
         b-navbar-item(tag="router-link" to="/control") Control
-    router-view
+    router-view(class="view")
 </template>
 
 <script>
