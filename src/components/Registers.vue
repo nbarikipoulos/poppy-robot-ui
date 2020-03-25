@@ -1,8 +1,7 @@
 <template lang="pug">
-  div(class="box table-container")
+  div(class="table-container")
     table(
-      class="table is-fullwidth has-text-primary has-text-weight-bold is-size-5"
-      :class="clazz"
+      class="table is-fullwidth has-text-white has-text-weight-bold is-size-5 is-narrow has-text-centered"
     )
       thead
         th id
@@ -16,10 +15,7 @@
           b-icon(pack="far" icon="lightbulb")
         th
           b-icon(pack="fas" icon="thermometer-half")
-      tr(
-        v-for="motor in getAllMotorIds()"
-        :class="clazz"
-      )
+      tr(v-for="motor in getAllMotorIds()")
         td
           span {{ motor }}
         td
@@ -47,7 +43,7 @@ const icons = {
   led: (value, old) => ({
     pack: value === 'off' ? 'fas' : 'fa',
     icon: value === 'off' ? 'minus' : 'sun',
-    type: value === 'off' ? 'is-primary' : `is-${value}`
+    type: value === 'off' ? 'is-white' : `is-${value}`
   })
 }
 

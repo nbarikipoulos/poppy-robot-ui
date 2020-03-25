@@ -2,8 +2,10 @@
   section
     div(class="tile is-ancestor")
       div(class="tile is-parent")
-        Registers(class="tile is-child box is-8")
-        AllPositionsChart(class="tile is-child box is-4")
+        div(class="tile box is-child is-8")
+          Registers
+        div(class="tile box is-child is-4")
+          AllPositionsChart
 </template>
 
 <script>

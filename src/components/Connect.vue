@@ -10,7 +10,7 @@
               b-input(type="text" v-model="connection.httpPort")
             b-field(label="Snap Port")
               b-input(type="text" v-model="connection.snapPort")
-            b-button(type="is-primary" @click="connect" expanded) Connect
+            b-button(type="is-primary-bis" @click="connect" expanded) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
 
