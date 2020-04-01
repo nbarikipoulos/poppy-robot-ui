@@ -1,10 +1,11 @@
 <template lang="pug">
   section
     div(class="tile is-ancestor")
-      div(class="tile is-parent")
-        div(class="tile box is-child is-8")
+      div(class="tile is-parent is-8")
+        div(class="tile is-child box")
           Registers
-        div(class="tile box is-child is-4")
+      div(class="tile is-parent is-4")
+        div(class="tile is-child box")
           AllPositionsChart
 </template>
 
