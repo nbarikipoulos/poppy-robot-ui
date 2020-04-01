@@ -18,7 +18,7 @@ class PoppyConnector {
   }
 
   async launchQuerying (mdata) {
-    const f = (poppy, registers) => poppy.query('all', registers)
+    const f = async (poppy, registers) => poppy.query('all', registers)
     const g = (data) => {
       for (const m in data) {
         const values = data[m]
@@ -39,21 +39,15 @@ class PoppyConnector {
       name: 'others',
       registers: ['moving_speed', 'led', 'compliant'],
       period: 750 // ms
-    }, {
-      name: 'temperature',
-      registers: ['present_temperature'],
-      period: 15000 // "heavy" enough time consuming
     }]
 
-    // t0 request to initiate mdata
+    // t0 request to initialize mdata
     await Promise.all(
       queries.map(async conf => fg(this.poppy, conf.registers))
     )
 
-    await f(this.poppy, queries[0].registers).then(g)
-
     queries.map(conf => setInterval(
-      _ => fg(this.poppy, conf.registers),
+      async _ => fg(this.poppy, conf.registers),
       conf.period
     ))
   }
