@@ -13,7 +13,7 @@
           b-icon(pack="fas" icon="tachometer-alt")
         th
           b-icon(pack="far" icon="lightbulb")
-      tr(v-for="motor in getAllMotorIds()")
+      tr(v-for="motor in motors")
         td
           span {{ motor }}
         td
@@ -45,15 +45,9 @@ const icons = {
 
 export default {
   name: 'Registers',
-  data: _ => ({
-    icons,
-    clazz: 'is-narrow has-text-centered',
-    mdata: store.mdata
-  }),
+  data: _ => ({ icons, mdata: store.mdata }),
   props: {
-  },
-  methods: {
-    getAllMotorIds () { return store.pConnector.getPoppy().getAllMotorIds() }
+    motors: { type: Array, default: _ => store.getAllMotorIds() }
   }
 }
 </script>

@@ -20,10 +20,13 @@ const options = {
 export default {
   name: 'AllPositionsChart',
   extends: PolarArea,
-  data: _ => ({ motorIds: [], mdata: store.mdata }),
+  data: _ => ({ mdata: store.mdata, options }),
+  props: {
+    motors: { type: Array, default: _ => store.getAllMotorIds() }
+  },
   computed: {
     positions: function () {
-      return this.motorIds.map(id => this.mdata[id].present_position)
+      return this.motors.map(id => this.mdata[id].present_position)
     }
   },
   watch: {
@@ -33,12 +36,11 @@ export default {
     }
   },
   mounted () {
-    this.motorIds = store.pConnector.getPoppy().getAllMotorIds()
     this.renderChart({
-      labels: this.motorIds,
+      labels: this.motors,
       datasets: [{ data: [] }]
     },
-    options)
+    this.options)
   }
 }
 </script>
