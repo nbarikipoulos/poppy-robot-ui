@@ -29,7 +29,8 @@ const store = {
       // Launch periodic querying to the robot
       await this.pConnector.launchQuerying(this.mdata)
     }
-  }
+  },
+  getAllMotorIds () { return this.descriptor.motors.map(m => m.name) }
 }
 
 export default store
