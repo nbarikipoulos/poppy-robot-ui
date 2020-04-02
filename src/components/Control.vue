@@ -20,11 +20,11 @@
               b-button(type="is-primary-bis" @click="setSpeed") Set
     div(class="columns is-multiline")
       div(
-        v-for="desc in getMotorDescriptors()"
+        v-for="motorId in motorIds"
         class="column is-half-tablet is-one-quarter-desktop"
       )
         Motor(
-          :descriptor="desc"
+          :motorId="motorId"
           :compliant="!controlMotors"
         )
 </template>
@@ -43,6 +43,9 @@ export default {
     controlMotors: false,
     speed: null
   }),
+  computed: {
+    motorIds: function () { return store.getAllMotorIds() }
+  },
   watch: {
     controlMotors: async function (value) {
       await store.pConnector.execute(
@@ -53,9 +56,6 @@ export default {
     }
   },
   methods: {
-    getMotorDescriptors () {
-      return store.descriptor.motors
-    },
     async setSpeed () {
       if (this.speed) {
         await store.pConnector.execute(

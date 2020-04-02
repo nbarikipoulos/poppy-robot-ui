@@ -30,7 +30,8 @@ const store = {
       await this.pConnector.launchQuerying(this.mdata)
     }
   },
-  getAllMotorIds () { return this.descriptor.motors.map(m => m.name) }
+  getAllMotorIds () { return this.descriptor.motors.map(m => m.name) },
+  getMotorDesc (motorId) { return this.descriptor.motors.find(m => m.name === motorId) }
 }
 
 export default store

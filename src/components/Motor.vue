@@ -2,7 +2,7 @@
   div(class="box has-border-primary")
     div(class="columns is-paddingless is-mobile is-multiline is-vcentered")
       div(class="column is-narrow is-full-desktop")
-        span(class="has-text-weight-bold is-size-5") {{name}}:
+        span(class="has-text-weight-bold is-size-5") {{motorId}}:
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(
@@ -15,7 +15,7 @@
             size="is-medium"
           )
             b-slider-tick(
-              v-for="v in getTicks()" :key="v" :value="v"
+              v-for="v in ticks" :key="v" :value="v"
               class="has-text-text has-text-weight-bold"
             ) {{ v }}
 </template>
@@ -31,7 +31,7 @@ export default {
     mdata: store.mdata
   }),
   props: {
-    descriptor: Object,
+    motorId: String,
     compliant: Boolean
   },
   watch: {
@@ -39,7 +39,7 @@ export default {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
-        store.pConnector.execute('position', [this.name], value)
+        store.pConnector.execute('position', [this.motorId], value)
       }
     },
     position: function (value) {
@@ -49,10 +49,10 @@ export default {
     }
   },
   computed: {
-    name: function () { return this.descriptor.name },
+    descriptor: function () { return store.getMotorDesc(this.motorId) },
     position: function () {
       return Math.round(
-        this.mdata[this.name].present_position
+        this.mdata[this.motorId].present_position
       )
     },
     range: function () {
@@ -62,10 +62,8 @@ export default {
       ].sort().map(Math.round)
 
       return { min, max }
-    }
-  },
-  methods: {
-    getTicks () { return [this.range.min, 0, this.range.max] }
+    },
+    ticks: function () { return [this.range.min, 0, this.range.max] }
   },
   mounted () {
     this.slider = this.position
