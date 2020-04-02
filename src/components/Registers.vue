@@ -13,17 +13,17 @@
           b-icon(pack="fas" icon="tachometer-alt")
         th
           b-icon(pack="far" icon="lightbulb")
-      tr(v-for="motor in motors")
+      tr(v-for="motorId in motorIds")
         td
-          span {{ motor }}
+          span {{ motorId }}
         td
-          span {{ Math.round(mdata[motor].present_position) }}
+          span {{ Math.round(mdata[motorId].present_position) }}
         td
-          ExtIcon(:value="mdata[motor].compliant" :state="icons.compliant")
+          ExtIcon(:value="mdata[motorId].compliant" :state="icons.compliant")
         td
-          span {{ mdata[motor].moving_speed }}
+          span {{ mdata[motorId].moving_speed }}
         td
-          ExtIcon(:value="mdata[motor].led" :state="icons.led")
+          ExtIcon(:value="mdata[motorId].led" :state="icons.led")
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
   name: 'Registers',
   data: _ => ({ icons, mdata: store.mdata }),
   props: {
-    motors: { type: Array, default: _ => store.getAllMotorIds() }
+    motorIds: { type: Array, default: _ => store.getAllMotorIds() }
   }
 }
 </script>

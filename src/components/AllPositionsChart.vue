@@ -22,11 +22,11 @@ export default {
   extends: PolarArea,
   data: _ => ({ mdata: store.mdata, options }),
   props: {
-    motors: { type: Array, default: _ => store.getAllMotorIds() }
+    motorIds: { type: Array, default: _ => store.getAllMotorIds() }
   },
   computed: {
     positions: function () {
-      return this.motors.map(id => this.mdata[id].present_position)
+      return this.motorIds.map(id => this.mdata[id].present_position)
     }
   },
   watch: {
@@ -37,7 +37,7 @@ export default {
   },
   mounted () {
     this.renderChart({
-      labels: this.motors,
+      labels: this.motorIds,
       datasets: [{ data: [] }]
     },
     this.options)
