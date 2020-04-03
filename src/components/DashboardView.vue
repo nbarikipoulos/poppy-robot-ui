@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Registers from '@/components/Registers'
-import PolarPositionsChart from '@/components/PolarPositionsChart'
+import Registers from '@/components/sub/Registers'
+import PolarPositionsChart from '@/components/sub/PolarPositionsChart'
 
 export default {
   name: 'DashboardView',

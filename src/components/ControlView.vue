@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import MotorControl from '@/components/MotorControl.vue'
+import MotorControl from '@/components/sub/MotorControl.vue'
 
 import store from '@/lib/store'
 

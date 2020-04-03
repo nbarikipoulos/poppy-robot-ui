@@ -6,7 +6,7 @@ import Buefy from 'buefy'
 import router from '@/router/router'
 
 import App from '@/App.vue'
-import MotorChart from '@/components/MotorChart'
+import MotorChart from '@/components/sub/MotorChart'
 import ExtIcon from '@/components/utils/ExtIcon'
 
 Vue.use(Buefy)
