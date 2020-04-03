@@ -18,7 +18,7 @@ const options = {
 }
 
 export default {
-  name: 'AllPositionsChart',
+  name: 'PolarPositionsChart',
   extends: PolarArea,
   data: _ => ({ mdata: store.mdata, options }),
   props: {
