@@ -24,7 +24,7 @@
 import store from '@/lib/store'
 
 export default {
-  name: 'Motor',
+  name: 'MotorControl',
   data: _ => ({
     step: 10,
     slider: null,

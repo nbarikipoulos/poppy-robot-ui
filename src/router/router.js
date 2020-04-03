@@ -6,8 +6,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import Connect from '@/components/Connect.vue'
 
-import Control from '@/components/Control.vue'
-import Dashboard from '@/components/Dashboard.vue'
+import ControlView from '@/components/ControlView.vue'
+import DashboardView from '@/components/DashboardView.vue'
 
 import store from '@/lib/store'
 
@@ -26,9 +26,9 @@ const routes = [
     path: '/',
     component: Home,
     children: [
-      { path: '', component: Control },
-      { path: 'control', component: Control },
-      { path: 'dashboard', component: Dashboard }
+      { path: '', component: ControlView },
+      { path: 'control', component: ControlView },
+      { path: 'dashboard', component: DashboardView }
     ],
     beforeEnter: ifNotConnected
   },
