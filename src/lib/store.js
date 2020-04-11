@@ -5,8 +5,7 @@ import PConnector from './PoppyConnector'
 const store = {
   connect: {
     ip: 'poppy.local',
-    httpPort: 8080,
-    snapPort: 6969
+    port: 8080
   },
   isConnected: false,
   descriptor: undefined,

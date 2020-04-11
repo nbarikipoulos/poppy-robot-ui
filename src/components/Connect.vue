@@ -6,10 +6,8 @@
           div(class="box")
             b-field(label="Hostname")
               b-input(type="text" v-model="connection.ip")
-            b-field(label="Http port")
-              b-input(type="text" v-model="connection.httpPort")
-            b-field(label="Snap Port")
-              b-input(type="text" v-model="connection.snapPort")
+            b-field(label="Port")
+              b-input(type="text" v-model="connection.port")
             b-button(type="is-primary-bis" @click="connect" expanded) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
