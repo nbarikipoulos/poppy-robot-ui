@@ -18,7 +18,7 @@ class PoppyConnector {
   }
 
   async launchQuerying (mdata) {
-    const f = async (poppy, registers) => poppy.query('all', registers)
+    const f = (poppy, registers) => poppy.query('all', registers)
     const g = (data) => {
       for (const m in data) {
         const values = data[m]
@@ -29,7 +29,7 @@ class PoppyConnector {
         }
       }
     }
-    const fg = async (poppy, registers) => f(poppy, registers).then(g)
+    const fg = (poppy, registers) => f(poppy, registers).then(g)
 
     const queries = [{
       name: 'position',
@@ -47,7 +47,7 @@ class PoppyConnector {
     )
 
     queries.map(conf => setInterval(
-      async _ => fg(this.poppy, conf.registers),
+      _ => fg(this.poppy, conf.registers),
       conf.period
     ))
   }
