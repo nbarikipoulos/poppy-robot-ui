@@ -13,6 +13,8 @@
           b-icon(pack="fas" icon="tachometer-alt")
         th
           b-icon(pack="far" icon="lightbulb")
+        th
+          b-icon(pack="fas" icon="thermometer-half")
       tr(v-for="motorId in motorIds")
         td
           span {{ motorId }}
@@ -24,6 +26,8 @@
           span {{ mdata[motorId].moving_speed }}
         td
           ExtIcon(:value="mdata[motorId].led" :state="icons.led")
+        td
+          span {{ mdata[motorId].present_temperature }}
 </template>
 
 <script>

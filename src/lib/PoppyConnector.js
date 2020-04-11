@@ -39,6 +39,10 @@ class PoppyConnector {
       name: 'others',
       registers: ['moving_speed', 'led', 'compliant'],
       period: 750 // ms
+    }, {
+      name: 'temperature',
+      registers: ['present_temperature'],
+      period: 10000 // ms
     }]
 
     // t0 request to initialize mdata
