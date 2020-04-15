@@ -14,8 +14,8 @@
         th
           b-icon(pack="far" icon="lightbulb")
         th
-          b-icon(pack="fas" icon="thermometer-half")
-      tr(v-for="motorId in motorIds")
+          ExtIcon(:value="temperatureMax" :state="icons.temperature")
+      tr(v-for="(motorId, i) in motorIds")
         td
           span {{ motorId }}
         td
@@ -27,13 +27,14 @@
         td
           ExtIcon(:value="mdata[motorId].led" :state="icons.led")
         td
-          span {{ mdata[motorId].present_temperature }}
+          span(:class='motorTempText[i]') {{ temperatures[i] }}
 </template>
 
 <script>
 'use strict'
 
 import store from '@/lib/store'
+import T from '@/lib/utils/tBranding'
 
 const icons = {
   compliant: [
@@ -44,7 +45,11 @@ const icons = {
     pack: value === 'off' ? 'fas' : 'fa',
     icon: value === 'off' ? 'minus' : 'sun',
     type: value === 'off' ? 'is-white' : `is-${value}`
-  })
+  }),
+  temperature: (value, old) => {
+    const t = T(value)
+    return { ...t.icon, type: `is-${t.color}` }
+  }
 }
 
 export default {
@@ -52,6 +57,18 @@ export default {
   data: _ => ({ icons, mdata: store.mdata }),
   props: {
     motorIds: { type: Array, default: _ => store.getAllMotorIds() }
+  },
+  computed: {
+    temperatures: function () {
+      return this.motorIds.map(motorId => this.mdata[motorId].present_temperature)
+    },
+    temperatureMax: function () { return Math.max(...this.temperatures) },
+    motorTempText: function () {
+      return this.temperatures.map(temp => {
+        const t = T(temp)
+        return t.level !== 'ok' ? `has-text-${t.color}` : ''
+      })
+    }
   }
 }
 </script>
