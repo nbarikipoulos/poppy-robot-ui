@@ -14,17 +14,15 @@ class PoppyConnector {
       // Do nothing
     }
 
-    return this.isConnected()
+    return this.isConnected
   }
 
   get poppy () { return this._poppy }
 
-  isConnected () {
-    return this._poppy !== undefined
-  }
+  get isConnected () { return this._poppy !== undefined }
 
   async execute (command, motors, ...values) {
-    if (this.isConnected()) {
+    if (this.isConnected) {
       const script = P.createScript(...motors)
       script[command](...values)
       await this._poppy.exec(script)
