@@ -1,19 +1,21 @@
 'use strict'
 
 class RegisterQuerying {
-  constructor (poppy) {
+  constructor (poppy, config) {
     this._poppy = poppy
-    this._mdata = {}
+    this._data = {}
+
+    this._init(config)
   }
 
-  initData (config) {
-    this._mdata = config.motors.reduce((acc, motor) => {
+  _init (config) {
+    this._data = config.motors.reduce((acc, motor) => {
       acc[motor] = {}
       return acc
     }, {})
-
-    return this._mdata
   }
+
+  get data () { return this._data }
 
   async launch () {
     const f = (poppy, registers) => poppy.query('all', registers)
@@ -21,7 +23,7 @@ class RegisterQuerying {
       for (const m in data) {
         const values = data[m]
         for (const reg in values) {
-          this._mdata[m][reg] = values[reg]
+          this._data[m][reg] = values[reg]
         }
       }
     }

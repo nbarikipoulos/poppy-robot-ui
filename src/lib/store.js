@@ -26,8 +26,6 @@ const store = {
       // Querying the robot
       //
 
-      const querying = new RegisterQuerying(this.pConnector.poppy)
-
       const config = {
         motors: this.getAllMotorIds(),
         registers: {
@@ -39,9 +37,13 @@ const store = {
         }
       }
 
-      // First, initialize the storage object for each motors
-      // and bind it to the store
-      this.mdata = querying.initData(config)
+      const querying = new RegisterQuerying(
+        this.pConnector.poppy,
+        config
+      )
+
+      // get the data handler
+      this.mdata = querying.data
 
       // Then , launch periodic querying to the robot
       await querying.launch()
