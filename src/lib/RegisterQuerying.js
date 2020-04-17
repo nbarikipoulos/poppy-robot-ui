@@ -3,15 +3,25 @@
 class RegisterQuerying {
   constructor (poppy) {
     this._poppy = poppy
+    this._mdata = {}
   }
 
-  async launch (mdata, config = {}) {
+  initData (config) {
+    this._mdata = config.motors.reduce((acc, motor) => {
+      acc[motor] = {}
+      return acc
+    }, {})
+
+    return this._mdata
+  }
+
+  async launch () {
     const f = (poppy, registers) => poppy.query('all', registers)
     const g = (data) => {
       for (const m in data) {
         const values = data[m]
         for (const reg in values) {
-          mdata[m][reg] = values[reg]
+          this._mdata[m][reg] = values[reg]
         }
       }
     }

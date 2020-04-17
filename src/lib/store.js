@@ -10,7 +10,7 @@ const store = {
   },
   isConnected: false,
   descriptor: undefined,
-  mdata: {},
+  mdata: undefined,
   pConnector: new PConnector(),
 
   async init () {
@@ -18,29 +18,33 @@ const store = {
       this.connect
     )
 
-    const config = {
-      registers: {
-        present_position: { length: 100 },
-        moving_speed: { length: 1 },
-        led: { length: 1 },
-        compliant: { length: 1 },
-        present_temperature: { length: 1 }
-      }
-    }
-
     if (this.isConnected) {
       // "Expose" the robot descriptor
       this.descriptor = this.pConnector.poppy.getDescriptor()
 
-      // Initialize storage for each motors
-      this.mdata = this.descriptor.motors.reduce((acc, motor) => {
-        acc[motor.name] = {}
-        return acc
-      }, {})
+      //
+      // Querying the robot
+      //
 
-      // Launch periodic querying to the robot
       const querying = new RegisterQuerying(this.pConnector.poppy)
-      await querying.launch(this.mdata, config)
+
+      const config = {
+        motors: this.getAllMotorIds(),
+        registers: {
+          present_position: { length: 1 },
+          moving_speed: { length: 1 },
+          led: { length: 1 },
+          compliant: { length: 1 },
+          present_temperature: { length: 1 }
+        }
+      }
+
+      // First, initialize the storage object for each motors
+      // and bind it to the store
+      this.mdata = querying.initData(config)
+
+      // Then , launch periodic querying to the robot
+      await querying.launch()
     }
   },
 
