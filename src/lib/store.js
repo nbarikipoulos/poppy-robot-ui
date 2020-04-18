@@ -28,13 +28,22 @@ const store = {
 
       const config = {
         motors: this.getAllMotorIds(),
-        registers: {
-          present_position: { length: 1 },
-          moving_speed: { length: 1 },
-          led: { length: 1 },
-          compliant: { length: 1 },
-          present_temperature: { length: 1 }
-        }
+        registers: [{
+          name: 'present_position',
+          length: 100
+        }, {
+          name: 'moving_speed',
+          length: 1
+        }, {
+          name: 'led',
+          length: 1
+        }, {
+          name: 'compliant',
+          length: 1
+        }, {
+          name: 'present_temperature',
+          length: 1
+        }]
       }
 
       const querying = new RegisterQuerying(

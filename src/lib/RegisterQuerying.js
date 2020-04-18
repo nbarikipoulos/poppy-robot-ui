@@ -1,16 +1,45 @@
 'use strict'
 
+class RegisterData {
+  constructor (name, length = 1) {
+    this._name = name
+    this._length = length
+    this._values = []
+  }
+
+  get data () { return this._values }
+
+  get current () {
+    return this._length === 1
+      ? this._values[0]
+      : this._values.slice(-1)[0]
+  }
+
+  add (value) {
+    if (this._length === 1) {
+      this._values[0] = value
+    } else {
+      if (this._values.length >= this._length) {
+        this._values.shift()
+      }
+      this._values.push(value)
+    }
+  }
+}
+
 class RegisterQuerying {
   constructor (poppy, config) {
     this._poppy = poppy
+    this._config = config
     this._data = {}
 
-    this._init(config)
+    this._init()
   }
 
-  _init (config) {
-    this._data = config.motors.reduce((acc, motor) => {
-      acc[motor] = {}
+  _init () {
+    this._data = this._config.motors.reduce((acc, motor) => {
+      const props = this._config.registers.map(r => ({ [r.name]: new RegisterData(r.name, r.length) }))
+      acc[motor] = Object.assign({}, ...props)
       return acc
     }, {})
   }
@@ -19,14 +48,10 @@ class RegisterQuerying {
 
   async launch () {
     const f = (poppy, registers) => poppy.query('all', registers)
-    const g = (data) => {
-      for (const m in data) {
-        const values = data[m]
-        for (const reg in values) {
-          this._data[m][reg] = values[reg]
-        }
-      }
-    }
+    const g = (data) => Object.entries(data)
+      .forEach(([motor, values]) => Object.entries(values)
+        .forEach(([reg, value]) => this._data[motor][reg].add(value))
+      )
     const fg = (poppy, registers) => f(poppy, registers).then(g)
 
     const queries = [{

@@ -19,13 +19,13 @@
         td
           span {{ motorId }}
         td
-          span {{ Math.round(mdata[motorId].present_position) }}
+          span {{ Math.round(mdata[motorId].present_position.current) }}
         td
-          ExtIcon(:value="mdata[motorId].compliant" :state="icons.compliant")
+          ExtIcon(:value="mdata[motorId].compliant.current" :state="icons.compliant")
         td
-          span {{ mdata[motorId].moving_speed }}
+          span {{ mdata[motorId].moving_speed.current }}
         td
-          ExtIcon(:value="mdata[motorId].led" :state="icons.led")
+          ExtIcon(:value="mdata[motorId].led.current" :state="icons.led")
         td
           span(:class='motorTempText[i]') {{ temperatures[i] }}
 </template>
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     temperatures: function () {
-      return this.motorIds.map(motorId => this.mdata[motorId].present_temperature)
+      return this.motorIds.map(motorId => this.mdata[motorId].present_temperature.current)
     },
     temperatureMax: function () { return Math.max(...this.temperatures) },
     motorTempText: function () {

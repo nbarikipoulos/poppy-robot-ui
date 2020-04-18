@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     positions: function () {
-      return this.motorIds.map(id => this.mdata[id].present_position)
+      return this.motorIds.map(id => this.mdata[id].present_position.current)
     }
   },
   watch: {

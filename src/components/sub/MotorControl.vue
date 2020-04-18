@@ -52,7 +52,7 @@ export default {
     descriptor: function () { return store.getMotorDesc(this.motorId) },
     position: function () {
       return Math.round(
-        this.mdata[this.motorId].present_position
+        this.mdata[this.motorId].present_position.current
       )
     },
     range: function () {
