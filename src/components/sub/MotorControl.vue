@@ -22,6 +22,7 @@
 
 <script>
 import store from '@/lib/store'
+import PUtils from '@/lib/poppy-utils'
 
 export default {
   name: 'MotorControl',
@@ -39,7 +40,7 @@ export default {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
-        store.pConnector.execute('position', [this.motorId], value)
+        PUtils.execute('position', [this.motorId], value)
       }
     },
     position: function (value) {
@@ -49,7 +50,7 @@ export default {
     }
   },
   computed: {
-    descriptor: function () { return store.getMotorDesc(this.motorId) },
+    descriptor: function () { return PUtils.getMotorDesc(this.motorId) },
     position: function () {
       return Math.round(
         this.mdata[this.motorId].present_position.current

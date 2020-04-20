@@ -32,7 +32,7 @@
 <script>
 import MotorControl from '@/components/sub/MotorControl.vue'
 
-import store from '@/lib/store'
+import PUtils from '@/lib/poppy-utils'
 
 export default {
   name: 'ControlView',
@@ -44,11 +44,11 @@ export default {
     speed: null
   }),
   computed: {
-    motorIds: function () { return store.getAllMotorIds() }
+    motorIds: function () { return PUtils.allMotorIds }
   },
   watch: {
     controlMotors: async function (value) {
-      await store.pConnector.execute(
+      await PUtils.execute(
         'compliant',
         ['all'],
         !value
@@ -58,7 +58,7 @@ export default {
   methods: {
     async setSpeed () {
       if (this.speed) {
-        await store.pConnector.execute(
+        await PUtils.execute(
           'speed',
           ['all'],
           this.speed

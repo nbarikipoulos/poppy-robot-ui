@@ -14,7 +14,7 @@ import store from '@/lib/store'
 Vue.use(Router)
 
 const ifNotConnected = (to, from, next) => {
-  if (!store.isConnected) {
+  if (!store.connected) {
     next('/connect')
   } else {
     next()

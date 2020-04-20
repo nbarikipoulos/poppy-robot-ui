@@ -34,6 +34,7 @@
 'use strict'
 
 import store from '@/lib/store'
+import PUtils from '@/lib/poppy-utils'
 import T from '@/lib/utils/tBranding'
 
 const icons = {
@@ -56,7 +57,7 @@ export default {
   name: 'Registers',
   data: _ => ({ icons, mdata: store.mdata }),
   props: {
-    motorIds: { type: Array, default: _ => store.getAllMotorIds() }
+    motorIds: { type: Array, default: _ => PUtils.allMotorIds }
   },
   computed: {
     temperatures: function () {

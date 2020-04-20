@@ -4,6 +4,7 @@
 import { PolarArea } from 'vue-chartjs'
 
 import store from '@/lib/store'
+import PUtils from '@/lib/poppy-utils'
 
 const options = {
   responsive: true,
@@ -22,7 +23,7 @@ export default {
   extends: PolarArea,
   data: _ => ({ mdata: store.mdata, options }),
   props: {
-    motorIds: { type: Array, default: _ => store.getAllMotorIds() }
+    motorIds: { type: Array, default: _ => PUtils.allMotorIds }
   },
   computed: {
     positions: function () {

@@ -5,29 +5,32 @@
         div(class="column is-one-quarter")
           div(class="box")
             b-field(label="Hostname")
-              b-input(type="text" v-model="connection.ip")
+              b-input(type="text" v-model="settings.ip")
             b-field(label="Port")
-              b-input(type="text" v-model="connection.port")
+              b-input(type="text" v-model="settings.port")
             b-button(type="is-primary-bis" @click="connect" expanded) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
 
 <script>
 import store from '@/lib/store'
+import { P_CONNECTOR } from '@/lib/poppy-utils'
 
 export default {
   name: 'Connect',
   data: _ => ({
-    connection: store.connect,
+    settings: store.connect,
     isConnecting: false,
     autoConnect: true
   }),
   methods: {
     async connect () {
       this.isConnecting = true
-      await store.init()
-      this.isConnecting = false
-      if (!store.isConnected) {
+      const connected = await P_CONNECTOR.connect(this.settings)
+      store.connected = connected
+
+      if (!connected) {
+        this.isConnecting = false
         this.$buefy.notification.open({
           duration: 5000,
           position: 'is-bottom',
@@ -35,6 +38,11 @@ export default {
           type: 'is-danger'
         })
       } else {
+        P_CONNECTOR.initQuerying()
+        store.mdata = P_CONNECTOR.mdata
+        await P_CONNECTOR.startQuerying()
+
+        this.isConnecting = false
         this.$router.push('/')
       }
     }
