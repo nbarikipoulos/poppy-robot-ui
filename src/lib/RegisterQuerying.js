@@ -65,7 +65,7 @@ class RegisterQuerying {
     }, {
       name: 'temperature',
       registers: ['present_temperature'],
-      period: 10000 // ms
+      period: 15000 // ms
     }]
 
     // t0 request to initialize mdata
