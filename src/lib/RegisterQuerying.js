@@ -61,7 +61,7 @@ class RegisterQuerying {
     }, {
       name: 'others',
       registers: ['moving_speed', 'led', 'compliant'],
-      period: 750 // ms
+      period: 500 // ms
     }, {
       name: 'temperature',
       registers: ['present_temperature'],
