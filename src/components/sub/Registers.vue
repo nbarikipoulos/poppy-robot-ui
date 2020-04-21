@@ -6,28 +6,37 @@
       thead
         th id
         th
-          b-icon(pack="fas" icon="crosshairs")
-        th
           b-icon(pack="fas" icon="gamepad")
         th
           b-icon(pack="fas" icon="tachometer-alt")
         th
-          b-icon(pack="far" icon="lightbulb")
+          b-icon(pack="fas" icon="crosshairs")
+        th(class="is-hidden-mobile")
+          span ...
         th
           ExtIcon(:value="temperatureMax" :state="icons.temperature")
+        th
+          b-icon(pack="far" icon="lightbulb")
       tr(v-for="(motorId, i) in motorIds")
         td
           span {{ motorId }}
-        td
-          span {{ Math.round(mdata[motorId].present_position.current) }}
         td
           ExtIcon(:value="mdata[motorId].compliant.current" :state="icons.compliant")
         td
           span {{ mdata[motorId].moving_speed.current }}
         td
-          ExtIcon(:value="mdata[motorId].led.current" :state="icons.led")
+          span {{ Math.round(mdata[motorId].present_position.current) }}
+        td(class="is-hidden-mobile")
+          MotorChart(
+            :key="motorId"
+            :chartData="getChartData(motorId)"
+            :options="chartOptions"
+            :styles="{ height: '50px'}"
+          )
         td
           span(:class='motorTempText[i]') {{ temperatures[i] }}
+        td
+          ExtIcon(:value="mdata[motorId].led.current" :state="icons.led")
 </template>
 
 <script>
@@ -36,6 +45,7 @@
 import store from '@/lib/store'
 import PUtils from '@/lib/poppy-utils'
 import T from '@/lib/utils/tBranding'
+import { sparkLine } from '@/lib/charts/options'
 
 const icons = {
   compliant: [
@@ -55,7 +65,7 @@ const icons = {
 
 export default {
   name: 'Registers',
-  data: _ => ({ icons, mdata: store.mdata }),
+  data: _ => ({ chartOptions: sparkLine, icons, mdata: store.mdata }),
   props: {
     motorIds: { type: Array, default: _ => PUtils.allMotorIds }
   },
@@ -69,6 +79,19 @@ export default {
         const t = T(temp)
         return t.level !== 'ok' ? `has-text-${t.color}` : ''
       })
+    }
+  },
+  methods: {
+    getChartData: function (motorId) {
+      const data = this.mdata[motorId].present_position.data
+      return {
+        labels: [...Array(data.length).keys()],
+        datasets: [{
+          label: motorId,
+          showLine: true,
+          data
+        }]
+      }
     }
   }
 }

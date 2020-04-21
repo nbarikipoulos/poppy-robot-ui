@@ -1,49 +1,22 @@
 <script>
-import { Bar } from 'vue-chartjs'
-
-const options = {
-  responsive: true,
-  animation: {
-    duration: 1000
-  },
-  maintainAspectRatio: false,
-  legend: { display: false },
-  tooltips: { enabled: false },
-  scales: {
-    xAxes: [{ display: false }],
-    yAxes: [{
-      display: true //,
-      // ticks: { min: -125, max: 90 }
-    }]
-  }
-}
+import { Line, mixins } from 'vue-chartjs'
 
 export default {
   name: 'MotorChart',
-  extends: Bar,
+  extends: Line,
+  mixins: [mixins.reactiveProp],
   props: {
     name: String,
-    data: Array,
-    nbPoint: { type: Number, default: 50 }
-  },
-  watch: {
-    data: function (value) {
-      this.$data._chart.data.datasets[0].data = value
-        .slice(-this.nbPoint)
-        .map(Math.round)
-      this.$data._chart.update()
-    }
+    options: { type: Object }
   },
   mounted () {
-    this.renderChart({
-      labels: [...Array(this.nbPoint).keys()],
-      datasets: [{
-        label: this.name,
-        backgroundColor: '#f87979',
-        data: []
-      }]
-    },
-    options)
+    this.renderChart(
+      this.chartData,
+      this.options
+    )
+  },
+  beforeDestroy () {
+    this.$data._chart.destroy()
   }
 }
 </script>
