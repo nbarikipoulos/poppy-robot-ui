@@ -11,6 +11,9 @@ A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot
 Control | Dashboard
 --- | ---
 ![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)") | ![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)")
+
+![dashboard](./doc/dashboard-wide.png "Dashboard (rendering on 'wide screen')")
+
 ## Install
 
 ### Build Project
