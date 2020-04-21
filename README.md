@@ -5,7 +5,7 @@
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
-A quick'n'dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
+A quick'n'-not-so-dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
 
 Control | Dashboard
