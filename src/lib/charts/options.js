@@ -1,7 +1,26 @@
 'use strict'
 
 // FIXME
-const PRIMARY = 'rgb(110, 161, 173)'
+const PRIMARY = [110, 161, 173]
+const rgb = (r, g, b) => `rgb(${r},${g},${b})`
+const rgba = (r, g, b, a) => `rgba(${r},${g},${b},${a})`
+
+const polar = {
+  responsive: true,
+  maintainAspectRatio: false,
+  animation: {
+    duration: 100
+  },
+  legend: { display: false },
+  elements: {
+    arc: {
+      backgroundColor: rgba(...PRIMARY, 0.75)
+    }
+  },
+  scale: {
+    ticks: { min: -125, max: 90 } // FIXME
+  }
+}
 
 const sparkLine = {
   responsive: true,
@@ -14,8 +33,8 @@ const sparkLine = {
   elements: {
     line: {
       fill: false,
-      backgroundColor: PRIMARY,
-      borderColor: PRIMARY,
+      backgroundColor: rgb(...PRIMARY),
+      borderColor: rgb(...PRIMARY),
       borderWidth: 2,
       cubicInterpolationMode: 'monotone'
     },
@@ -32,4 +51,4 @@ const sparkLine = {
   }
 }
 
-export { sparkLine }
+export { sparkLine, polar }
