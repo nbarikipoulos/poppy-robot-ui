@@ -32,6 +32,7 @@
             :chartData="getChartData(motorId)"
             :options="chartOptions"
             :styles="{ height: '50px'}"
+            class="box is-paddingless"
           )
         td
           span(:class='motorTempText[i]') {{ temperatures[i] }}
