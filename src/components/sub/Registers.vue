@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="table-container")
     table(
-      class="table is-fullwidth has-text-white has-text-weight-bold is-size-5 is-narrow has-text-centered"
+      class="table is-fullwidth has-text-primary has-text-weight-bold is-narrow has-text-centered"
     )
       thead
         th id

@@ -4,21 +4,20 @@
 // Primary colors
 //
 
-$primary: rgb(221, 120, 5);
-$primary-bis: rgb(20, 26, 70); //#141A46;
+$primary: rgb(110, 161, 173);
 
 //
 // Main app colors
 //
 
-$text: $primary-bis;
-$body-background-color: black; // lighten($primary, 30%);
+$text: black;
+$body-background-color: white; // lighten($primary, 30%);
 
 //
 // Misc. variables
 //
 
-$radius-large: 0px;
+$radius-large: 5px;
 
 $block-spacing: .4em;
 $tile-spacing: 0.2em;
@@ -28,14 +27,14 @@ $column-gap: 0.2em;
 // Component colors
 //
 
-$box-background-color: $primary;
-$table-background-color: $box-background-color;
+$box-background-color: white;
+$table-background-color: white;
 
 $input-color: $text;
 $input-border-color: $text;
 
 $slider-tick-width: 3px;
-$slider-thumb-background: $primary-bis;
+$slider-thumb-background: $primary;
 $slider-thumb-border: 2px solid white;
 $slider-tick-background: $primary;
 $slider-track-border:	0px;
@@ -51,7 +50,7 @@ $slider-track-border:	0px;
 // Led colors
 
 $ledColors: (
-  "off": (black, findColorInvert(black)),
+  "off": ($text, findColorInvert($text)),
   "red": (red, findColorInvert(red)),
   "green": (green, findColorInvert(green)),
   "blue": (blue, findColorInvert(blue)),
@@ -65,6 +64,5 @@ $colors: map-merge($colors, $ledColors);
 
 // Misc. color
 $colors: map-merge($colors, (
-  'primary-bis': ($primary-bis, findColorInvert($primary-bis)),
   'text': ($text, findColorInvert($text))
 ));

@@ -2,7 +2,7 @@
   div(class="box has-border-primary")
     div(class="columns is-paddingless is-mobile is-multiline is-vcentered")
       div(class="column is-narrow is-full-desktop")
-        span(class="has-text-weight-bold is-size-5") {{motorId}}:
+        span(class="has-text-weight-bold is-size-5 has-text-primary") {{motorId}}:
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(
@@ -10,7 +10,7 @@
             :max="range['max']"
             v-model="slider"
             :step="10"
-            type="is-primary-bis"
+            type="is-primary"
             :disabled="compliant"
             size="is-medium"
           )

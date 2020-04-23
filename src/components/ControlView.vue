@@ -6,18 +6,18 @@
           b-field
             b-switch(
               v-model="controlMotors"
-              type="is-primary-bis"
+              type="is-primary"
               :rounded="false"
             ) Control motors
         div(class="column")
           b-field(
-            custom-class="has-text-primary-bis"
+            custom-class="has-text-primary"
             label="Speed"
             label-position="on-border"
           )
             b-input(v-model="speed" placeholder="Set all motors speed")
             p(class="control")
-              b-button(type="is-primary-bis" @click="setSpeed") Set
+              b-button(type="is-primary" @click="setSpeed") Set
     div(class="columns is-multiline")
       div(
         v-for="motorId in motorIds"

@@ -1,5 +1,8 @@
 'use strict'
 
+// FIXME
+const PRIMARY = 'rgb(110, 161, 173)'
+
 const sparkLine = {
   responsive: true,
   maintainAspectRatio: false,
@@ -11,8 +14,8 @@ const sparkLine = {
   elements: {
     line: {
       fill: false,
-      backgroundColor: 'white',
-      borderColor: 'white',
+      backgroundColor: PRIMARY,
+      borderColor: PRIMARY,
       borderWidth: 2,
       cubicInterpolationMode: 'monotone'
     },

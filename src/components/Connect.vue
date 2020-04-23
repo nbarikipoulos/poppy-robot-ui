@@ -8,7 +8,7 @@
               b-input(type="text" v-model="settings.ip")
             b-field(label="Port")
               b-input(type="text" v-model="settings.port")
-            b-button(type="is-primary-bis" @click="connect" expanded) Connect
+            b-button(type="is-primary" @click="connect" expanded) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
 

@@ -10,7 +10,7 @@ const icons = {
   led: (value, old) => ({
     pack: value === 'off' ? 'fas' : 'fa',
     icon: value === 'off' ? 'minus' : 'sun',
-    type: value === 'off' ? 'is-white' : `is-${value}`
+    type: value === 'off' ? 'is-primary' : `is-${value}`
   }),
   temperature: (value, old) => {
     const t = T(value)
