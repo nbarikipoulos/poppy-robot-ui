@@ -3,20 +3,18 @@
 
 import { PolarArea } from 'vue-chartjs'
 
+import motors from '@/mixins/motors'
 import store from '@/lib/store'
-import PUtils from '@/lib/poppy-utils'
 import { polar } from '@/lib/charts/options'
 
 export default {
   name: 'PolarPositionsChart',
   extends: PolarArea,
+  mixins: [motors],
   data: _ => ({ mdata: store.mdata, chartOptions: polar }),
-  props: {
-    motorIds: { type: Array, default: _ => PUtils.allMotorIds }
-  },
   computed: {
     positions: function () {
-      return this.motorIds.map(id => this.mdata[id].present_position.current)
+      return this.motors.map(motor => this.mdata[motor].present_position.current)
     }
   },
   watch: {
@@ -27,7 +25,7 @@ export default {
   },
   mounted () {
     this.renderChart({
-      labels: this.motorIds,
+      labels: this.motors,
       datasets: [{ data: [] }]
     },
     this.chartOptions)

@@ -67,7 +67,7 @@ const PUtils = {
   get descriptor () { return this.poppy.getDescriptor() },
   get allMotorIds () { return this.poppy.getAllMotorIds() },
 
-  getMotorDesc (id) {
+  getMotorDescriptor (id) {
     return this.descriptor.motors.find(m => m.name === id)
   },
 

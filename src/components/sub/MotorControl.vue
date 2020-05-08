@@ -2,7 +2,7 @@
   div(class="box has-border-primary")
     div(class="columns is-paddingless is-mobile is-multiline is-vcentered")
       div(class="column is-narrow is-full-desktop")
-        span(class="has-text-weight-bold is-size-5 has-text-primary") {{motorId}}:
+        span(class="has-text-weight-bold is-size-5 has-text-primary") {{ motor }}:
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(
@@ -21,26 +21,24 @@
 </template>
 
 <script>
-import store from '@/lib/store'
+
 import PUtils from '@/lib/poppy-utils'
+import motor from '@/mixins/motor'
 
 export default {
   name: 'MotorControl',
+  mixins: [motor],
   data: _ => ({
     step: 10,
-    slider: null,
-    mdata: store.mdata
+    slider: null
   }),
-  props: {
-    motorId: String,
-    compliant: Boolean
-  },
+  props: { compliant: Boolean },
   watch: {
     slider: async function (value) {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
-        PUtils.execute('position', [this.motorId], value)
+        PUtils.execute('position', [this.motor], value)
       }
     },
     position: function (value) {
@@ -50,10 +48,9 @@ export default {
     }
   },
   computed: {
-    descriptor: function () { return PUtils.getMotorDesc(this.motorId) },
     position: function () {
       return Math.round(
-        this.mdata[this.motorId].present_position.current
+        this.getRegisterValue('present_position')
       )
     },
     range: function () {

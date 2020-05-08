@@ -20,32 +20,28 @@
               b-button(type="is-primary" @click="setSpeed") Set
     div(class="columns is-multiline")
       div(
-        v-for="motorId in motorIds"
+        v-for="motor in motors"
         class="column is-half-tablet is-one-quarter-desktop"
       )
         MotorControl(
-          :motorId="motorId"
+          :motor="motor"
           :compliant="!controlMotors"
         )
 </template>
 
 <script>
+import motors from '@/mixins/motors'
 import MotorControl from '@/components/sub/MotorControl.vue'
-
 import PUtils from '@/lib/poppy-utils'
 
 export default {
   name: 'ControlView',
-  components: {
-    MotorControl
-  },
+  mixins: [motors],
+  components: { MotorControl },
   data: _ => ({
     controlMotors: false,
     speed: null
   }),
-  computed: {
-    motorIds: function () { return PUtils.allMotorIds }
-  },
   watch: {
     controlMotors: async function (value) {
       await PUtils.execute(
