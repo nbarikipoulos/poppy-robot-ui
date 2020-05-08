@@ -10,8 +10,10 @@ const mixin = {
     descriptor: function () { return PUtils.getMotorDescriptor(this.motor) }
   },
   methods: {
-    getRegisterValue: function (register) {
-      return this.mmdata[register].current
+    getRegister: function (register, data = 'current') {
+      return data === 'current'
+        ? this.mmdata[register].current
+        : this.mmdata[register].data
     }
   }
 }

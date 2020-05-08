@@ -50,7 +50,7 @@ export default {
   computed: {
     position: function () {
       return Math.round(
-        this.getRegisterValue('present_position')
+        this.getRegister('present_position')
       )
     },
     range: function () {

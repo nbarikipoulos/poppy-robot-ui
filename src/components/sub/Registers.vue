@@ -22,13 +22,13 @@
           span {{ motor }}
         td
           ExtIcon(
-            :value="getRegisterValue(motor, 'compliant')"
+            :value="getRegister(motor, 'compliant')"
             :state="icons.compliant"
           )
         td
-          span {{ getRegisterValue(motor, 'moving_speed') }}
+          span {{ getRegister(motor, 'moving_speed') }}
         td
-          span {{ Math.round(getRegisterValue(motor, 'present_position')) }}
+          span {{ Math.round(getRegister(motor, 'present_position')) }}
         td(class="is-hidden-mobile")
           MotorChart(
             :key="motor"
@@ -41,7 +41,7 @@
           span(:class='motorTempText[i]') {{ temperatures[i] }}
         td
           ExtIcon(
-            :value="getRegisterValue(motor, 'led')"
+            :value="getRegister(motor, 'led')"
             :state="icons.led"
           )
 </template>
@@ -49,9 +49,6 @@
 <script>
 'use strict'
 import motors from '@/mixins/motors'
-
-import store from '@/lib/store'
-
 import T from '@/lib/utils/tBranding'
 import icons from '@/lib/utils/icons'
 import { sparkLine } from '@/lib/charts/options'
@@ -59,10 +56,10 @@ import { sparkLine } from '@/lib/charts/options'
 export default {
   name: 'Registers',
   mixins: [motors],
-  data: _ => ({ chartOptions: sparkLine, icons, mdata: store.mdata }),
+  data: _ => ({ chartOptions: sparkLine, icons }),
   computed: {
     temperatures: function () {
-      return this.motors.map(motor => this.getRegisterValue(motor, 'present_temperature'))
+      return this.motors.map(motor => this.getRegister(motor, 'present_temperature'))
     },
     temperatureMax: function () { return Math.max(...this.temperatures) },
     motorTempText: function () {
@@ -74,7 +71,7 @@ export default {
   },
   methods: {
     getChartData: function (motor) {
-      const data = this.mdata[motor].present_position.data
+      const data = this.getRegister(motor, 'present_position', 'all')
       return {
         labels: [...Array(data.length).keys()],
         datasets: [{
