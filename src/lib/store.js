@@ -6,8 +6,13 @@ const store = {
     port: 8080
   },
   connected: false,
-  mdata: undefined
+  mdata: undefined,
 
+  panel: {
+    dashboard: {
+      showAsCard: false
+    }
+  }
 }
 
 export default store
