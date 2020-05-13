@@ -22,7 +22,7 @@
     "buefy": "^0.8.13",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.1",
-    "poppy-robot-core": "^7.0.0",
+    "poppy-robot-core": "^8.0.0",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.5.0",
     "vue-router": "^3.1.6"
