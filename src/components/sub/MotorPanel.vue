@@ -26,7 +26,7 @@
           //-     :styles="{ height: '30px' }"
           //-     class="box is-paddingless"
           //-   )
-          div(class="column has-text-right is-narrow")
+          div(class="column has-text-right")
             ExtIcon(
               :value="getRegister('led')"
               :state="icons.led"
