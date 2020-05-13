@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    div(class="box")
+    div(v-if="false" class="box")
       div(class="columns is-mobile")
         div(class="column is-narrow")
           b-field
