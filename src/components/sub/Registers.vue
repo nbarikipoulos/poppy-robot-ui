@@ -23,9 +23,9 @@
         template(slot="header" slot-scope="{ column }" class="has-text-primary")
           span
             //- (class="has-text-primary")
-            ExtIcon(pack="fas" icon="gamepad")
+            ext-b-icon(pack="fas" icon="gamepad")
         // Cell
-        ExtIcon(:value="props.row.compliant" :state="icons.compliant")
+        ext-b-icon(:value="props.row.compliant" :state="icons.compliant")
       //
       // Speed
       //
@@ -57,7 +57,7 @@
       b-table-column(custom-key="present_temperature" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }")
-          ExtIcon(:value="temperatureMax" :state="icons.temperature")
+          ext-b-icon(:value="temperatureMax" :state="icons.temperature")
         // Cell
         span(
           :class="`tag is-${T(props.row.present_temperature).color}`"
@@ -70,7 +70,7 @@
         template(slot="header" slot-scope="{ column }")
           b-icon(pack="far" icon="lightbulb")
         // Cell
-        ExtIcon(:value="props.row.led" :state="icons.led")
+        ext-b-icon(:value="props.row.led" :state="icons.led")
 </template>
 
 <script>

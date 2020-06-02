@@ -8,7 +8,7 @@
           div(class="column is-narrow")
             span(class="has-text-weight-bold") {{ motor }}
           div(class="column is-narrow has-text-left")
-            ExtIcon(
+            ext-b-icon(
               :value="getRegister('compliant')"
               :state="icons.compliant"
             )
@@ -27,11 +27,11 @@
               class="box is-paddingless"
             )
           div(class="column has-text-right is-narrow")
-            ExtIcon(
+            ext-b-icon(
               :value="getRegister('led')"
               :state="icons.led"
             )
-            ExtIcon(:value="getRegister('present_temperature')" :state="icons.temperature")
+            ext-b-icon(:value="getRegister('present_temperature')" :state="icons.temperature")
             span(:class="motorTempText") {{ getRegister('present_temperature') }}
         //- div(class="columns is-vcentered")
         //-   div(class="column")

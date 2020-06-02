@@ -7,12 +7,12 @@ import router from '@/router/router'
 
 import App from '@/App.vue'
 import MotorChart from '@/components/sub/MotorChart'
-import ExtIcon from '@/components/utils/ExtIcon'
+import Icon from '@/components/utils/Icon'
 
 Vue.use(Buefy)
 
 Vue.component('MotorChart', MotorChart)
-Vue.component('ExtIcon', ExtIcon)
+Vue.component('ExtBIcon', Icon)
 
 Vue.config.productionTip = false
 
