@@ -1,77 +1,115 @@
 <template lang="pug">
-  div(class="table-container")
-    table(
-      class="table is-fullwidth has-text-primary has-text-weight-bold is-narrow has-text-centered"
-    )
-      thead
-        th id
-        th
-          b-icon(pack="fas" icon="gamepad")
-        th
+  b-table(
+    class="has-text-primary"
+    :data="data"
+    :mobile-cards="false"
+    icon-pack="fas"
+  )
+    template(slot-scope="props")
+      //
+      // Motor
+      //
+      b-table-column(label="id" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }")
+          span {{ column.label }}
+        // Cell
+        span {{ props.row.motor }}
+      //
+      // Compliant
+      //
+      b-table-column(custom-key="compliant" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }" class="has-text-primary")
+          span
+            //- (class="has-text-primary")
+            ExtIcon(pack="fas" icon="gamepad")
+        // Cell
+        ExtIcon(:value="props.row.compliant" :state="icons.compliant")
+      //
+      // Speed
+      //
+      b-table-column(custom-key="moving_speed" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }")
           b-icon(pack="fas" icon="tachometer-alt")
-        th
+        // Cell
+        span {{ props.row.moving_speed }}
+      //
+      // Position
+      //
+      b-table-column(custom-key="present_position" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }")
           b-icon(pack="fas" icon="crosshairs")
-        th(class="is-hidden-mobile")
-          span ...
-        th
-          ExtIcon(:value="temperatureMax" :state="icons.temperature")
-        th
-          b-icon(pack="far" icon="lightbulb")
-      tr(v-for="(motor, i) in motors")
-        td
-          span {{ motor }}
-        td
-          ExtIcon(
-            :value="getRegister(motor, 'compliant')"
-            :state="icons.compliant"
-          )
-        td
-          span {{ getRegister(motor, 'moving_speed') }}
-        td
-          span {{ Math.round(getRegister(motor, 'present_position')) }}
-        td(class="is-hidden-mobile")
+        // Cell
+        div(class="columns")
+          span(class="column is-2-tablet is-narrow-mobile") {{ Math.round(props.row.present_position) }}
           MotorChart(
-            :key="motor"
-            :chartData="getChartData(motor)"
+            :chartData="getChartData(props.row.motor, props.row.positions )"
             :options="chartOptions"
-            :styles="{ height: '50px'}"
-            class="box is-paddingless"
+            :styles="{ height: '30px' }"
+            class="box column is-paddingless is-hidden-mobile"
           )
-        td
-          span(:class='motorTempText[i]') {{ temperatures[i] }}
-        td
-          ExtIcon(
-            :value="getRegister(motor, 'led')"
-            :state="icons.led"
-          )
+      //
+      // Temperature
+      //
+      b-table-column(custom-key="present_temperature" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }")
+          ExtIcon(:value="temperatureMax" :state="icons.temperature")
+        // Cell
+        span(
+          :class="`tag is-${T(props.row.present_temperature).color}`"
+        ) {{ props.row.present_temperature }}
+      //
+      // LED
+      //
+      b-table-column(custom-key="led" v-bind="cell")
+        // Header
+        template(slot="header" slot-scope="{ column }")
+          b-icon(pack="far" icon="lightbulb")
+        // Cell
+        ExtIcon(:value="props.row.led" :state="icons.led")
 </template>
 
 <script>
 'use strict'
 import motors from '@/mixins/motors'
+import MotorChart from '@/components/sub/MotorChart'
 import T from '@/lib/utils/tBranding'
 import icons from '@/lib/utils/icons'
 import { sparkLine } from '@/lib/charts/options'
 
+const cell = {
+  class: 'has-text-primary',
+  centered: true
+}
+
 export default {
   name: 'Registers',
   mixins: [motors],
-  data: _ => ({ chartOptions: sparkLine, icons }),
+  components: { MotorChart },
+  data: _ => ({ cell, chartOptions: sparkLine, icons }),
   computed: {
-    temperatures: function () {
-      return this.motors.map(motor => this.getRegister(motor, 'present_temperature'))
-    },
-    temperatureMax: function () { return Math.max(...this.temperatures) },
-    motorTempText: function () {
-      return this.temperatures.map(temp => {
-        const t = T(temp)
-        return t.level !== 'ok' ? `has-text-${t.color}` : ''
+    data: function () {
+      return this.motors.map(motor => {
+        return {
+          motor,
+          compliant: this.getRegister(motor, 'compliant'),
+          led: this.getRegister(motor, 'led'),
+          moving_speed: Math.round(this.getRegister(motor, 'moving_speed')),
+          present_position: Math.round(this.getRegister(motor, 'present_position')),
+          positions: this.getRegister(motor, 'present_position', 'all').map(Math.round),
+          present_temperature: this.getRegister(motor, 'present_temperature')
+        }
       })
-    }
+    },
+    temperatureMax: function () { return Math.max(...this.data.map(d => d.present_temperature)) }
   },
   methods: {
-    getChartData: function (motor) {
-      const data = this.getRegister(motor, 'present_position', 'all')
+    T: (temperature) => T(temperature),
+    getChartData: function (motor, data) {
       return {
         labels: [...Array(data.length).keys()],
         datasets: [{
