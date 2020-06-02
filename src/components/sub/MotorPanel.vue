@@ -18,26 +18,26 @@
           div(class="column is-narrow")
             b-icon(pack="fas" icon="crosshairs")
             span {{ Math.round(getRegister('present_position')) }}
-          //- div(class="column")
-          //-   MotorChart(
-          //-     :key="motor"
-          //-     :chartData="getPositionChartData()"
-          //-     :options="chartOptions"
-          //-     :styles="{ height: '30px' }"
-          //-     class="box is-paddingless"
-          //-   )
-          div(class="column has-text-right")
+          div(class="column")
+            MotorChart(
+              :key="motor"
+              :chartData="getPositionChartData()"
+              :options="chartOptions"
+              :styles="{ height: '30px' }"
+              class="box is-paddingless"
+            )
+          div(class="column has-text-right is-narrow")
             ExtIcon(
               :value="getRegister('led')"
               :state="icons.led"
             )
             ExtIcon(:value="getRegister('present_temperature')" :state="icons.temperature")
             span(:class="motorTempText") {{ getRegister('present_temperature') }}
-        div(class="columns is-vcentered")
-          div(class="column")
-            PolarPositionsChart(
-              :motors="[this.motor]"
-            )
+        //- div(class="columns is-vcentered")
+        //-   div(class="column")
+        //-     PolarPositionsChart(
+        //-       :motors="[this.motor]"
+        //-     )
 
 </template>
 
