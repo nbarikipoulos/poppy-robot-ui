@@ -13,7 +13,7 @@
       v-if="showAsCard"
       class="columns is-multiline"
     )
-      MotorPanel(
+      motor-panel(
         v-for="motor in motors"
         :key="motor"
         :motor="motor"
@@ -22,10 +22,10 @@
     div(v-else class="tile is-ancestor")
       div(class="tile is-parent is-8")
         div(class="tile is-child box")
-          Registers(:motors="motors")
+          registers(:motors="motors")
       div(class="tile is-parent is-4")
         div(class="tile is-child box")
-          PolarPositionsChart(:motors="motors")
+          polar-positions-chart(:motors="motors")
 </template>
 
 <script>

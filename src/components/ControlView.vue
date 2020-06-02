@@ -23,7 +23,7 @@
         v-for="motor in motors"
         class="column is-half-tablet is-one-quarter-desktop"
       )
-        MotorControl(
+        motor-control(
           :motor="motor"
           :compliant="!controlMotors"
         )

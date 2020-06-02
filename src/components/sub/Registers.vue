@@ -45,7 +45,7 @@
         // Cell
         div(class="columns")
           span(class="column is-2-tablet is-narrow-mobile") {{ Math.round(props.row.present_position) }}
-          MotorChart(
+          motor-chart(
             :chartData="getChartData(props.row.motor, props.row.positions )"
             :options="chartOptions"
             :styles="{ height: '30px' }"
