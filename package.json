@@ -61,6 +61,16 @@
       "parser": "babel-eslint"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nbarikipoulos/poppy-robot-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nbarikipoulos/poppy-robot-ui/issues"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions"
