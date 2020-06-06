@@ -30,18 +30,13 @@
 
 import motor from '@/mixins/motor'
 import PolarPositionsChart from '@/components/sub/PolarPositionsChart'
-import Compliant from '@/components/sub/registers/Compliant'
-import Position from '@/components/sub/registers/Position'
-import Speed from '@/components/sub/registers/Speed'
-import Temperature from '@/components/sub/registers/Temperature'
-import Led from '@/components/sub/registers/Led'
-
+import * as RegisterComponents from '@/components/sub/registers/index'
 import { sparkLine } from '@/lib/charts/options'
 
 export default {
   name: 'MotorPanel',
   mixins: [motor],
-  components: { PolarPositionsChart, Compliant, Speed, Position, Temperature, Led },
+  components: { PolarPositionsChart, ...RegisterComponents },
   data: _ => ({ chartOptions: sparkLine }),
   props: { maxHeight: { type: String, default: '300px' } }
 }
