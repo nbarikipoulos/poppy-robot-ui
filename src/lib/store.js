@@ -10,7 +10,8 @@ const store = {
 
   panel: {
     dashboard: {
-      showAsCard: false
+      showAsCard: false,
+      col: 3
     }
   }
 }
