@@ -1,6 +1,6 @@
 <template lang="pug">
   section
-    div(v-if="true" class="box")
+    div(class="box")
       div(class="columns is-mobile")
         div(class="column is-narrow")
           b-field
@@ -9,16 +9,17 @@
               type="is-primary"
               :rounded="false"
             ) Show as card
-        div(class="column is-narrow")
+        div(v-if="showAsCard" class="column is-narrow")
           b-field
-            b-select(
-              icon-pack="fas"
-              icon="columns"
-              type="is-primary"
-              class="has-text-color-primary"
-              v-model="settings.col"
-            )
-              option(v-for="v in [3, 4, 6]" :value="v") {{ v }}
+            b-tooltip(label="Number of column")
+              b-select(
+                icon-pack="fas"
+                icon="columns"
+                type="is-primary"
+                class="has-text-color-primary"
+                v-model="settings.col"
+              )
+                option(v-for="v in [3, 4, 6]" :value="v") {{ v }}
     div(
       v-if="!showAsCard"
       class="tile is-ancestor"
