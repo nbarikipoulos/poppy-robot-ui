@@ -10,7 +10,7 @@ import register from '@/mixins/register'
 
 const state = (value, old) => ({
   pack: value === 'off' ? 'fas' : 'fa',
-  icon: value === 'off' ? 'minus' : 'sun',
+  icon: value === 'off' ? 'minus' : 'lightbulb',
   type: value === 'off' ? 'is-primary' : `is-${value}`
 })
 
