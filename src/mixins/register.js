@@ -4,7 +4,7 @@ const mixin = {
   props: {
     showIcon: { type: Boolean, default: true },
     showValue: { type: Boolean, default: true },
-    tooltip: { type: Boolean, default: true }
+    showTooltip: { type: Boolean, default: true }
   }
 }
 

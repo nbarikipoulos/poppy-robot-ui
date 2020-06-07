@@ -35,7 +35,7 @@
         speed(
           :value="props.row.moving_speed"
           :showIcon="false"
-          :tooltip="false"
+          :showTooltip="false"
         )
       //
       // Position
@@ -43,7 +43,7 @@
       b-table-column(custom-key="present_position" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }")
-          position(:showValue="false" :tooltip="false")
+          position(:showValue="false" :showTooltip="false")
         // Cell
         div(class="columns")
           div(class="column is-2-tablet is-narrow-mobile has-text-centered")

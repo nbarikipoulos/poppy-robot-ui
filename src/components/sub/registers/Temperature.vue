@@ -1,5 +1,5 @@
 <template lang="pug">
-    b-tooltip(:label="toolTipTxt" :active="tooltip")
+    b-tooltip(:label="toolTipTxt" :active="showTooltip")
       ext-b-icon(v-if="showIcon" :value="value" :state="state")
       span(v-if="showValue" :class="labelClass") {{ value }}
 </template>

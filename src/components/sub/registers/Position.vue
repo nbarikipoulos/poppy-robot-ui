@@ -1,5 +1,5 @@
 <template lang="pug">
-    b-tooltip(:label="label" :active="tooltip")
+    b-tooltip(:label="label" :active="showTooltip")
       ext-b-icon(v-if="showIcon" pack="fas" icon="crosshairs")
       span(v-if="showValue") {{ Math.round(value) }}
 </template>

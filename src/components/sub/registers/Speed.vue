@@ -1,5 +1,5 @@
 <template lang="pug">
-    b-tooltip(label="moving speed" :active="tooltip")
+    b-tooltip(label="moving speed" :active="showTooltip")
       ext-b-icon(v-if="showIcon" pack="fas" icon="tachometer-alt")
       span(v-if="showValue") {{ value }}
 </template>
