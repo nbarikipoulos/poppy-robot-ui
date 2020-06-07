@@ -16,12 +16,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "serve-dist": "serve dist"
+    "serve-dist": "serve dist",
+    "gendoc": "markdown-toc -i README.md"
   },
   "dependencies": {
     "buefy": "^0.8.20",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.1",
+    "markdown-toc": "^1.2.0",
     "poppy-robot-core": "^8.0.1",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.5.0",

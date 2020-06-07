@@ -7,12 +7,42 @@
 
 A quick'n'-not-so-dirty responsive dashboard/control panel for Poppy/Poppy Ergo Jr Robot based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
+It allows:
+- Displaying register of interest of motors of a Poppy robot (at least a Poppy Ergo Jr.),
+- Controling each motor positions via a simple UI.
+
+Below screenshots for mobile.
+
+Dashboard | Control
+--- | ---
+![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)") | ![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
+
+<!-- toc -->
+
+- [Screenshots](#screenshots)
+  * [Dashboard](#dashboard)
+    + [Default View](#default-view)
+    + [View Split per Motor](#view-split-per-motor)
+- [Install](#install)
+  * [Build Project](#build-project)
+  * [Serve Build](#serve-build)
+- [Credits](#credits)
+- [License](#license)
+
+<!-- tocstop -->
+
+## Screenshots
+
+### Dashboard
+
+#### Default View
 
 ![dashboard](./doc/dashboard-wide.png "Dashboard (rendering on 'wide screen')")
 
-Control | Dashboard
---- | ---
-![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)") | ![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)")
+#### View Split per Motor
+
+![dashboard](./doc/dashboard-card-wide.png "Dashboard (rendering motor as card on 'wide screen')")
+
 
 ## Install
 
@@ -33,7 +63,9 @@ npm install
 npm run build // Compiles and minifies for production in dist/
 ```
 
-And then serve it with any http server (below with the serve npm package):
+### Serve Build
+
+Just serve the dist folder with any http server (below with the serve npm package included with this project):
 ```shell
 npm run serve-dist
 ┌──────────────────────────────────────────────────┐
