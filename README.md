@@ -1,7 +1,7 @@
 # Poppy Robot UI
 
-[![JavaScript Style Guide][standard-image]][standard-url]
 ![GitHub package.json version][version-img]
+[![JavaScript Style Guide][standard-image]][standard-url]
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
