@@ -95,7 +95,7 @@ import PUtils from '@/lib/poppy-utils'
 import { sparkLine } from '@/lib/charts/options'
 
 const cell = {
-  class: 'has-text-primary',
+  class: 'has-text-primary has-text-weight-semibold',
   centered: true
 }
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="box has-text-primary")
+  div(class="box has-text-primary has-text-weight-semibold")
     div(
       class="columns has-text-primary is-mobile"
     )
