@@ -21,30 +21,38 @@
       b-table-column(custom-key="compliant" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }" class="has-text-primary")
-          span
-            //- (class="has-text-primary")
-            ext-b-icon(pack="fas" icon="gamepad")
+          ext-b-icon(pack="fas" icon="gamepad")
         // Cell
-        ext-b-icon(:value="props.row.compliant" :state="icons.compliant")
+        compliant(:value="props.row.compliant")
       //
       // Speed
       //
       b-table-column(custom-key="moving_speed" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }")
-          b-icon(pack="fas" icon="tachometer-alt")
+          speed(:showValue="false")
         // Cell
-        span {{ props.row.moving_speed }}
+        speed(
+          :value="props.row.moving_speed"
+          :showIcon="false"
+          :tooltip="false"
+        )
       //
       // Position
       //
       b-table-column(custom-key="present_position" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }")
-          b-icon(pack="fas" icon="crosshairs")
+          position(:showValue="false" :tooltip="false")
         // Cell
         div(class="columns")
-          span(class="column is-2-tablet is-narrow-mobile") {{ Math.round(props.row.present_position) }}
+          position(
+            class="column is-2-tablet is-narrow-mobile"
+            :value="props.row.present_position"
+            :lower_limit="getMotorDescriptor(props.row.motor).lower_limit"
+            :upper_limit="getMotorDescriptor(props.row.motor).upper_limit"
+            :showIcon="false"
+          )
           motor-chart(
             :chartData="getChartData(props.row.motor, props.row.positions )"
             :options="chartOptions"
@@ -57,11 +65,16 @@
       b-table-column(custom-key="present_temperature" v-bind="cell")
         // Header
         template(slot="header" slot-scope="{ column }")
-          ext-b-icon(:value="temperatureMax" :state="icons.temperature")
+          temperature(
+            :value="temperatureMax"
+            :showValue="false"
+          )
         // Cell
-        span(
-          :class="`tag is-${T(props.row.present_temperature).color}`"
-        ) {{ props.row.present_temperature }}
+        temperature(
+          :value="props.row.present_temperature"
+          :showIcon="false"
+          labelType="tag"
+        )
       //
       // LED
       //
@@ -70,15 +83,15 @@
         template(slot="header" slot-scope="{ column }")
           b-icon(pack="far" icon="lightbulb")
         // Cell
-        ext-b-icon(:value="props.row.led" :state="icons.led")
+        led(:value="props.row.led")
 </template>
 
 <script>
 'use strict'
 import motors from '@/mixins/motors'
 import MotorChart from '@/components/sub/MotorChart'
-import T from '@/lib/utils/tBranding'
-import icons from '@/lib/utils/icons'
+import * as RegisterComponents from '@/components/sub/registers/index'
+import PUtils from '@/lib/poppy-utils'
 import { sparkLine } from '@/lib/charts/options'
 
 const cell = {
@@ -89,8 +102,8 @@ const cell = {
 export default {
   name: 'Registers',
   mixins: [motors],
-  components: { MotorChart },
-  data: _ => ({ cell, chartOptions: sparkLine, icons }),
+  components: { MotorChart, ...RegisterComponents },
+  data: _ => ({ cell, chartOptions: sparkLine }),
   computed: {
     data: function () {
       return this.motors.map(motor => {
@@ -108,7 +121,7 @@ export default {
     temperatureMax: function () { return Math.max(...this.data.map(d => d.present_temperature)) }
   },
   methods: {
-    T: (temperature) => T(temperature),
+    getMotorDescriptor: (motor) => PUtils.getMotorDescriptor(motor),
     getChartData: function (motor, data) {
       return {
         labels: [...Array(data.length).keys()],

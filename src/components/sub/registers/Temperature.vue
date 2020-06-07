@@ -21,10 +21,10 @@ export default {
   data: _ => ({ state }),
   props: {
     value: { type: Number, default: NaN },
-    text: {
+    labelType: {
       type: String,
       validator: function (value) {
-        return ['tag', 'text'].indexOf(value) !== -1
+        return ['tag', 'text', 'none'].indexOf(value) !== -1
       },
       default: 'text'
     }
@@ -33,10 +33,10 @@ export default {
     T: function () { return T(this.value) },
     toolTipTxt: function () { return `temp.: ${this.T.level}` },
     labelClass: function () {
-      switch (this.text) {
-        case 'tag': return `tag is-${T.color}`
+      switch (this.labelType) {
+        case 'tag': return `tag is-${this.T.color}`
         case 'text':
-        default: return `has-text-${T.color}`
+        default: return `has-text-${this.T.color}`
       }
     }
   }
