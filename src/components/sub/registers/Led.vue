@@ -5,14 +5,21 @@
 
 <script>
 'use strict'
-import icons from '@/lib/utils/icons'
+
+import register from '@/mixins/register'
+
+const state = (value, old) => ({
+  pack: value === 'off' ? 'fas' : 'fa',
+  icon: value === 'off' ? 'minus' : 'sun',
+  type: value === 'off' ? 'is-primary' : `is-${value}`
+})
 
 export default {
   name: 'Led',
-  data: _ => ({ state: icons.led }),
+  mixins: [register],
+  data: _ => ({ state }),
   props: {
-    value: { type: String },
-    tooltip: { type: Boolean, default: true }
+    value: { type: String, default: 'off' }
   },
   computed: {
     label: function () {

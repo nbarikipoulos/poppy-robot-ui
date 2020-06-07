@@ -1,17 +1,19 @@
 <template lang="pug">
     b-tooltip(label="moving speed" :active="tooltip")
-      ext-b-icon(pack="fas" icon="tachometer-alt")
-      span {{ value }}
+      ext-b-icon(v-if="showIcon" pack="fas" icon="tachometer-alt")
+      span(v-if="showValue") {{ value }}
 </template>
 
 <script>
 'use strict'
 
+import register from '@/mixins/register'
+
 export default {
   name: 'Speed',
+  mixins: [register],
   props: {
-    value: { type: Number },
-    tooltip: { type: Boolean, default: true }
+    value: { type: Number, default: NaN }
   }
 }
 </script>

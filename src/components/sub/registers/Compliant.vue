@@ -1,18 +1,24 @@
 <template lang="pug">
     b-tooltip(:label="label" :active="tooltip")
-      ext-b-icon(:value="value" :state="state")
+      ext-b-icon(v-if="showIcon" :value="value" :state="state")
 </template>
 
 <script>
 'use strict'
-import icons from '@/lib/utils/icons'
+
+import register from '@/mixins/register'
+
+const state = [
+  { value: true, icon: 'bed', pack: 'fas' },
+  { value: false, icon: 'bolt', pack: 'fas' }
+]
 
 export default {
   name: 'Compliant',
-  data: _ => ({ state: icons.compliant }),
+  mixins: [register],
+  data: _ => ({ state }),
   props: {
-    value: { type: Boolean },
-    tooltip: { type: Boolean, default: true }
+    value: { type: Boolean }
   },
   computed: {
     label: function () {
