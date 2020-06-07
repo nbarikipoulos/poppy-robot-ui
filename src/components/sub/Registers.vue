@@ -46,13 +46,13 @@
           position(:showValue="false" :tooltip="false")
         // Cell
         div(class="columns")
-          position(
-            class="column is-2-tablet is-narrow-mobile"
-            :value="props.row.present_position"
-            :lower_limit="getMotorDescriptor(props.row.motor).lower_limit"
-            :upper_limit="getMotorDescriptor(props.row.motor).upper_limit"
-            :showIcon="false"
-          )
+          div(class="column is-2-tablet is-narrow-mobile has-text-centered")
+            position(
+              :value="props.row.present_position"
+              :lower_limit="getMotorDescriptor(props.row.motor).lower_limit"
+              :upper_limit="getMotorDescriptor(props.row.motor).upper_limit"
+              :showIcon="false"
+            )
           motor-chart(
             :chartData="getChartData(props.row.motor, props.row.positions )"
             :options="chartOptions"
