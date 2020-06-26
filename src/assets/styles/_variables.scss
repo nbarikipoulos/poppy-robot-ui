@@ -27,8 +27,13 @@ $column-gap: 0.2em;
 // Component colors
 //
 
-$box-background-color: white;
-$table-background-color: white;
+$table-cell-border: 1px solid lighten($primary, 30%);
+
+$box-background-color: $body-background-color;
+$table-background-color: $body-background-color;
+$table-color: $primary;
+$table-head-background-color: $body-background-color;
+$table-head-cell-color: $primary;
 
 $input-color: $text;
 $input-border-color: $text;
