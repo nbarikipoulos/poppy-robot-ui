@@ -18,7 +18,7 @@ export default {
     upper_limit: { type: Number }
   },
   computed: {
-    label: function () {
+    label () {
       return `range: [${Math.round(this.lower_limit)}/${Math.round(this.upper_limit)}]`
     }
   }

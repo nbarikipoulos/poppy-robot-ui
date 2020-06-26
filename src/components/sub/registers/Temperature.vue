@@ -23,16 +23,16 @@ export default {
     value: { type: Number, default: NaN },
     labelType: {
       type: String,
-      validator: function (value) {
+      validator (value) {
         return ['tag', 'text', 'none'].indexOf(value) !== -1
       },
       default: 'text'
     }
   },
   computed: {
-    T: function () { return T(this.value) },
-    toolTipTxt: function () { return `temp.: ${this.T.level}` },
-    labelClass: function () {
+    T () { return T(this.value) },
+    toolTipTxt () { return `temp.: ${this.T.level}` },
+    labelClass () {
       switch (this.labelType) {
         case 'tag': return `tag is-${this.T.color}`
         case 'text':

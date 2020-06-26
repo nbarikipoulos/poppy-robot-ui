@@ -22,7 +22,7 @@ export default {
     value: { type: String, default: 'off' }
   },
   computed: {
-    label: function () {
+    label () {
       return this.value === 'off' ? 'LED off' : this.value
     }
   }

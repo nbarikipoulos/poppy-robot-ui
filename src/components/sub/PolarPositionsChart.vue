@@ -13,12 +13,12 @@ export default {
   mixins: [motors, mixins.reactiveData],
   data: _ => ({ mdata: store.mdata }),
   computed: {
-    positions: function () {
+    positions () {
       return this.motors.map(motor => this.mdata[motor].present_position.current)
     }
   },
   watch: {
-    positions: function (value) {
+    positions (value) {
       // this.$data._chart.data.datasets[0].data = value
       // this.$data._chart.update()
       this.chartData = {

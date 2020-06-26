@@ -21,7 +21,7 @@ export default {
     state: [Array, Function]
   },
   watch: {
-    value: function (value, old) {
+    value (value, old) {
       const state = this.getState(value)
       this.setCurrentState(state)
     }

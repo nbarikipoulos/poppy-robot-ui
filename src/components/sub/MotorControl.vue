@@ -34,26 +34,26 @@ export default {
   }),
   props: { compliant: Boolean },
   watch: {
-    slider: async function (value) {
+    async slider (value) {
       // Do not send a set position command
       // when motor is not driven with slider
       if (!this.compliant) {
         PUtils.execute('position', [this.motor], value)
       }
     },
-    position: function (value) {
+    position (value) {
       if (this.compliant) {
         this.slider = value
       }
     }
   },
   computed: {
-    position: function () {
+    position () {
       return Math.round(
         this.getRegister('present_position')
       )
     },
-    range: function () {
+    range () {
       const [min, max] = [
         this.descriptor.lower_limit,
         this.descriptor.upper_limit
@@ -61,7 +61,7 @@ export default {
 
       return { min, max }
     },
-    ticks: function () { return [this.range.min, 0, this.range.max] }
+    ticks () { return [this.range.min, 0, this.range.max] }
   },
   mounted () {
     this.slider = this.position

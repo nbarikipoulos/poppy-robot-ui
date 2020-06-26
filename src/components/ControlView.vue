@@ -43,7 +43,7 @@ export default {
     speed: null
   }),
   watch: {
-    controlMotors: async function (value) {
+    async controlMotors (value) {
       await PUtils.execute(
         value ? 'stiff' : 'compliant',
         ['all']

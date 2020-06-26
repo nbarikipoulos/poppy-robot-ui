@@ -53,7 +53,7 @@ export default {
   components: { MotorPanel, Registers, PolarPositionsChart },
   data: _ => ({ settings: store.panel.dashboard }),
   computed: {
-    colSize: function () {
+    colSize () {
       const colSize = 12 / this.settings.col
       return `is-${colSize}`
     },
