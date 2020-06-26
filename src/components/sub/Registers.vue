@@ -1,6 +1,5 @@
 <template lang="pug">
   b-table(
-    class="has-text-primary"
     :data="data"
     :mobile-cards="false"
     icon-pack="fas"
