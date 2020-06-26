@@ -105,7 +105,7 @@ export default {
   components: { MotorChart, ...RegisterComponents },
   data: _ => ({ cell, chartOptions: sparkLine }),
   computed: {
-    data: function () {
+    data () {
       return this.motors.map(motor => {
         return {
           motor,
@@ -118,11 +118,11 @@ export default {
         }
       })
     },
-    temperatureMax: function () { return Math.max(...this.data.map(d => d.present_temperature)) }
+    temperatureMax () { return Math.max(...this.data.map(d => d.present_temperature)) }
   },
   methods: {
-    getMotorDescriptor: (motor) => PUtils.getMotorDescriptor(motor),
-    getChartData: function (motor, data) {
+    getMotorDescriptor (motor) { return PUtils.getMotorDescriptor(motor) },
+    getChartData (motor, data) {
       return {
         labels: [...Array(data.length).keys()],
         datasets: [{

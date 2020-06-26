@@ -21,7 +21,7 @@ export default {
     value: { type: Boolean }
   },
   computed: {
-    label: function () {
+    label () {
       const state = this.value ? 'compliant' : 'stiff'
       return `state: ${state}`
     }
