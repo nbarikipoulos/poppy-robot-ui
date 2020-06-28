@@ -5,7 +5,7 @@
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
-A quick'n'-not-so-dirty responsive dashboard/control panel for robots of the [Poppy project](https://www.poppy-project.org/en/) family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
+A quick'n'-not-so-dirty responsive dashboard/control panel for robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
 It allows:
 - Displaying register of interest of motors of a Poppy robot (at least a Poppy Ergo Jr.),
