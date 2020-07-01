@@ -53,14 +53,7 @@ export default {
         this.getRegister('present_position')
       )
     },
-    range () {
-      const [min, max] = [
-        this.descriptor.lower_limit,
-        this.descriptor.upper_limit
-      ].sort().map(Math.round)
-
-      return { min, max }
-    },
+    range () { return PUtils.getAngleRange(this.motor) },
     ticks () { return [this.range.min, 0, this.range.max] }
   },
   mounted () {

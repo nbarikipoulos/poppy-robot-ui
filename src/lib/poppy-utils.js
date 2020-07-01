@@ -67,6 +67,17 @@ const PUtils = {
   get descriptor () { return this.poppy.getDescriptor() },
   get allMotorIds () { return this.poppy.getAllMotorIds() },
 
+  getAngleRange (...motorIds) {
+    const range = motorIds
+      .reduce((acc, m) => {
+        const desc = this.getMotorDescriptor(m)
+        const values = [...acc, desc.lower_limit, desc.upper_limit]
+        return [Math.min(...values), Math.max(...values)]
+      }, [0, 0])
+      .map(Math.round)
+    return { min: range[0], max: range[1] }
+  },
+
   getMotorDescriptor (id) {
     return this.descriptor.motors.find(m => m.name === id)
   },

@@ -5,7 +5,10 @@ const PRIMARY = [110, 161, 173]
 const rgb = (r, g, b) => `rgb(${r},${g},${b})`
 const rgba = (r, g, b, a) => `rgba(${r},${g},${b},${a})`
 
-const polar = {
+const polar = (
+  range, // { min, max }
+  color = rgba(...PRIMARY, 0.75)
+) => ({
   responsive: true,
   maintainAspectRatio: false,
   animation: {
@@ -14,15 +17,21 @@ const polar = {
   legend: { display: false },
   elements: {
     arc: {
-      backgroundColor: rgba(...PRIMARY, 0.75)
+      backgroundColor: color
     }
   },
   scale: {
-    ticks: { min: -125, max: 90 } // FIXME
+    ticks: range
   }
-}
+})
 
-const sparkLine = {
+const sparkLine = (
+  range, // { min, max }
+  {
+    border = rgb(...PRIMARY),
+    line = rgba(...PRIMARY, 0.75)
+  } = {}
+) => ({
   responsive: true,
   maintainAspectRatio: false,
   animation: {
@@ -33,8 +42,8 @@ const sparkLine = {
   elements: {
     line: {
       fill: false,
-      backgroundColor: rgb(...PRIMARY),
-      borderColor: rgb(...PRIMARY),
+      borderColor: border,
+      backgroundColor: line,
       borderWidth: 2,
       cubicInterpolationMode: 'monotone'
     },
@@ -46,9 +55,9 @@ const sparkLine = {
     xAxes: [{ display: false }],
     yAxes: [{
       display: false,
-      ticks: { min: -135, max: 100 }
+      ticks: range
     }]
   }
-}
+})
 
 export { sparkLine, polar }

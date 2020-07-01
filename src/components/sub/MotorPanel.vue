@@ -21,23 +21,25 @@
     div(class=" has-text-primary")
       polar-positions-chart(
         :motors="[this.motor]"
+        :range="range"
         :styles="{ position: 'relative', 'max-height': this.maxHeight }"
       )
 </template>
 
 <script>
-'use strict'
 
+import PUtils from '@/lib/poppy-utils'
 import motor from '@/mixins/motor'
 import PolarPositionsChart from '@/components/sub/PolarPositionsChart'
 import * as RegisterComponents from '@/components/sub/registers/index'
-import { sparkLine } from '@/lib/charts/options'
 
 export default {
   name: 'MotorPanel',
   mixins: [motor],
   components: { PolarPositionsChart, ...RegisterComponents },
-  data: _ => ({ chartOptions: sparkLine }),
+  data: _ => ({
+    range: PUtils.getAngleRange(...PUtils.allMotorIds)
+  }),
   props: { maxHeight: { type: String, default: '300px' } }
 }
 </script>

@@ -54,7 +54,7 @@
             )
           motor-chart(
             :chartData="getChartData(props.row.motor, props.row.positions )"
-            :options="chartOptions"
+            :options="getCharOptions(props.row.motor)"
             :styles="{ height: '30px' }"
             class="box column is-paddingless is-hidden-mobile"
           )
@@ -102,7 +102,7 @@ export default {
   name: 'Registers',
   mixins: [motors],
   components: { MotorChart, ...RegisterComponents },
-  data: _ => ({ cell, chartOptions: sparkLine }),
+  data: _ => ({ cell }),
   computed: {
     data () {
       return this.motors.map(motor => {
@@ -121,6 +121,7 @@ export default {
   },
   methods: {
     getMotorDescriptor (motor) { return PUtils.getMotorDescriptor(motor) },
+    getCharOptions (motor) { return sparkLine(PUtils.getAngleRange(motor)) },
     getChartData (motor, data) {
       return {
         labels: [...Array(data.length).keys()],
