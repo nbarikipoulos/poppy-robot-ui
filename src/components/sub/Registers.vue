@@ -4,46 +4,43 @@
     :mobile-cards="false"
     icon-pack="fas"
   )
-    template(slot-scope="props")
-      //
-      // Motor
-      //
-      b-table-column(label="id" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }")
-          span {{ column.label }}
+    //
+    // Motor
+    //
+    b-table-column(label="id" v-bind="cell")
+      // Header
+      template(v-slot:header="{ column }")
+        span {{ column.label }}
+      template(v-slot="props")
         // Cell
         span {{ props.row.motor }}
-      //
-      // Compliant
-      //
-      b-table-column(custom-key="compliant" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }" class="has-text-primary")
-          ext-b-icon(pack="fas" icon="gamepad")
-        // Cell
+    //
+    // Compliant
+    //
+    b-table-column(custom-key="compliant" v-bind="cell")
+      template(v-slot:header="{ column }")
+        ext-b-icon(pack="fas" icon="gamepad")
+      template(v-slot="props")
         compliant(:value="props.row.compliant")
-      //
-      // Speed
-      //
-      b-table-column(custom-key="moving_speed" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }")
-          speed(:showValue="false")
-        // Cell
+    //
+    // Speed
+    //
+    b-table-column(custom-key="moving_speed" v-bind="cell")
+      template(v-slot:header="{ column }")
+        speed(:showValue="false")
+      template(v-slot="props")
         speed(
           :value="props.row.moving_speed"
           :showIcon="false"
           :showTooltip="false"
         )
-      //
-      // Position
-      //
-      b-table-column(custom-key="present_position" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }")
-          position(:showValue="false" :showTooltip="false")
-        // Cell
+    //
+    // Position
+    //
+    b-table-column(custom-key="present_position" v-bind="cell")
+      template(v-slot:header="{ column }")
+        position(:showValue="false" :showTooltip="false")
+      template(v-slot="props")
         div(class="columns")
           div(class="column is-2-tablet is-narrow-mobile has-text-centered")
             position(
@@ -58,30 +55,28 @@
             :styles="{ height: '30px' }"
             class="box column is-paddingless is-hidden-mobile"
           )
-      //
-      // Temperature
-      //
-      b-table-column(custom-key="present_temperature" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }")
-          temperature(
-            :value="temperatureMax"
-            :showValue="false"
-          )
-        // Cell
+    //
+    // Temperature
+    //
+    b-table-column(custom-key="present_temperature" v-bind="cell")
+      template(v-slot:header="{ column }")
+        temperature(
+          :value="temperatureMax"
+          :showValue="false"
+        )
+      template(v-slot="props")
         temperature(
           :value="props.row.present_temperature"
           :showIcon="false"
           labelType="tag"
         )
-      //
-      // LED
-      //
-      b-table-column(custom-key="led" v-bind="cell")
-        // Header
-        template(slot="header" slot-scope="{ column }")
-          b-icon(pack="far" icon="lightbulb")
-        // Cell
+    //
+    // LED
+    //
+    b-table-column(custom-key="led" v-bind="cell")
+      template(v-slot:header="{ column }")
+        b-icon(pack="far" icon="lightbulb")
+      template(v-slot="props")
         led(:value="props.row.led")
 </template>
 
