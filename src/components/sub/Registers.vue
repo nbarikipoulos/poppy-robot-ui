@@ -7,13 +7,18 @@
     //
     // Motor
     //
-    b-table-column(label="id" v-bind="cell")
+    b-table-column(label="name" v-bind="cell")
       // Header
       template(v-slot:header="{ column }")
         span {{ column.label }}
       template(v-slot="props")
         // Cell
-        span {{ props.row.motor }}
+        b-tooltip
+          span {{ props.row.motor }}
+          template(v-slot:content)
+            div(class="has-text-left")
+              p type: {{ getMotorDescriptor(props.row.motor).model }}
+              p id: {{ getMotorDescriptor(props.row.motor).id }}
     //
     // Compliant
     //
