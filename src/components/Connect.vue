@@ -21,7 +21,7 @@ export default {
   data: _ => ({
     settings: store.connect,
     isConnecting: false,
-    autoConnect: true
+    autoConnect: false
   }),
   methods: {
     async connect () {
