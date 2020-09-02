@@ -1,5 +1,10 @@
 <template lang="pug">
-  b-icon(:pack="current.pack" :icon="current.icon" :type="current.type")
+  b-icon(
+    :size="size"
+    :pack="current.pack"
+    :icon="current.icon"
+    :type="current.type"
+  )
 </template lang="pug">
 <script>
 export default {
@@ -17,6 +22,7 @@ export default {
     pack: String,
     icon: String,
     type: String,
+    size: { type: String, default: 'is-medium' },
     value: undefined, // The observable value
     state: [Array, Function]
   },
