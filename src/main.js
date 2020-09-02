@@ -11,7 +11,7 @@ import Icon from '@/components/utils/Icon'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-  faGamepad,
+  faGamepad, faInfoCircle,
   faMinus, faLightbulb,
   faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
@@ -23,7 +23,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-  faGamepad,
+  faGamepad, faInfoCircle,
   faMinus, faLightbulb, farLightbulb,
   faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
