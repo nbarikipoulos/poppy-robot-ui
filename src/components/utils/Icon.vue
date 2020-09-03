@@ -12,7 +12,7 @@ export default {
   data () {
     return {
       current: {
-        icon: undefined,
+        icon: 'bug',
         pack: undefined,
         type: undefined
       }

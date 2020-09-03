@@ -11,9 +11,10 @@ import Icon from '@/components/utils/Icon'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-  faGamepad, faInfoCircle,
+  faBug,
+  faInfoCircle, faColumns,
   faMinus, faLightbulb,
-  faCrosshairs, faBed, faBolt, faTachometerAlt,
+  faGamepad, faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -23,15 +24,16 @@ import {
 } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-  faGamepad, faInfoCircle,
+  faBug,
+  faInfoCircle, faColumns,
   faMinus, faLightbulb, farLightbulb,
-  faCrosshairs, faBed, faBolt, faTachometerAlt,
+  faGamepad, faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
 )
 
 Vue.use(Buefy, {
   defaultIconComponent: 'font-awesome',
-  defaultIconPack: 'fab'
+  defaultIconPack: 'fa'
 })
 
 Vue.component('font-awesome', FontAwesomeIcon)
