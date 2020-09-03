@@ -9,4 +9,10 @@
 
 canvas {
   width: 100% !important;
-  }
+}
+
+.vcenter {
+  align-items: center;
+  display: flex;
+  // justify-content: center;
+}

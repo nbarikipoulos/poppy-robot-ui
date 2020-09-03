@@ -1,7 +1,8 @@
 <template lang="pug">
+  span(class="vcenter")
     b-tooltip(:label="label" :active="showTooltip")
       ext-b-icon(v-if="showIcon" pack="fas" icon="crosshairs")
-      span(v-if="showValue") {{ Math.round(value) }}
+    span(v-if="showValue") {{ Math.round(value) }}
 </template>
 
 <script>
