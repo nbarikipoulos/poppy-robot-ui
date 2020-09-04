@@ -1,25 +1,22 @@
 <template lang="pug">
   section
     div(class="box")
-      div(class="columns is-mobile")
-        div(class="column is-narrow")
-          b-field
-            b-switch(
-              v-model="showAsCard"
+      b-field(grouped)
+        b-switch(
+          v-model="showAsCard"
+          type="is-primary"
+          :rounded="false"
+        ) Show as card
+        b-field(v-if="showAsCard")
+          b-tooltip(label="Number of column")
+            b-select(
+              icon-pack="fas"
+              icon="columns"
               type="is-primary"
-              :rounded="false"
-            ) Show as card
-        div(v-if="showAsCard" class="column is-narrow")
-          b-field
-            b-tooltip(label="Number of column")
-              b-select(
-                icon-pack="fas"
-                icon="columns"
-                type="is-primary"
-                class="has-text-color-primary"
-                v-model="settings.col"
-              )
-                option(v-for="v in [3, 4, 6]" :value="v") {{ v }}
+              class="has-text-color-primary"
+              v-model="settings.col"
+            )
+              option(v-for="v in [3, 4, 6]" :value="v") {{ v }}
     div(
       v-if="!showAsCard"
       class="tile is-ancestor"
@@ -33,9 +30,9 @@
     div(v-else class="columns is-multiline")
       motor-panel(
         v-for="motor in motors"
+        :class="`box column ${colSize}`"
         :key="motor"
         :motor="motor"
-        :class="`column ${colSize}`"
       )
 </template>
 

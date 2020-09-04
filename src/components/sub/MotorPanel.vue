@@ -1,10 +1,14 @@
 <template lang="pug">
-  div(class="box has-text-primary has-text-weight-semibold")
+  div(class="has-text-primary has-text-weight-semibold")
     div(
-      class="columns has-text-primary is-mobile"
+      class="columns has-text-white is-multiline is-mobile has-background-primary has-text-left-mobile"
     )
       div(class="column is-narrow")
-        span(class="has-text-weight-bold") {{ motor }}
+        b-tag(
+          class="has-text-weight-bold has-text-primary"
+          type="is-white"
+          size="is-medium"
+        ) {{ motor }}
       div(class="column is-narrow has-text-left")
         compliant(:value="getRegister('compliant')")
       div(class="column is-narrow")
@@ -15,10 +19,13 @@
           :lower_limit="descriptor.lower_limit"
           :upper_limit="descriptor.upper_limit"
         )
-      div(class="column has-text-right")
-        temperature(:value="getRegister('present_temperature')")
-        led(:value="getRegister('led')")
-    div(class=" has-text-primary")
+      //- Dummy "spacer"
+      div(class="column")
+      div(class="column is-narrow")
+        temperature(class="vcenter" :value="getRegister('present_temperature')")
+      div(class="column is-narrow")
+        led(:value="getRegister('led')" off="is-white")
+    div(class="has-text-primary")
       polar-positions-chart(
         :motors="[this.motor]"
         :range="range"

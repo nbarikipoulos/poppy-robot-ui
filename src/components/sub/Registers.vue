@@ -80,7 +80,7 @@
     //
     b-table-column(custom-key="led" v-bind="cell")
       template(v-slot:header="{ column }")
-        b-icon(pack="far" icon="lightbulb")
+        ext-b-icon(pack="far" icon="lightbulb")
       template(v-slot="props")
         led(:value="props.row.led")
 </template>
