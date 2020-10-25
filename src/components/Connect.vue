@@ -1,14 +1,18 @@
 <template lang="pug">
-  section(class="hero is-medium")
+  section(class="hero is-fullheight")
     div(class="hero-body")
-      div(class="columns is-centered is-vcentered")
-        div(class="column is-one-quarter")
-          div(class="box")
-            b-field(label="Hostname")
+      div(class="container")
+        div(class="columns is-centered")
+          div(class="column box is-4 px-3 py-3")
+            b-field(custom-class="has-text-primary" label="Hostname")
               b-input(type="text" v-model="settings.ip")
-            b-field(label="Port")
+            b-field(custom-class="has-text-primary" label="Port")
               b-input(type="text" v-model="settings.port")
-            b-button(type="is-primary" @click="connect" expanded) Connect
+            b-button(
+              type="is-primary"
+              @click="connect"
+              expanded
+            ) Connect
     b-loading(:is-full-page="false" :active.sync="isConnecting" :can-cancel="true")
 </template>
 
