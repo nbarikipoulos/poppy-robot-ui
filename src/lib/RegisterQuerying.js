@@ -63,11 +63,11 @@ class RegisterQuerying {
     const queries = [{
       name: 'position',
       registers: ['present_position'],
-      period: 333 // ms
+      period: 250 // ms
     }, {
       name: 'others',
       registers: ['moving_speed', 'led', 'compliant'],
-      period: 500 // ms
+      period: 333 // ms
     }, {
       name: 'temperature',
       registers: ['present_temperature'],
