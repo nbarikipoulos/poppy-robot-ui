@@ -1,30 +1,23 @@
 <template lang="pug">
   b-icon(
     :size="size"
-    :pack="current.pack"
-    :icon="current.icon"
-    :type="current.type"
+    v-bind="{ ...errIcon, ...current }"
   )
 </template lang="pug">
 <script>
 export default {
   name: 'ext-b-icon',
-  data () {
-    return {
-      current: {
-        icon: 'bug',
-        pack: undefined,
-        type: undefined
-      }
-    }
-  },
+  data: () => ({
+    current: { icon: undefined, pack: undefined, type: undefined }
+  }),
   props: {
     pack: String,
     icon: String,
     type: String,
     size: { type: String, default: 'is-medium' },
     value: undefined, // The observable value
-    state: [Array, Function]
+    state: [Array, Function],
+    errIcon: { type: Object, default: _ => ({ icon: 'bug' }) }
   },
   watch: {
     value (value, old) {
@@ -47,7 +40,7 @@ export default {
         )
       }
 
-      return state
+      return state || {}
     },
     setCurrentState (state) {
       ['pack', 'icon', 'type'].forEach(key => {
