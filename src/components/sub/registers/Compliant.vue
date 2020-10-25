@@ -9,8 +9,8 @@
 import register from '@/mixins/register'
 
 const state = [
-  { value: true, icon: 'bed', pack: 'fas' },
-  { value: false, icon: 'bolt', pack: 'fas' }
+  { value: true, icon: 'bed', pack: 'fas', label: 'compliant' },
+  { value: false, icon: 'bolt', pack: 'fas', label: 'stiff' }
 ]
 
 export default {
@@ -22,8 +22,8 @@ export default {
   },
   computed: {
     label () {
-      const state = this.value ? 'compliant' : 'stiff'
-      return `state: ${state}`
+      const state = this.state.find(current => current.value === this.value) || { label: this.invalid }
+      return `state: ${state.label}`
     }
   }
 }

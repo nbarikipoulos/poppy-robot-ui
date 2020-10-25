@@ -2,7 +2,7 @@
     b-tooltip(label="moving speed" :active="showTooltip")
       span(class="vcenter")
         ext-b-icon(v-if="showIcon" pack="fas" icon="tachometer-alt")
-        span(v-if="showValue") {{ value }}
+        span(v-if="showValue") {{ v }}
 </template>
 
 <script>
@@ -15,6 +15,9 @@ export default {
   mixins: [register],
   props: {
     value: { type: Number, default: NaN }
+  },
+  computed: {
+    v () { return this.isValid ? this.value : this.invalid }
   }
 }
 </script>

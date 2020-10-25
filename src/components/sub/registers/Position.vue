@@ -2,7 +2,7 @@
   span(class="vcenter")
     b-tooltip(:label="label" :active="showTooltip")
       ext-b-icon(v-if="showIcon" pack="fas" icon="crosshairs")
-    span(v-if="showValue") {{ Math.round(value) }}
+    span(v-if="showValue") {{ v }}
 </template>
 
 <script>
@@ -19,6 +19,7 @@ export default {
     upper_limit: { type: Number }
   },
   computed: {
+    v () { return this.isValid ? Math.round(this.value) : this.invalid },
     label () {
       return `range: [${Math.round(this.lower_limit)}/${Math.round(this.upper_limit)}]`
     }

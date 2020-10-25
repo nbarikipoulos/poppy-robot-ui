@@ -12,20 +12,24 @@ export default {
   name: 'Led',
   mixins: [register],
   props: {
-    value: { type: String, default: 'off' },
+    value: String,
     off: { type: String, default: 'is-primary' }
   },
   computed: {
     label () {
-      return this.value === 'off' ? 'LED off' : this.value
+      return (this.value === 'off' ? 'LED off' : this.value) || `LED: ${this.invalid}`
     },
     state () {
       const offType = this.off
-      return (value, old) => ({
-        pack: value === 'off' ? 'fas' : 'fa',
-        icon: value === 'off' ? 'minus' : 'lightbulb',
-        type: value === 'off' ? offType : `is-${value}`
-      })
+      return (value, old) => {
+        let result
+        switch (value) {
+          case undefined: result = {}; break
+          case 'off': result = { pack: 'fas', icon: 'minus', type: offType }; break
+          default: result = { pack: 'fa', icon: 'lightbulb', type: `is-${value}` }
+        }
+        return result
+      }
     }
   }
 }

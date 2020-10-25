@@ -17,7 +17,9 @@ class T {
 
   _getLiteral (value) {
     let result
-    if (value < 50) {
+    if (isNaN(value)) {
+      result = T_DATA.UNKNOWN
+    } else if (value < 50) {
       result = T_DATA.OK
     } else if (value < 55) {
       result = T_DATA.HOT
@@ -32,6 +34,7 @@ const T_DATA = {
   OK: 'ok',
   HOT: 'hot',
   ARDENT: 'ardent',
+  UNKNOWN: '???',
   _DATA: [{
     literal: 'ok',
     color: 'success',
@@ -43,6 +46,10 @@ const T_DATA = {
   }, {
     literal: 'ardent',
     color: 'danger',
+    icon: { pack: 'fas', icon: 'thermometer-full' }
+  }, {
+    literal: '???',
+    color: 'dark',
     icon: { pack: 'fas', icon: 'thermometer-full' }
   }]
 }

@@ -2,7 +2,7 @@
   div
     b-tooltip(:label="toolTipTxt" :active="showTooltip")
       ext-b-icon(v-if="showIcon" :value="value" :state="state")
-    span(v-if="showValue" :class="labelClass") {{ value }}
+    span(v-if="showValue" :class="labelClass") {{ v }}
 </template>
 
 <script>
@@ -32,6 +32,7 @@ export default {
   },
   computed: {
     T () { return T(this.value) },
+    v () { return this.isValid ? this.value : this.invalid },
     toolTipTxt () { return `temp.: ${this.T.level}` },
     labelClass () {
       switch (this.labelType) {
