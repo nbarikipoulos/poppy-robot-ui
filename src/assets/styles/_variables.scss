@@ -35,8 +35,12 @@ $table-color: $primary;
 $table-head-background-color: $body-background-color;
 $table-head-cell-color: $primary;
 
-$input-color: $text;
-$input-border-color: $text;
+$input-color: $primary;
+$input-border-color: $primary;
+$input-focus-border-color: darker($primary, 30%);
+
+$button-border-color: $primary;
+$button-color: $primary;
 
 $slider-tick-width: 3px;
 $slider-thumb-background: $primary;

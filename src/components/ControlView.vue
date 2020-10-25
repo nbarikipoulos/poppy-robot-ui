@@ -1,23 +1,21 @@
 <template lang="pug">
   section
     div(class="box")
-      div(class="columns is-mobile")
-        div(class="column is-narrow")
-          b-field
-            b-switch(
-              v-model="controlMotors"
-              type="is-primary"
-              :rounded="false"
-            ) Control motors
-        div(class="column")
-          b-field(
-            custom-class="has-text-primary"
-            label="Speed"
-            label-position="on-border"
-          )
-            b-input(v-model="speed" placeholder="Set all motors speed")
-            p(class="control")
-              b-button(type="is-primary" @click="setSpeed") Set
+      b-field(grouped)
+        b-switch(
+          v-model="controlMotors"
+          type="is-primary"
+          :rounded="false"
+        )
+          span(class="has-text-primary has-text-weight-semibold") Control motors
+        b-field(
+          custom-class="has-text-primary"
+          label="Speed"
+          label-position="on-border"
+        )
+          b-input(v-model="speed" placeholder="Set all motors speed")
+          p(class="control")
+            b-button(type="is-primary" @click="setSpeed") Set
     div(class="columns is-multiline")
       div(
         v-for="motor in motors"

@@ -6,7 +6,8 @@
           v-model="showAsCard"
           type="is-primary"
           :rounded="false"
-        ) Show as card
+        )
+          span(class="has-text-primary has-text-weight-semibold") Show as card
         b-field(v-if="showAsCard")
           b-tooltip(label="Number of column")
             b-select(
