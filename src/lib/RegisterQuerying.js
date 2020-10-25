@@ -1,5 +1,7 @@
 'use strict'
 
+const interval = require('interval-promise')
+
 class RegisterData {
   constructor (name, length = 1) {
     this._name = name
@@ -48,11 +50,15 @@ class RegisterQuerying {
 
   async launch () {
     const f = (poppy, registers) => poppy.query('all', registers)
-    const g = (data) => Object.entries(data)
-      .forEach(([motor, values]) => Object.entries(values)
-        .forEach(([reg, value]) => this._data[motor][reg].add(value))
-      )
-    const fg = (poppy, registers) => f(poppy, registers).then(g)
+    const g = (data) => {
+      Object.entries(data)
+        .forEach(([motor, values]) => Object.entries(values)
+          .forEach(([reg, value]) => this._data[motor][reg].add(value))
+        )
+      Promise.resolve(null)
+    }
+    const fg = (poppy, registers) => f(poppy, registers)
+      .then(g).catch(/* Do nothing */)
 
     const queries = [{
       name: 'position',
@@ -65,16 +71,16 @@ class RegisterQuerying {
     }, {
       name: 'temperature',
       registers: ['present_temperature'],
-      period: 15000 // ms
+      period: 10000 // ms
     }]
 
     // t0 request to initialize mdata
     await Promise.all(
-      queries.map(async conf => fg(this._poppy, conf.registers))
+      queries.map(conf => fg(this._poppy, conf.registers))
     )
 
-    queries.map(conf => setInterval(
-      async _ => fg(this._poppy, conf.registers),
+    queries.map(conf => interval(
+      async _ => await fg(this._poppy, conf.registers),
       conf.period
     ))
   }
