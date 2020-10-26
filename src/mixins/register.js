@@ -11,9 +11,9 @@ const mixin = {
     isValid () {
       let result
       switch (typeof this.value) {
-        case 'string': result = this.value !== undefined; break
-        case 'number': result = this.value !== undefined && !isNaN(this.value); break
-        default: result = this.value !== undefined
+        case undefined: result = false; break
+        case 'number': result = !isNaN(this.value); break
+        default: result = true
       }
       return result
     }
