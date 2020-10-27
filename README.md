@@ -5,7 +5,7 @@
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
-A quick'n'-not-so-dirty responsive dashboard/control panel for robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
+Responsive web site with dashboard/control panels for robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
 It allows:
 - Displaying register of interest of motors of a Poppy robot (at least a Poppy Ergo Jr.),
@@ -60,7 +60,9 @@ npm run build // Compiles and minifies for production in dist/
 
 ### Serve Build
 
-Just serve the dist folder __with any http server__ (below with the serve npm package included with this project):
+Just serve the dist folder __with any http server__ (Note it __does not require node.js__ at all).
+
+Below example with the serve npm package included with this project:
 ```shell
 npm run serve-dist
 ┌──────────────────────────────────────────────────┐
