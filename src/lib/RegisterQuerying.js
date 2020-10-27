@@ -7,24 +7,21 @@ class RegisterData {
     this._name = name
     this._length = length
     this._values = []
+    this._current = undefined
   }
 
   get data () { return this._values }
 
-  get current () {
-    return this._length === 1
-      ? this._values[0]
-      : this._values.slice(-1)[0]
-  }
+  get current () { return this._current }
 
   add (value) {
-    if (this._length === 1) {
-      this._values[0] = value
-    } else {
-      if (this._values.length >= this._length) {
-        this._values.shift()
-      }
-      this._values.push(value)
+    if (this._values.length >= this._length) {
+      this._values.shift()
+    }
+    this._values.push(value)
+
+    if (value !== this._current) {
+      this._current = value
     }
   }
 }
