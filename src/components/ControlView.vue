@@ -56,12 +56,7 @@ export default {
   components: { MotorControl },
   data: _ => ({ speed: null }),
   methods: {
-    getState (motor) {
-      return this.getRegister(motor, 'compliant')
-    },
-    async setState (state) {
-      await PUtils.execute(state, ['all'])
-    },
+    async setState (state) { await PUtils.execute(state, ['all']) },
     async setSpeed () {
       if (!isNaN(this.speed)) {
         await PUtils.execute('speed', ['all'], this.speed)
