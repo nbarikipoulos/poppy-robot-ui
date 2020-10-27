@@ -105,17 +105,15 @@ export default {
   data: _ => ({ cell }),
   computed: {
     data () {
-      return this.motors.map(motor => {
-        return {
-          motor,
-          compliant: this.getRegister(motor, 'compliant'),
-          led: this.getRegister(motor, 'led'),
-          moving_speed: Math.round(this.getRegister(motor, 'moving_speed')),
-          present_position: Math.round(this.getRegister(motor, 'present_position')),
-          positions: this.getRegister(motor, 'present_position', 'all').map(Math.round),
-          present_temperature: this.getRegister(motor, 'present_temperature')
-        }
-      })
+      return this.motors.map(motor => ({
+        motor,
+        compliant: this.getRegister(motor, 'compliant'),
+        led: this.getRegister(motor, 'led'),
+        moving_speed: Math.round(this.getRegister(motor, 'moving_speed')),
+        present_position: Math.round(this.getRegister(motor, 'present_position')),
+        positions: this.getRegister(motor, 'present_position', 'all').map(Math.round),
+        present_temperature: this.getRegister(motor, 'present_temperature')
+      }))
     },
     temperatureMax () { return Math.max(...this.data.map(d => d.present_temperature)) }
   },
