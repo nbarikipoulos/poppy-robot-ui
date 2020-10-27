@@ -9,23 +9,17 @@ A quick'n'-not-so-dirty responsive dashboard/control panel for robots of the [Po
 
 It allows:
 - Displaying register of interest of motors of a Poppy robot (at least a Poppy Ergo Jr.),
-- Controling each motor positions via a simple UI.
-
-Below screenshots for mobile.
-
-Dashboard | Control
---- | ---
-![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)") | ![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
+- Controlling the position of each motor via a simple UI.
 
 <!-- toc -->
 
 - [Screenshots](#screenshots)
-  * [Dashboard](#dashboard)
-    + [Default View](#default-view)
-    + [View Split per Motor](#view-split-per-motor)
+  * [Wide Screens](#wide-screens)
+  * [Mobile Devices](#mobile-devices)
 - [Install](#install)
   * [Build Project](#build-project)
   * [Serve Build](#serve-build)
+- [Versioning](#versioning)
 - [Credits](#credits)
 - [License](#license)
 
@@ -33,16 +27,17 @@ Dashboard | Control
 
 ## Screenshots
 
-### Dashboard
-
-#### Default View
+### Wide Screens
 
 ![dashboard](./doc/dashboard-wide.png "Dashboard (rendering on 'wide screen')")
 
-#### View Split per Motor
-
 ![dashboard](./doc/dashboard-card-wide.png "Dashboard (rendering motor as card on 'wide screen')")
 
+### Mobile Devices
+
+Dashboard | Control
+--- | ---
+![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)") | ![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
 
 ## Install
 
@@ -65,7 +60,7 @@ npm run build // Compiles and minifies for production in dist/
 
 ### Serve Build
 
-Just serve the dist folder with any http server (below with the serve npm package included with this project):
+Just serve the dist folder __with any http server__ (below with the serve npm package included with this project):
 ```shell
 npm run serve-dist
 ┌──────────────────────────────────────────────────┐
@@ -79,6 +74,12 @@ npm run serve-dist
 │                                                  │
 └──────────────────────────────────────────────────┘
 ```
+
+## Versioning
+
+While it's still in beta, version will follow v0.Y.Z, where:
+- Y: Major,
+- Z: Minor or patch.
 
 ## Credits
 
