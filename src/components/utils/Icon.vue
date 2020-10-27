@@ -1,57 +1,52 @@
 <template lang="pug">
   b-icon(
     :size="size"
-    v-bind="{ ...errIcon, ...current }"
+    v-bind="ico"
   )
 </template lang="pug">
 <script>
 export default {
   name: 'ext-b-icon',
-  data: () => ({
-    current: { icon: undefined, pack: undefined, type: undefined }
-  }),
   props: {
     pack: String,
     icon: String,
     type: String,
     size: { type: String, default: 'is-medium' },
-    value: undefined, // The observable value
+    value: undefined,
     state: [Array, Function],
     errIcon: { type: Object, default: _ => ({ icon: 'bug' }) }
   },
-  watch: {
-    value (value, old) {
-      const state = this.getState(value)
-      this.setCurrentState(state)
+  computed: {
+    ico () {
+      const res = {}
+
+      const state = this.getState(this.value)
+      const arr = ['pack', 'icon', 'type']
+
+      arr.forEach(key => {
+        res[key] = state[key] || this[key]
+      })
+
+      return { ...this.errIcon, ...res }
     }
   },
   methods: {
     getState (value) {
       let state = {}
-      if (this.state instanceof Function) {
+      if (typeof this.state === 'function') {
         state = this.state(value)
-      } else if (this.state instanceof Array) {
+      } else if (Array.isArray(this.state)) {
         state = this.state.find(elt => {
           return elt.value === value
         })
       } else if (this.state) {
         throw new TypeError(
-          'ext-b-icon: use a function or an array for state'
+          'ext-b-icon: Use a function or an array for state'
         )
       }
 
       return state || {}
-    },
-    setCurrentState (state) {
-      ['pack', 'icon', 'type'].forEach(key => {
-        const value = state[key]
-        this.current[key] = value === undefined ? this[key] : value
-      })
     }
-  },
-  mounted () {
-    const state = this.getState(this.value)
-    this.setCurrentState(state)
   }
 }
 </script>
