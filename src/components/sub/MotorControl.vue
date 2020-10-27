@@ -32,7 +32,6 @@ export default {
     step: 10,
     slider: null
   }),
-  props: { compliant: Boolean },
   watch: {
     async slider (value) {
       // Do not send a set position command
@@ -54,7 +53,8 @@ export default {
       )
     },
     range () { return PUtils.getAngleRange(this.motor) },
-    ticks () { return [this.range.min, 0, this.range.max] }
+    ticks () { return [this.range.min, 0, this.range.max] },
+    compliant () { return this.getRegister('compliant') }
   },
   mounted () {
     this.slider = this.position

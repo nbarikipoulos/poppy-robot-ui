@@ -42,10 +42,7 @@
         v-for="motor in motors"
         class="column is-half-tablet is-one-quarter-desktop"
       )
-        motor-control(
-          :motor="motor"
-          :compliant="getState(motor)"
-        )
+        motor-control(:motor="motor")
 </template>
 
 <script>
