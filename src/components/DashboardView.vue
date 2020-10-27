@@ -1,13 +1,13 @@
 <template lang="pug">
   section
-    div(class="box")
+    div(class="box py-2")
       b-field(grouped)
         b-switch(
           v-model="showAsCard"
           type="is-primary"
           :rounded="false"
         )
-          span(class="has-text-primary has-text-weight-semibold") Show as card
+          span(class="has-text-primary") Show as card
         b-field(v-if="showAsCard")
           b-tooltip(label="Number of column")
             b-select(
@@ -23,10 +23,10 @@
       class="tile is-ancestor"
     )
       div(class="tile is-parent is-8")
-        div(class="tile is-child box")
+        div(class="tile is-child box py-2")
           registers(:motors="motors")
       div(class="tile is-parent is-4")
-        div(class="tile is-child box")
+        div(class="tile is-child box py-1")
           polar-positions-chart(:motors="motors")
     div(v-else class="columns is-multiline")
       motor-panel(
