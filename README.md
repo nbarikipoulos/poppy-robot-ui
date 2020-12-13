@@ -2,7 +2,6 @@
 
 ![GitHub package.json version][version-img]
 [![JavaScript Style Guide][standard-image]][standard-url]
-[![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
 Responsive web site with dashboard/control panels for robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
@@ -62,9 +61,9 @@ npm run build // Compiles and minifies for production in dist/
 
 Just serve the dist folder __with any http server__ (Note it __does not require node.js__ at all).
 
-Below example with the serve npm package included with this project:
+Below example with the serve npm package:
 ```shell
-npm run serve-dist
+npx serve dist
 ┌──────────────────────────────────────────────────┐
 │                                                  │
 │   Serving!                                       │
