@@ -52,7 +52,6 @@ export default {
         this.getRegister('present_position')
       )
     },
-    range () { return PUtils.getAngleRange(this.motor) },
     ticks () { return [this.range.min, 0, this.range.max] },
     compliant () { return this.getRegister('compliant') }
   },

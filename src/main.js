@@ -13,7 +13,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBug,
   faInfoCircle, faColumns,
-  faMinus, faLightbulb,
+  faMinus, faPlus, faLightbulb,
   faGamepad, faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
 } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +26,7 @@ import {
 library.add(
   faBug,
   faInfoCircle, faColumns,
-  faMinus, faLightbulb, farLightbulb,
+  faMinus, faPlus, faLightbulb, farLightbulb,
   faGamepad, faCrosshairs, faBed, faBolt, faTachometerAlt,
   faThermometerQuarter, faThermometerThreeQuarters, faThermometerFull
 )
@@ -41,6 +41,10 @@ Vue.component('MotorChart', MotorChart)
 Vue.component('ExtBIcon', Icon)
 
 Vue.config.productionTip = false
+
+Vue.mixin({
+  props: { clazz: { type: Array } }
+})
 
 new Vue({
   router,

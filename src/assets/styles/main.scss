@@ -7,6 +7,11 @@
   margin: .5em 0.2em;
 }
 
+.a-register {
+  text-decoration: underline dotted;
+  text-underline-position: under;
+}
+
 canvas {
   width: 100% !important;
 }
@@ -14,5 +19,12 @@ canvas {
 .vcenter {
   align-items: center;
   display: flex;
-  // justify-content: center;
+}
+
+.b-table {
+  .table {
+    td {
+      vertical-align: middle;
+    }
+  }
 }

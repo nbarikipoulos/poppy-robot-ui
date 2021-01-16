@@ -7,13 +7,13 @@ const mixin = {
   props: { motor: String },
   computed: {
     mmdata () { return store.mdata[this.motor] },
+    range () { return PUtils.getAngleRange(this.motor) },
     descriptor () { return PUtils.getMotorDescriptor(this.motor) }
   },
   methods: {
     getRegister (register, data = 'current') {
-      return data === 'current'
-        ? this.mmdata[register].current
-        : this.mmdata[register].data
+      const p = data === 'current' ? 'current' : 'data'
+      return this.mmdata[register][p]
     }
   }
 }

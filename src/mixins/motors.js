@@ -8,10 +8,18 @@ const mixin = {
   data: _ => ({ mdata: store.mdata }),
   props: { motors: { type: Array, default: _ => PUtils.allMotorIds } },
   methods: {
-    getRegister (motor, register, data = 'current') {
-      return data === 'current'
-        ? this.mdata[motor][register].current
-        : this.mdata[motor][register].data
+    getRegister (
+      register,
+      { type = 'array', data = 'current' } = {}
+    ) {
+      const p = data === 'current' ? 'current' : 'data'
+
+      const res = this.motors.reduce((acc, m) => {
+        acc[m] = this.mdata[m][register][p]
+        return acc
+      }, {})
+
+      return type === 'array' ? Object.values(res) : res
     }
   }
 }

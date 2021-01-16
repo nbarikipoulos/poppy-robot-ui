@@ -13,6 +13,9 @@ $primary: rgb(110, 161, 173);
 $text: black;
 $body-background-color: white; // lighten($primary, 30%);
 
+$link: $primary;
+$link-hover: $link;
+
 //
 // Misc. variables
 //
@@ -49,6 +52,9 @@ $slider-tick-background: $primary;
 $slider-track-border:	0px;
 
 $card-content-padding: 3px;
+
+$dropdown-content-padding-top: 0px;
+$dropdown-content-padding-bottom: 0px;
 
 //
 // Color Maps
