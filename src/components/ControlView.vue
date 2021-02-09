@@ -27,7 +27,6 @@
           )
             ext-b-icon(icon="bolt")
         b-field(
-          custom-class="has-text-primary"
           label="Speed"
           label-position="on-border"
         )

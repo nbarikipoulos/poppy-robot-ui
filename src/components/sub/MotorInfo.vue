@@ -1,7 +1,7 @@
 <template lang="pug">
   b-tooltip
     span(
-      class="tag has-text-primary has-text-weight-bold is-medium  px-2"
+      class="tag has-text-weight-bold is-medium px-2"
     ) {{ motor }}
     template(v-slot:content)
       div(class="has-text-left")

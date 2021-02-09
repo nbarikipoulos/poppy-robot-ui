@@ -1,18 +1,15 @@
 <template lang="pug">
     b-tooltip(:label="label" :active="showTooltip")
-      ext-b-icon(v-if="!control" :pack="state.pack" :icon="state.icon")
+      ext-b-icon(v-if="!control" v-bind="icon")
       div(v-else)
         b-button(
           :class="clazz"
           size="is-small"
           @click="input = !input"
           inverted focused
-          :type="state.type"
+          :type="type"
         )
-          ext-b-icon(
-            :pack="state.pack"
-            :icon="state.icon"
-          )
+          ext-b-icon(v-bind="icon" :type="type")
 </template>
 
 <script>
@@ -27,7 +24,7 @@ export default {
   computed: {
     command () { return this.input ? 'compliant' : 'stiff' },
     state () {
-      let result = { pack: 'fa', icon: 'bug', type: 'is-black' }
+      let result = { pack: 'fa', icon: 'bug', label: this.invalid, type: 'is-black' }
       switch (this.regValue) {
         case true: result = { pack: 'fas', icon: 'bed', label: 'compliant', type: 'is-success' }; break
         case false: result = { pack: 'fas', icon: 'bolt', label: 'stiff', type: 'is-danger' }; break
@@ -35,10 +32,9 @@ export default {
 
       return result
     },
-    label () { return `state: ${this.state.label}` },
-    pack () { return this.state.pack },
-    icon () { return this.state.icon },
-    type () { return this.state.type }
+    icon () { return { pack: this.state.pack, icon: this.state.icon } },
+    type () { return this.state.type },
+    label () { return `state: ${this.state.label}` }
   }
 }
 </script>

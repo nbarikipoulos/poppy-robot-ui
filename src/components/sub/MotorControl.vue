@@ -1,8 +1,8 @@
 <template lang="pug">
-  div(class="box has-border-primary")
-    div(class="columns is-paddingless is-mobile is-multiline is-vcentered")
+  div(class="box")
+    div(class="columns is-mobile is-multiline is-vcentered")
       div(class="column is-narrow is-full-desktop")
-        span(class="has-text-weight-bold is-size-5 has-text-primary") {{ motor }}:
+        span(class="has-text-weight-bold is-size-5") {{ motor }}:
       div(class="column is-full-desktop")
         b-field(expanded)
           b-slider(

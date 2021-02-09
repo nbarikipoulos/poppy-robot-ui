@@ -7,14 +7,13 @@
           type="is-primary"
           :rounded="false"
         )
-          span(class="has-text-primary") Show as card
+          span Show as card
         b-field(v-if="showAsCard")
           b-tooltip(label="Number of column")
             b-select(
               icon-pack="fas"
               icon="columns"
               type="is-primary"
-              class="has-text-color-primary"
               v-model="settings.col"
             )
               option(v-for="v in [3, 4, 6]" :value="v") {{ v }}

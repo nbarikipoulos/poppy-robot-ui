@@ -6,9 +6,7 @@
           b-tooltip(type="is-light" position="is-right")
             ext-b-icon(pack="fas" icon="info-circle")
             template(v-slot:content)
-              span(
-                class="has-text-primary"
-              ) {{ settings.ip }}:{{ settings.port }}
+              span {{ settings.ip }}:{{ settings.port }}
       template(slot="end")
         b-navbar-item(tag="router-link" to="/dashboard") Dashboard
         b-navbar-item(tag="router-link" to="/control") Control

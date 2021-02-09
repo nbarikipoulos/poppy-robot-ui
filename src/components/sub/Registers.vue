@@ -73,7 +73,7 @@ import * as RegisterComponents from '@/components/sub/registers/index'
 import MotorInfo from '@/components/sub/MotorInfo'
 
 const cell = {
-  class: 'has-text-primary has-text-weight-semibold',
+  class: 'has-text-weight-semibold',
   centered: true
 }
 

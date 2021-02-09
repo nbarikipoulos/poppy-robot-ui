@@ -1,38 +1,24 @@
 <template lang="pug">
-  div(class="has-text-primary has-text-weight-semibold")
+  div(class="has-text-weight-semibold")
     div(
-      class="columns has-text-white is-multiline is-mobile has-background-primary has-text-left-mobile"
+      class="columns is-multiline is-mobile has-text-left-mobile"
+      :class="invert"
     )
       div(class="column is-narrow")
         motor-info(:motor="motor")
       div(class="column is-narrow has-text-left")
-        compliant(
-          :clazz="['has-background-primary']"
-          :motor="motor"
-        )
+        compliant(:clazz="invert" :motor="motor")
       div(class="column is-narrow")
-        speed(
-          :clazz="['has-text-white']"
-          :motor="motor"
-          showIcon
-        )
+        speed(:clazz="invert" :motor="motor" showIcon)
       div(class="column is-narrow")
-        position(
-          :clazz="['has-text-white']"
-          :motor="motor"
-          showIcon
-        )
+        position(:clazz="invert" :motor="motor" showIcon)
       //- Dummy "spacer"
       div(class="column")
       div(class="column is-narrow")
         temperature(:motor="motor" showIcon)
       div(class="column is-narrow")
-        led(
-          :clazz="['has-background-primary']"
-          :motor="motor"
-          off="is-white"
-        )
-    div(class="has-text-primary")
+        led(:clazz="invert" :motor="motor" off="is-white")
+    div
       polar-positions-chart(
         :motors="[this.motor]"
         :range="range"
@@ -52,7 +38,8 @@ export default {
   name: 'MotorPanel',
   mixins: [motor],
   components: { PolarPositionsChart, ...RegisterComponents, MotorInfo },
-  props: { maxHeight: { type: String, default: '300px' } },
+  props: { maxHeight: { type: String, default: '200px' } },
+  data: _ => ({ invert: ['has-background-primary', 'has-text-white'] }),
   computed: { range () { return PUtils.getAngleRange(...PUtils.allMotorIds) } }
 }
 </script>

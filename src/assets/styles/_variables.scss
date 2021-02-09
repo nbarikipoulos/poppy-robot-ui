@@ -10,7 +10,7 @@ $primary: rgb(110, 161, 173);
 // Main app colors
 //
 
-$text: black;
+$text: $primary;
 $body-background-color: white; // lighten($primary, 30%);
 
 $link: $primary;
@@ -29,6 +29,9 @@ $column-gap: 0.2em;
 //
 // Component colors
 //
+
+// Field
+$label-color: $primary;
 
 $table-cell-border: 1px solid lighten($primary, 30%);
 

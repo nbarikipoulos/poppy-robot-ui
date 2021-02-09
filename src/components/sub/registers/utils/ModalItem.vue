@@ -8,7 +8,7 @@
     div(class="modal-card mx-0" style="width:auto;")
       header(class="modal-card-head py-2 px-5")
         slot(name="header")
-          span(class="has-text-weight-bold has-text-primary") {{ motor }}: Set register '{{ register }}'
+          span(class="has-text-weight-bold") {{ motor }}: Set register '{{ register }}'
       section(class="is-primary py-3 px-5")
         slot(name="body")
       footer(class="modal-card-foot py-2 px-2 mt-0")

@@ -37,7 +37,7 @@
               )
                 b-slider-tick(
                   v-for="v in ticks" :key="v" :value="v"
-                  class="has-text-text has-text-weight-bold"
+                  class="has-text-weight-bold"
                 ) {{ v }}
 </template>
 
