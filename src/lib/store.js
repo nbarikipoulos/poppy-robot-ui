@@ -2,7 +2,7 @@
 
 const store = {
   connect: {
-    ip: 'poppy.local',
+    hostname: 'poppy.local',
     port: 8080
   },
   connected: false,

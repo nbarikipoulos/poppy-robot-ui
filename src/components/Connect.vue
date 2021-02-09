@@ -5,7 +5,7 @@
         div(class="columns is-centered")
           div(class="column box is-4 px-3 py-3")
             b-field(label="Hostname")
-              b-input(type="text" v-model="settings.ip")
+              b-input(type="text" v-model="settings.hostname")
             b-field(label="Port")
               b-input(type="text" v-model="settings.port")
             b-button(

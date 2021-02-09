@@ -2,7 +2,7 @@
 
 import RegisterQuerying from './RegisterQuerying'
 
-const P = require('poppy-robot-core')
+const { createPoppy, createScript } = require('poppy-robot-core')
 
 class PConnector {
   constructor () {
@@ -17,7 +17,7 @@ class PConnector {
 
   async connect (connect) {
     try {
-      this._poppy = await P.createPoppy({ connect })
+      this._poppy = await createPoppy({ connect })
     } catch (err) {
       this._poppy = undefined
     }
@@ -32,7 +32,7 @@ class PConnector {
     //
 
     const config = {
-      motors: this._poppy.getAllMotorIds(),
+      motors: this._poppy.allMotorIds,
       registers: [{
         name: 'present_position',
         length: 100
@@ -64,8 +64,8 @@ export const P_CONNECTOR = new PConnector()
 
 const PUtils = {
   get poppy () { return P_CONNECTOR.poppy }, // arff
-  get descriptor () { return this.poppy.getDescriptor() },
-  get allMotorIds () { return this.poppy.getAllMotorIds() },
+  get descriptor () { return this.poppy.descriptor },
+  get allMotorIds () { return this.poppy.allMotorIds },
 
   getAngleRange (...motorIds) {
     const range = motorIds
@@ -83,7 +83,7 @@ const PUtils = {
   },
 
   async execute (command, motorIds, ...values) {
-    const script = P.createScript(...motorIds)
+    const script = createScript(...motorIds)
     script[command](...values)
     await this.poppy.exec(script)
   }
