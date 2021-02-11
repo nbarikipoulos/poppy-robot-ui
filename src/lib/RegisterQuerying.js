@@ -1,6 +1,6 @@
 'use strict'
 
-const interval = require('interval-promise')
+const { setIntervalAsync } = require('set-interval-async/dynamic')
 
 class RegisterData {
   constructor (name, length = 1) {
@@ -76,7 +76,7 @@ class RegisterQuerying {
       queries.map(conf => fg(this._poppy, conf.registers))
     )
 
-    queries.map(conf => interval(
+    queries.map(conf => setIntervalAsync(
       async _ => await fg(this._poppy, conf.registers),
       conf.period
     ))
