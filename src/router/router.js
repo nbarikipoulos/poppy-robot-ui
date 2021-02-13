@@ -3,11 +3,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/Home.vue'
+import App from '@/App.vue'
 import Connect from '@/components/Connect.vue'
 
-import ControlView from '@/components/ControlView.vue'
-import DashboardView from '@/components/DashboardView.vue'
+import Home from '@/components/Home.vue'
 
 import store from '@/lib/store'
 
@@ -24,11 +23,9 @@ const ifNotConnected = (to, from, next) => {
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: App,
     children: [
-      { path: '', component: DashboardView },
-      { path: 'control', component: ControlView },
-      { path: 'dashboard', component: DashboardView }
+      { path: '', component: Home }
     ],
     beforeEnter: ifNotConnected
   },

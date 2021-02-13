@@ -6,13 +6,12 @@ const store = {
     port: 8080
   },
   connected: false,
+
   mdata: undefined,
 
-  panel: {
-    dashboard: {
-      showAsCard: false,
-      col: 3
-    }
+  dashboard: {
+    showAsCard: false,
+    col: 3
   }
 }
 
