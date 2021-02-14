@@ -12,7 +12,7 @@
         slot="trigger"
         size="is-small"
       )
-        ext-b-icon(v-bind="getBr(input)" size="is-small")
+        ext-b-icon(v-bind="getBr(regValue)" size="is-small")
       b-dropdown-item(
         v-for="led of LEDs"
           :key="led.literal"

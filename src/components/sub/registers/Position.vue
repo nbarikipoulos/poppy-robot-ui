@@ -57,9 +57,7 @@ export default {
     ticks () { return [this.range.min, 0, this.range.max] },
     label () { return `range: [${this.range.min}/${this.range.max}]` }
   },
-  methods: {
-    eventHandler (event) { this.isUpdatable = !event }
-  }
-
+  methods: { eventHandler (event) { this.inputInProgress = event } },
+  mounted () { this.inputInProgress = false }
 }
 </script>

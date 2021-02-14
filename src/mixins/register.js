@@ -7,8 +7,8 @@ const mixin = {
   mixins: [motor],
   data: _ => ({
     input: undefined, // v-model for user's input
-    wait: false, // avoid to override user's value with query before
-    isUpdatable: true,
+    wait: false, // Avoid to override user's input value with queried value
+    inputInProgress: true, // Introduced to avoid side effect
     register: undefined
   }),
   props: {
@@ -32,7 +32,9 @@ const mixin = {
       return result
     },
     valueToDisplay () {
-      const v = this.control ? this.input : this.regValue
+      const v = (this.control && this.inputInProgress)
+        ? this.input
+        : this.regValue
       return this.isValid(v) ? v : '---'
     }
   },
@@ -43,12 +45,12 @@ const mixin = {
       }
     },
     regValue (value) {
-      if (this.control && !this.wait && this.isValid(value) && this.isUpdatable) {
+      if (this.control && !this.inputInProgress && !this.wait && this.isValid(value)) {
         this.input = value
       }
     },
     input (value) {
-      if (value !== this.regValue && this.isValid(value)) {
+      if (this.inputInProgress && value !== this.regValue && this.isValid(value)) {
         this.setRegister(value)
       }
     }

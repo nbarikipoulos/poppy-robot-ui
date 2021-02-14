@@ -12,6 +12,7 @@
           aria-role="dialog"
           :mobile-modal="true"
           trap-focus
+          @active-change="eventHandler"
         )
           a(
             class="a-register"
@@ -50,6 +51,8 @@ export default {
   name: 'Speed',
   mixins: [register],
   components: { ModalItem },
-  data: _ => ({ register: 'moving_speed' })
+  data: _ => ({ register: 'moving_speed' }),
+  methods: { eventHandler (event) { this.inputInProgress = event } },
+  mounted () { this.inputInProgress = false }
 }
 </script>
