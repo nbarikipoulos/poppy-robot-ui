@@ -2,7 +2,7 @@
   div
     nav(class="level box py-1 px-1 is-mobile")
       div(class="level-left")
-        div(class="level-item")
+        div(class="level-item is-hidden-mobile")
           b-field(grouped)
             b-switch(
               v-model="showAsCard"
