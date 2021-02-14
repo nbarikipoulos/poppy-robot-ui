@@ -20,7 +20,7 @@
       template(#header="{ column }")
         ext-b-icon(pack="fas" icon="gamepad")
       template(#default="props")
-        compliant(:motor="props.row.motor")
+        compliant(:motor="props.row.motor" :showTooltip="false")
     //
     // Speed
     //
@@ -62,7 +62,7 @@
       template(#header="{ column }")
         ext-b-icon(pack="far" icon="lightbulb")
       template(#default="props")
-        led(:motor="props.row.motor")
+        led(:motor="props.row.motor" :showTooltip="false")
 </template>
 
 <script>
