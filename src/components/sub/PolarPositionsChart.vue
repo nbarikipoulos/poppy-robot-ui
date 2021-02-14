@@ -29,8 +29,6 @@ export default {
   watch: {
     _range () { this.options = polar(this._range) },
     positions (value) {
-      // this.$data._chart.data.datasets[0].data = value
-      // this.$data._chart.update()
       this.chartData = {
         labels: this.motors,
         datasets: [{ data: value }]
@@ -40,7 +38,7 @@ export default {
   mounted () {
     this.chartData = {
       labels: this.motors,
-      datasets: [{ data: [] }]
+      datasets: [{ data: this.positions }]
     }
     this.options = polar(this._range)
 
