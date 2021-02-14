@@ -30,18 +30,20 @@
       class="tile is-ancestor"
     )
       div(class="tile is-parent is-8")
-        div(class="tile is-child box py-2")
+        div(class="tile is-child box py-0 px-1")
           registers(:motors="motors")
       div(class="tile is-parent is-4")
         div(class="tile is-child box py-1")
           polar-positions-chart(:motors="motors")
-    div(v-else class="columns is-multiline px-1")
-      motor-panel(
+    div(
+      v-else
+      class="columns is-multiline px-1"
+    )
+      div(
         v-for="motor in motors"
-        :class="`box column ${colSize} px-1`"
-        :key="motor"
-        :motor="motor"
+        :class="`column ${colSize} px-1`"
       )
+        motor-panel(class="box is-paddingless" :motor="motor")
 </template>
 
 <script>

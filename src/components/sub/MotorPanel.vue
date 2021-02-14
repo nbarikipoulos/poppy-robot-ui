@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="has-text-weight-semibold")
     div(
-      class="columns is-multiline is-mobile has-text-left-mobile"
+      class="columns is-multiline is-mobile has-text-left-mobile mx-0 my-0"
       :class="invert"
     )
       div(class="column is-narrow")
@@ -38,7 +38,7 @@ export default {
   name: 'MotorPanel',
   mixins: [motor],
   components: { PolarPositionsChart, ...RegisterComponents, MotorInfo },
-  props: { maxHeight: { type: String, default: '200px' } },
+  props: { maxHeight: { type: String, default: '350px' } },
   data: _ => ({ invert: ['has-background-primary', 'has-text-white'] }),
   computed: { range () { return PUtils.getAngleRange(...PUtils.allMotorIds) } }
 }
