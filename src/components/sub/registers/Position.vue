@@ -1,5 +1,9 @@
 <template lang="pug">
-  b-tooltip(:label="label" :active="showTooltip")
+  b-tooltip(
+    :label="label"
+    :active="showTooltip"
+    ref="tooltip"
+  )
     div(:class="{ vcenter: showIcon }")
       ext-b-icon(v-if="showIcon" pack="fas" icon="crosshairs")
       span(
@@ -57,7 +61,14 @@ export default {
     ticks () { return [this.range.min, 0, this.range.max] },
     label () { return `range: [${this.range.min}/${this.range.max}]` }
   },
-  methods: { eventHandler (event) { this.inputInProgress = event } },
+  methods: {
+    eventHandler (event) {
+      this.inputInProgress = event
+      if (event && this.showTooltip) { // auto close tooltip
+        this.$refs.tooltip.close()
+      }
+    }
+  },
   mounted () { this.inputInProgress = false }
 }
 </script>

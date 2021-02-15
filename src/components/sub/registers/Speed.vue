@@ -1,5 +1,9 @@
 <template lang="pug">
-    b-tooltip(label="moving speed" :active="showTooltip")
+    b-tooltip(
+      label="moving speed"
+      :active="showTooltip"
+      ref="tooltip"
+    )
       div(class="vcenter")
         ext-b-icon(
           v-if="showIcon"
@@ -52,7 +56,14 @@ export default {
   mixins: [register],
   components: { ModalItem },
   data: _ => ({ register: 'moving_speed' }),
-  methods: { eventHandler (event) { this.inputInProgress = event } },
+  methods: {
+    eventHandler (event) { // dropdown opened/closed
+      this.inputInProgress = event
+      if (event && this.showTooltip) { // auto close tooltip
+        this.$refs.tooltip.close()
+      }
+    }
+  },
   mounted () { this.inputInProgress = false }
 }
 </script>

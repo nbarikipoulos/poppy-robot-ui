@@ -1,10 +1,15 @@
 <template lang="pug">
-  b-tooltip(:label="label" :active="showTooltip")
+  b-tooltip(
+    :label="label"
+    :active="showTooltip"
+    ref="tooltip"
+  )
     ext-b-icon(v-if="!control" v-bind="getBr(regValue)")
     b-dropdown(v-else
       v-model="input"
       aria-role="list"
       position="is-bottom-left"
+      @active-change="eventHandler"
     )
       b-button(
         :class="clazz"
@@ -12,7 +17,7 @@
         slot="trigger"
         size="is-small"
       )
-        ext-b-icon(v-bind="getBr(regValue)" size="is-small")
+        ext-b-icon(v-bind="getBr(input)" size="is-small")
       b-dropdown-item(
         v-for="led of LEDs"
           :key="led.literal"
@@ -55,7 +60,14 @@ export default {
           result = { pack: 'fa', icon: 'lightbulb', type: `is-${value}` }
       }
       return result
+    },
+    eventHandler (event) { // dropdown opened/closed
+      this.inputInProgress = event
+      if (event && this.showTooltip) { // auto close tooltip
+        this.$refs.tooltip.close()
+      }
     }
-  }
+  },
+  mounted () { this.inputInProgress = false }
 }
 </script>
