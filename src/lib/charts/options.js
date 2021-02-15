@@ -55,9 +55,11 @@ const sparkLine = (
     xAxes: [{ display: false }],
     yAxes: [{
       display: false,
-      ticks: range
+      ticks: m(1.3, range)
     }]
   }
 })
+
+const m = (coef, range) => ({ min: coef * range.min, max: coef * range.max })
 
 export { sparkLine, polar }
