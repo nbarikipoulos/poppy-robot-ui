@@ -4,17 +4,23 @@
 [![JavaScript Style Guide][standard-image]][standard-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
-Responsive web site with dashboard/control panels for robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
+Responsive web app to monitor/control robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
 It allows:
 - Displaying register of interest of motors of a Poppy robot (at least a Poppy Ergo Jr.),
-- Controlling the position of each motor via a simple UI.
+- Settings compliant/stiff state, speed, position and led (for XL-320 motor).
+
+![view](./doc/display.png "Display on mobile/PC")
+
+A demonstration video is available [here](https://www.youtube.com/watch?v=vkAI09Vu6qc).
 
 <!-- toc -->
 
 - [Screenshots](#screenshots)
-  * [Wide Screens](#wide-screens)
-  * [Mobile Devices](#mobile-devices)
+  * [Overview](#overview)
+    + [Wide Screens](#wide-screens)
+    + [Mobile Devices](#mobile-devices)
+  * [Setting Registers](#setting-registers)
 - [Install](#install)
   * [Build Project](#build-project)
   * [Serve Build](#serve-build)
@@ -26,17 +32,31 @@ It allows:
 
 ## Screenshots
 
-### Wide Screens
+### Overview
+
+#### Wide Screens
 
 ![dashboard](./doc/dashboard-wide.png "Dashboard (rendering on 'wide screen')")
 
 ![dashboard](./doc/dashboard-card-wide.png "Dashboard (rendering motor as card on 'wide screen')")
 
-### Mobile Devices
+#### Mobile Devices
 
-Dashboard | Control
---- | ---
-![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)") | ![motor control](./doc/control-mobile.png "Motor control (rendering on mobile)")
+![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)")
+
+### Setting Registers
+
+The current version allow to set the following registers of motors:
+- 'compliant' (aka the compliant/stiff state),
+- 'position' (when motor state is stiff),
+- 'moving_speed',
+- at last the led register.
+
+position|speed|led
+---|---|---
+![position](./doc/setSpeed.png "Setting the position register")|![speed](./doc/setPosition.png "Setting the speed register") |![led](./doc/setLed.png "Setting the led register") |
+
+
 
 ## Install
 
