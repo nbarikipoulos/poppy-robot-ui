@@ -2,6 +2,7 @@
 
 ![GitHub package.json version][version-img]
 [![JavaScript Style Guide][standard-image]][standard-url]
+[![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-dev-image]][david-dev-url]
 
 Responsive web app to monitor/control robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
