@@ -22,10 +22,12 @@ A demonstration video is available [here](https://www.youtube.com/watch?v=vkAI09
     + [Wide Screens](#wide-screens)
     + [Mobile Devices](#mobile-devices)
   * [Setting Registers](#setting-registers)
+- [Prerequisite](#prerequisite)
 - [Install](#install)
   * [Build Project](#build-project)
   * [Serve Build](#serve-build)
 - [Versioning](#versioning)
+- [Known Limitations](#known-limitations)
 - [Credits](#credits)
 - [License](#license)
 
@@ -57,7 +59,9 @@ position|speed|led
 ---|---|---
 ![position](./doc/setSpeed.png "Setting the position register")|![speed](./doc/setPosition.png "Setting the speed register") |![led](./doc/setLed.png "Setting the led register") |
 
+## Prerequisite
 
+__This module requires Poppy software ^v3.0.0__ installed on robot.
 
 ## Install
 
@@ -102,6 +106,10 @@ npx serve dist
 While it's still in beta, version will follow v0.Y.Z, where:
 - Y: Major,
 - Z: Minor or patch.
+
+## Known Limitations
+
+- __This module has been only tested with sets of dynamixel XL-320__ (then for the __Poppy Ergo Jr__). As it communicates with the robot via the REST API of the pypot library, it should be usable with any robot of the poppy family.
 
 ## Credits
 
