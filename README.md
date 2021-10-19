@@ -2,8 +2,7 @@
 
 ![GitHub package.json version][version-img]
 [![JavaScript Style Guide][standard-image]][standard-url]
-[![Dependency Status][david-image]][david-url]
-[![devDependency Status][david-dev-image]][david-dev-url]
+[![Language grade: JavaScript][lgtm-image]][lgtm-url]
 
 Responsive web app to monitor/control robots of the [Poppy project][poppy-project-url] family based on Vue.js and the [poppy-robot-core](https://github.com/nbarikipoulos/poppy-robot-core#readme) module.
 
@@ -126,10 +125,8 @@ The poppy-robot-ui is MIT licensed (details available [here](./LICENSE.md)) exce
 
 [version-img]: https://img.shields.io/github/package-json/v/nbarikipoulos/poppy-robot-ui
 
-[david-image]: https://img.shields.io/david/nbarikipoulos/poppy-robot-ui.svg
-[david-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui
-[david-dev-image]: https://img.shields.io/david/dev/nbarikipoulos/poppy-robot-ui.svg
-[david-dev-url]: https://david-dm.org/nbarikipoulos/poppy-robot-ui?type=dev
+[lgtm-url]: https://lgtm.com/projects/g/nbarikipoulos/poppy-robot-ui
+[lgtm-image]: https://img.shields.io/lgtm/grade/javascript/g/nbarikipoulos/poppy-robot-ui.svg?logo=lgtm&logoWidth=18
 
 [cc-by-sa-url]: https://creativecommons.org/licenses/by-sa/4.0/
 [poppy-project-url]: https://www.poppy-project.org
