@@ -59,7 +59,7 @@ const mixin = {
     isValid (value) {
       let result
       switch (typeof value) {
-        case undefined: result = false; break
+        case 'undefined': result = false; break
         case 'number': result = !Number.isNaN(value); break
         default: result = true
       }
