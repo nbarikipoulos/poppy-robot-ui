@@ -23,20 +23,20 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^2.0.0",
-    "buefy": "^0.9.4",
+    "buefy": "^0.9.14",
     "chart.js": "^2.9.4",
     "core-js": "^3.8.1",
-    "poppy-robot-core": "^10.0.0",
+    "poppy-robot-core": "^11.0.0",
     "set-interval-async": "^1.0.34",
     "vue": "^2.6.12",
-    "vue-router": "^3.4.9",
-    "vue-chartjs": "^3.5.1"
+    "vue-chartjs": "^3.5.1",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.9",
-    "@vue/cli-plugin-eslint": "^4.5.9",
-    "@vue/cli-plugin-router": "^4.5.9",
-    "@vue/cli-service": "^4.5.9",
+    "@vue/cli-plugin-babel": "^5.0.0-rc.2",
+    "@vue/cli-plugin-eslint": "^5.0.0-rc.2",
+    "@vue/cli-plugin-router": "^5.0.0-rc.2",
+    "@vue/cli-service": "^5.0.0-rc.2",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.15.0",
@@ -46,10 +46,10 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.5.0",
     "markdown-toc": "^1.2.0",
-    "sass": "^1.32.7",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.1.0",
+    "sass": "^1.32.7",
     "sass-loader": "^10.1.1",
     "standard": "*",
     "vue-template-compiler": "^2.6.12"
@@ -62,7 +62,7 @@
     "url": "https://github.com/nbarikipoulos/poppy-robot-ui/issues"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "browserslist": [
     "> 1%",

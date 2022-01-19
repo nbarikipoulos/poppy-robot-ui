@@ -60,7 +60,7 @@ position|speed|led
 
 ## Prerequisite
 
-__This module requires Poppy software ^v3.0.0__ installed on robot.
+Communication with the robot is done using the __pypot REST API v4.0.0__ aka target robot must embed the __Poppy software ^v4.0.0__.
 
 ## Install
 

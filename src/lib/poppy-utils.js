@@ -32,7 +32,7 @@ class PConnector {
     //
 
     const config = {
-      motors: this._poppy.allMotorIds,
+      motors: this._poppy.motorNames,
       registers: [{
         name: 'present_position',
         length: 100
@@ -65,7 +65,7 @@ export const P_CONNECTOR = new PConnector()
 const PUtils = {
   get poppy () { return P_CONNECTOR.poppy }, // arff
   get descriptor () { return this.poppy.descriptor },
-  get allMotorIds () { return this.poppy.allMotorIds },
+  get motorNames () { return this.poppy.motorNames },
 
   getAngleRange (...motorIds) {
     const range = motorIds

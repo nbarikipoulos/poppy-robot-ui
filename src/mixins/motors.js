@@ -6,7 +6,7 @@ import store from '@/lib/store'
 
 const mixin = {
   data: _ => ({ mdata: store.mdata }),
-  props: { motors: { type: Array, default: _ => PUtils.allMotorIds } },
+  props: { motors: { type: Array, default: _ => PUtils.motorNames } },
   methods: {
     getRegister (
       register,

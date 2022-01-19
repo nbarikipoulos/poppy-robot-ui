@@ -40,6 +40,6 @@ export default {
   components: { PolarPositionsChart, ...RegisterComponents, MotorInfo },
   props: { maxHeight: { type: String, default: '350px' } },
   data: _ => ({ invert: ['has-background-primary', 'has-text-white'] }),
-  computed: { range () { return PUtils.getAngleRange(...PUtils.allMotorIds) } }
+  computed: { range () { return PUtils.getAngleRange(...PUtils.motorNames) } }
 }
 </script>
