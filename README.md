@@ -17,14 +17,11 @@ A demonstration video is available [here](https://www.youtube.com/watch?v=vkAI09
 <!-- toc -->
 
 - [Screenshots](#screenshots)
-  * [Overview](#overview)
-    + [Wide Screens](#wide-screens)
-    + [Mobile Devices](#mobile-devices)
-  * [Setting Registers](#setting-registers)
+  * [Wide Screens](#wide-screens)
+  * [Mobile Devices](#mobile-devices)
 - [Prerequisite](#prerequisite)
 - [Install](#install)
-  * [Build Project](#build-project)
-  * [Serve Build](#serve-build)
+- [Build](#build)
 - [Versioning](#versioning)
 - [Known Limitations](#known-limitations)
 - [Credits](#credits)
@@ -34,29 +31,15 @@ A demonstration video is available [here](https://www.youtube.com/watch?v=vkAI09
 
 ## Screenshots
 
-### Overview
-
-#### Wide Screens
+### Wide Screens
 
 ![dashboard](./doc/dashboard-wide.png "Dashboard (rendering on 'wide screen')")
 
 ![dashboard](./doc/dashboard-card-wide.png "Dashboard (rendering motor as card on 'wide screen')")
 
-#### Mobile Devices
+### Mobile Devices
 
 ![dashboard](./doc/dashboard-mobile.png "Dashboard (rendering on mobile)")
-
-### Setting Registers
-
-The current version allow to set the following registers of motors:
-- 'compliant' (aka the compliant/stiff state),
-- 'position' (when motor state is stiff),
-- 'moving_speed',
-- at last the led register.
-
-position|speed|led
----|---|---
-![position](./doc/setSpeed.png "Setting the position register")|![speed](./doc/setPosition.png "Setting the speed register") |![led](./doc/setLed.png "Setting the led register") |
 
 ## Prerequisite
 
@@ -64,28 +47,18 @@ Communication with the robot is done using the __pypot REST API v4.0.0__ aka tar
 
 ## Install
 
-### Build Project
+Download the latest build available on this [page](https://github.com/nbarikipoulos/poppy-robot-ui/releases/latest) and unzip it.
 
-The build process is based on vueJS cli tooling that requires node.js (basic installation guide could be found [here](https://github.com/nbarikipoulos/poppy-robot-cli#installing-nodejs) if needed.)
+Then just serve it.
 
-- Clone this repository anywhere on your computer:
-
+As example using python:
 ```shell
-git clone https://github.com/nbarikipoulos/poppy-robot-ui.git
+python -u -m http.server 5000 --directory dist
+Serving HTTP on :: port 5000 (http://[::]:5000/) ...
 ```
 
-- Open a terminal in this folder and type:
+or with the serve npm package:
 
-```shell
-npm install
-npm run build // Compiles and minifies for production in dist/
-```
-
-### Serve Build
-
-Just serve the dist folder __with any http server__ (Note it __does not require node.js__ at all).
-
-Below example with the serve npm package:
 ```shell
 npx serve dist
 ┌──────────────────────────────────────────────────┐
@@ -98,6 +71,15 @@ npx serve dist
 │   Copied local address to clipboard!             │
 │                                                  │
 └──────────────────────────────────────────────────┘
+```
+
+## Build
+
+Once the project has been cloned, type
+
+```shell
+npm i
+npm run build
 ```
 
 ## Versioning
