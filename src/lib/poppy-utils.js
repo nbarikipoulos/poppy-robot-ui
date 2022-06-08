@@ -17,7 +17,7 @@ class PConnector {
 
   async connect (connect) {
     try {
-      this._poppy = await createPoppy({ connect })
+      this._poppy = await createPoppy(connect)
     } catch (err) {
       this._poppy = undefined
     }
