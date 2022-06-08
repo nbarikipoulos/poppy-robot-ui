@@ -62,7 +62,7 @@
     "url": "https://github.com/nbarikipoulos/poppy-robot-ui/issues"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0 <15.0.0"
   },
   "browserslist": [
     "> 1%",
