@@ -51,13 +51,7 @@ Download the latest build available on this [page](https://github.com/nbarikipou
 
 Then just serve it.
 
-As example using python:
-```shell
-python -u -m http.server 5000 --directory dist
-Serving HTTP on :: port 5000 (http://[::]:5000/) ...
-```
-
-or with the serve npm package:
+As example with the serve npm package:
 
 ```shell
 npx serve dist
