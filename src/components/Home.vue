@@ -24,7 +24,7 @@
           b-tooltip(type="is-primary" position="is-left")
             ext-b-icon(pack="fas" icon="info-circle" type="is-primary")
             template(v-slot:content)
-              span {{ settings.hostname }}:{{ settings.port }}
+              span {{ settings.host }}:{{ settings.port }}
     div(
       v-if="!showAsCard"
       class="tile is-ancestor"
