@@ -46,7 +46,7 @@ class RegisterQuerying {
   get data () { return this._data }
 
   async launch () {
-    const f = (poppy, registers) => poppy.query('all', registers)
+    const f = (poppy, registers) => poppy.query({ registers })
     const g = (data) => {
       Object.entries(data)
         .forEach(([motor, values]) => Object.entries(values)

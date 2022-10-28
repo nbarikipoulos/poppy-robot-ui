@@ -24,7 +24,7 @@ const mixin = {
     command () { // Return the script function name
       let result
       switch (this.register) {
-        case 'present_position': result = 'position'; break
+        case 'present_position': result = 'goto'; break
         case 'moving_speed': result = 'speed'; break
         default: result = this.register
       }
